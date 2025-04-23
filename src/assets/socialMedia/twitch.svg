@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Twitch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect y=".07" width="128" height="128" rx="12" ry="12"/>
+  <g>
+    <path class="cls-1" d="M39.45,32.91l-4.27,10.41v43.3h14.27v8.47h8.14l6.41-8.74h12.46l16.35-16.34v-37.1h-53.37ZM86.4,68.03l-10.26,10.26h-12.35l-7.76,7.76v-7.65h-12.36v-38.78h42.73v28.41Z"/>
+    <rect class="cls-1" x="57.59" y="49.86" width="6.42" height="16.35"/>
+    <rect class="cls-1" x="69.8" y="49.86" width="6.33" height="16.35"/>
+  </g>
+</svg>
