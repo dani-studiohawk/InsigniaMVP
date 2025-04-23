@@ -1,57 +1,158 @@
-/* This file contains the styles for the website. */
-/* General styles */
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Crimson+Pro:wght@400;600&display=swap');
 
-/* Import fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Montserrat:wght@400;500;600&display=swap');
-
-/* CSS Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* General styles */
+/* CSS Variables */
 :root {
-    --primary-dark: #151724;
-    --primary-light: #FFEDD3;
+  /* Colors */
+  --primary-color: #FFEDD3;
+  --secondary-color: #151724;
+  --tertiary-color: #F8F9FA;
+  
+  /* Typography */
+  --font-family: 'Montserrat', sans-serif;
+  --font-family-secondary: 'Crimson Pro', serif;
+  --font-size: 16px;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--primary-dark);
-    color: var(--primary-light);
-    line-height: 1.6;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Crimson Pro', serif;
-    font-weight: 600;
-    color: var(--primary-light);
+header {
+    background-image: url(../assets/steam/page\ background.png); /* Placeholder hero image */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
 }
 
-p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+/* Navigation */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  padding: 15px 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  background-color: var(--secondary-color);
 }
 
-a {
-    color: var(--primary-light);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
+/* Logo */
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
-a:hover {
-    opacity: 0.8;
+.logo img {
+  height: 48px;
+  width: auto;
+  margin-right: 10px;
+  display: block;
 }
 
-/* Header styles */
-
-.navclass {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--primary-dark);
+/* Navigation Links */
+.nav-links {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 0.5rem;
 }
 
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links li a {
+  font-family: var(--font-family);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  opacity: 0.8;
+}
+
+/* Social Media */
+.social-media {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
+
+.social-media img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-media a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Hero Section */
+.hero-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cta-steam {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.cta-steam:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Main Content */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--primary-color);
+}

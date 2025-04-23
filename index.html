@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link rel="stylesheet" href="src/css/style.css">
-    
 </head>
 <body>
     <header>
-        <div class="hero-image">
-            <img src="src/assets/logo/Insignia Logo Colour.png" alt="Hero Image">
         <nav class="navbar">
-            <a href="#home" class="logo">My Logo</a>
-            <ul>
-                <li><a href="#story">Story</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#updates">Updates</a></li>
-                <li><a href="#press-kit">Press Kit</a></li>
+            <div class="logo-container">
+                <!-- Properly structured logo with image -->
+                <a href="#home" class="logo">
+                    <img src="src/assets/logo/Insignia Logo Colour.png" alt="Insignia Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#story">STORY</a></li>
+                <li><a href="#features">FEATURES</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#updates">UPDATES</a></li>
+                <li><a href="#press-kit">PRESS KIT</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
             <div class="social-media">
@@ -39,12 +41,13 @@
                 </a>
             </div>
         </nav>
+        <div class="hero-section">
+            <img src="src/assets/logo/Insignia Logo Colour.png" alt="Insignia Logo">
+            <a href="https://store.steampowered.com" class="cta-steam">Wishlist on Steam</a>
         </div>
     </header>
     <main>
         <p>This is the main content area. Add your content here.</p>
     </main>
-    <script>
-    </script>
 </body>
 </html>
