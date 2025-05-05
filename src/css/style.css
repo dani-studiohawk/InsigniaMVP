@@ -11,7 +11,7 @@
   /* Typography */
   --font-family: 'Montserrat', sans-serif;
   --font-family-secondary: 'Crimson Pro', serif;
-  --font-size: 16px;
+  --font-size: 12px;
 }
 
 /* Reset */
@@ -72,9 +72,17 @@ header {
 .logo img {
   height: 48px;
   width: auto;
-  margin-right: 10px;
+  margin-right: 5px;
   display: block;
+  filter: drop-shadow(0 0 8px rgba(1, 255, 242, 0.2));
+  transition: all 0.5s ease;
 }
+
+.logo:hover img {
+  filter: drop-shadow(0 0 12px rgba(4, 244, 232, 0.8));
+  transform: scale(1.05);
+}
+
 
 /* Navigation Links */
 .nav-links {
@@ -83,12 +91,9 @@ header {
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: 0.5rem;
+  gap: 3rem;
 }
 
-.nav-links li {
-  margin: 0 15px;
-}
 
 .nav-links li a {
   font-family: var(--font-family);
@@ -97,7 +102,8 @@ header {
   letter-spacing: 1px;
   color: var(--primary-color);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  text-align: center;
   transition: all 0.3s ease;
 }
 
@@ -144,6 +150,17 @@ header {
   width: 100%;
   height: auto;
   display: block;
+  filter: drop-shadow(0 0 15px rgba(255, 237, 211, 0.7));
+  animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    filter: drop-shadow(0 0 15px rgba(255, 237, 211, 0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(255, 237, 211, 0.9));
+  }
 }
 
 .cta-steam {
@@ -214,7 +231,7 @@ main {
 
 .elevator-pitch p {
   font-family: var(--font-family-secondary);
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: var(--primary-color);
   font-weight: 400;
@@ -253,7 +270,7 @@ main {
   grid-template-columns: repeat(2, minmax(300px, 1000px));
   grid-auto-rows: 1fr;
   gap: 3rem;
-  width: min(1800px, 95%);
+  width: min(1400px, 95%);
   margin: 0 auto;
   justify-content: center;
   align-items: stretch;
@@ -294,6 +311,48 @@ main {
   flex-shrink: 0;
 }
 
+/* Bottom diamond navigation indicator - improved positioning */
+.diamond-nav {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  width: auto;
+  height: auto;
+}
+
+.diamond-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 80px;
+  gap: 12px;
+  background: var(--tertiary-color);
+  border: none;
+}
+
+.diamond-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--secondary-color);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+  pointer-events: auto; /* Make only the dots clickable */
+  cursor: pointer;
+}
+
+.diamond-dot.active {
+  background-color: rgb(132, 132, 132);
+  transform: rotate(45deg) scale(1.25);
+}
+
+
+
 .gallery-nav {
   position: absolute;
   top: 50%;
@@ -327,14 +386,14 @@ main {
 .card h2 {
   text-align: center;
   font-style: bold;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin: 30px 0 20px;
   color: var(--secondary-color);
 }
 
 .card p {
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 1.5;
   padding: 0 30px 30px 30px;
   text-align: left;
@@ -342,36 +401,87 @@ main {
   flex-grow: 1;
 }
 
+/* Story Section - Combined Styles */
 .story-section {
-    padding: 400px 0;
-    width: 100%;
-    background-color: var(--secondary-color);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  width: 100%;
+  background-color: var(--secondary-color);
+  z-index: 1;
+  min-height: 600px; /* Ensure enough vertical space for tall embers */
 }
 
 .story-text {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    color: var(--primary-color);
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 2rem 100px; /* Added padding-bottom for anvil/hammer space */
+  color: var(--primary-color);
+  z-index: 2; /* Keep text above particles */
 }
 
 .story-text h2 {
-    font-family: var(--font-family-secondary);
-    font-size: 3rem;
-    font-weight: 800;
-    text-align: left;
-    margin-bottom: 3rem;
-    letter-spacing: 2px;
+  font-family: var(--font-family-secondary);
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: left;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
 }
 
 .story-text p {
-    font-family: var(--font-family-secondary);
-    font-size: 1.4rem;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-    text-align: justify;
+  font-family: var(--font-family-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  text-align: justify;
 }
 
 .story-text p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Anvil and Hammer positioning with animation support */
+.forge-elements {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+  width: 150px; /* Control width of the area */
+}
+
+.anvil-image {
+  max-width: 60px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 10px rgba(255, 160, 0, 0.1));
+}
+
+.hammer-image {
+  max-width: 30px;
+  height: auto;
+  margin-bottom: 10px; /* Space above anvil */
+  transform: rotate(-5deg); /* Initial angle */
+  transform-origin: bottom right;
+  transition: transform 0.15s ease; /* Smooth hammer animation */
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(255, 160, 0, 0.1));
+}
+
+/* Hover effect for hammer */
+.hammer-image:hover {
+  filter: drop-shadow(0 0 12px rgba(255, 160, 0, 0.2));
+  transform: rotate(-20deg) scale(1.05);
+}
+
+.ember-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Below text and hammer/anvil */
+  pointer-events: none; /* So mouse can click through it */
 }
