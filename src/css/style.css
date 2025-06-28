@@ -21,6 +21,11 @@
   box-sizing: border-box;
 }
 
+/* Apply Montserrat as default font to body */
+body {
+  font-family: var(--font-family);
+}
+
 header {
     background-image: url(../assets/steam/page\ background.png); /* Placeholder hero image */
     background-size: cover;
@@ -36,7 +41,8 @@ header {
   top: 0;
   left: 50%;
   transform: translateX(-50%) translateY(0);
-  width: min(70%, 1200px);
+  width: 90%;
+  max-width: 1400px;
   padding: 15px 2rem;
   display: flex;
   align-items: center;
@@ -169,10 +175,11 @@ header {
   opacity: 0.8;
 }
 
-/* Extra Large Desktop - 80% width for ultra-wide screens */
+/* Extra Large Desktop - maintain consistent max-width */
 @media (min-width: 1441px) and (max-width: 1600px) {
   .navbar {
-    width: 80%;
+    width: 90%;
+    max-width: 1400px;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -541,8 +548,8 @@ main {
 /* Elevator Pitch */
 .elevator-pitch {
   width: 100%;
-  max-width: 800px;
-  padding: clamp(4rem, 12vw, 8rem) 2rem;
+  max-width: 1400px;
+  padding: clamp(2rem, 6vw, 4rem) 1rem;
   text-align: center;
 }
 
@@ -633,6 +640,7 @@ main {
 
 .card h2 {
   text-align: center;
+  font-family: var(--font-family);
   font-style: bold;
   font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
   font-weight: bold;
@@ -641,6 +649,7 @@ main {
 }
 
 .card p {
+  font-family: var(--font-family);
   font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font size */
   line-height: 1.5;
   padding: 0 0 clamp(15px, 3vw, 30px); /* Only bottom padding */
@@ -827,17 +836,8 @@ main {
   }
 }
 
-
-.features-section {
-  padding: 50px 20px; /* Add horizontal padding for mobile */
-  width: 100%;
-  background-color: var(--primary-color);
-}
-
-
 /* Gallery Section */
 .gallery-section {
-  margin-top: 80px;
   width: 100%;
   padding: 50px 20px;
   background-color: var(--primary-color);
@@ -846,8 +846,10 @@ main {
 
 .gallery-section h2 {
   text-align: center;
+  font-family: var(--font-family);
   font-size: 2rem;
   margin-bottom: 2rem;
+  color: var(--secondary-color);
 }
 
 .gallery-grid {
@@ -855,7 +857,7 @@ main {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 200px 200px 300px 200px 200px 300px;
   gap: 1rem;
-  max-width: 1330px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -865,7 +867,7 @@ main {
   display: none;
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0;
   height: 70vh;
@@ -1100,28 +1102,25 @@ main {
     max-height: 400px;
     padding: 0;
   }
-  
-  
 }
-
 
 
 /* Story Section - Combined Styles */
 .story-section {
   position: relative;
   overflow: hidden;
-  padding: clamp(50px, 15vw, 100px) 0;
+  padding: clamp(50px, 15vw, 50px) 0;
   width: 100%;
   background-color: var(--secondary-color);
   z-index: 1;
-  min-height: clamp(400px, 80vh, 600px);
+  min-height: clamp(450px, 80vh, 450px);
 }
 
 .story-text {
   position: relative;
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: clamp(50px, 15vw, 100px) clamp(1rem, 4vw, 2rem) clamp(50px, 15vw, 100px);
+
   color: var(--primary-color);
   z-index: 2; /* Keep text above particles */
 }
@@ -1136,7 +1135,7 @@ main {
 }
 
 .story-text p {
-  font-family: var(--font-family-secondary);
+  font-family: var(--font-family);
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -1283,7 +1282,6 @@ main {
   border: none;
 }
 
-
 .faq-card-content {
   padding: 30px;
   flex-grow: 1;
@@ -1396,5 +1394,171 @@ main {
   
   .faq-scroll-wrapper {
     gap: 1rem;
+  }
+}
+
+/* Full-screen Image Modal */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  cursor: pointer;
+}
+
+.image-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-modal img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 237, 211, 0.3);
+  border-radius: 4px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: all 0.3s ease;
+  padding: 10px;
+  line-height: 1;
+  user-select: none;
+}
+
+.modal-close:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Mobile modal adjustments */
+@media (max-width: 768px) {
+  .image-modal img {
+    max-width: 98vw;
+    max-height: 90vh;
+  }
+  
+  .modal-close {
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    padding: 15px;
+  }
+}
+
+/* Gallery image cursor indication */
+.gallery-grid > img {
+  cursor: pointer;
+}
+
+.mobile-gallery img {
+  cursor: pointer;
+}
+
+.feature-gallery img {
+  cursor: pointer;
+}
+
+/* FOOTER STYLES */
+.footer {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 60px 0 20px;
+  margin-top: 0;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-logo img {
+  max-width: 200px;
+  height: auto;
+  filter: brightness(1.1);
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-separator {
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-family: var(--font-family-secondary);
+  padding: 1rem 0;
+}
+
+.footer-bottom p {
+  font-family: var(--font-family-secondary);
+  font-size: 0.9rem;
+  color: var(--tertiary-color);
+  margin-bottom: 0.5rem;
+}
+
+.footer-bottom p:last-child {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* FOOTER RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 20px;
+  }
+  
+  .footer-logo {
+    padding: 0 1rem;
+  }
+  
+  .footer-logo img {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 0 15px;
+  }
+  
+  .footer-logo {
+    padding: 0 0.5rem;
+  }
+  
+  .footer-logo img {
+    max-width: 120px;
+  }
+  
+  .footer-bottom {
+    padding: 1.5rem 1rem 0;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.8rem;
   }
 }

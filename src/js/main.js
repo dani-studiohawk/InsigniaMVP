@@ -204,6 +204,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Full-screen Image Modal functionality
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    modal.innerHTML = `
+        <span class="modal-close" title="Close">&times;</span>
+        <img src="" alt="Full-screen image">
+    `;
+    document.body.appendChild(modal);
+
+    const modalImg = modal.querySelector('img');
+    const modalClose = modal.querySelector('.modal-close');
+
+    // Function to open modal
+    function openModal(imageSrc, imageAlt) {
+        modalImg.src = imageSrc;
+        modalImg.alt = imageAlt || 'Full-screen image';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Function to close modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+        modalImg.src = ''; // Clear image source for better performance
+    }
+
+    // Add click event to all gallery images (grid, mobile gallery, and feature galleries)
+    document.querySelectorAll('.gallery-grid > img, .mobile-gallery img, .feature-gallery img').forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openModal(img.src, img.alt);
+        });
+    });
+
+    // Close modal when clicking close button
+    modalClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeModal();
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Prevent modal image from closing when clicked
+    modalImg.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
     // FAQ Section Horizontal Scroll with Mouse Wheel
     const faqScrollWrapper = document.querySelector('.faq-scroll-wrapper');
     
