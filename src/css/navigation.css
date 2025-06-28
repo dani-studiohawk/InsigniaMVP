@@ -66,6 +66,7 @@
   align-items: center;
   height: 100%;
   min-width: 0; /* Allow shrinking */
+  position: relative; /* For sparks positioning */
 }
 
 .logo img {
@@ -81,6 +82,121 @@
   filter: drop-shadow(0 0 12px rgba(4, 244, 232, 0.8));
   transform: scale(1.05);
 }
+
+/* Sparks Effect */
+.sparks-container {
+  position: absolute;
+  top: 50%;
+  left: 24px; /* Center on logo */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-container:hover .sparks-container {
+  opacity: 1;
+}
+
+.spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgba(255, 165, 0, 0.8) 40%, rgba(255, 69, 0, 0.6) 70%, transparent 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.8), 0 0 12px rgba(255, 165, 0, 0.6);
+  animation: sparkFly 1.2s ease-out infinite;
+}
+
+.spark:nth-child(1) {
+  top: 15px;
+  left: 30px;
+  animation-delay: 0s;
+  animation-duration: 1.1s;
+}
+
+.spark:nth-child(2) {
+  top: 25px;
+  left: 10px;
+  animation-delay: 0.2s;
+  animation-duration: 1.3s;
+}
+
+.spark:nth-child(3) {
+  top: 35px;
+  left: 45px;
+  animation-delay: 0.1s;
+  animation-duration: 1.0s;
+}
+
+.spark:nth-child(4) {
+  top: 20px;
+  left: 50px;
+  animation-delay: 0.3s;
+  animation-duration: 1.4s;
+}
+
+.spark:nth-child(5) {
+  top: 40px;
+  left: 20px;
+  animation-delay: 0.15s;
+  animation-duration: 1.2s;
+}
+
+.spark:nth-child(6) {
+  top: 10px;
+  left: 40px;
+  animation-delay: 0.25s;
+  animation-duration: 1.1s;
+}
+
+.spark:nth-child(7) {
+  top: 45px;
+  left: 35px;
+  animation-delay: 0.05s;
+  animation-duration: 1.3s;
+}
+
+.spark:nth-child(8) {
+  top: 30px;
+  left: 5px;
+  animation-delay: 0.35s;
+  animation-duration: 1.0s;
+}
+
+@keyframes sparkFly {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  
+  10% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  
+  50% {
+    transform: translate(var(--spark-x, 0), var(--spark-y, 0)) scale(1.2);
+    opacity: 0.8;
+  }
+  
+  100% {
+    transform: translate(var(--spark-x-end, 0), var(--spark-y-end, 0)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Dynamic spark trajectories */
+.spark:nth-child(1) { --spark-x: 15px; --spark-y: -20px; --spark-x-end: 25px; --spark-y-end: -35px; }
+.spark:nth-child(2) { --spark-x: -20px; --spark-y: -15px; --spark-x-end: -35px; --spark-y-end: -25px; }
+.spark:nth-child(3) { --spark-x: 18px; --spark-y: 12px; --spark-x-end: 30px; --spark-y-end: 20px; }
+.spark:nth-child(4) { --spark-x: 25px; --spark-y: -18px; --spark-x-end: 40px; --spark-y-end: -30px; }
+.spark:nth-child(5) { --spark-x: -22px; --spark-y: 15px; --spark-x-end: -35px; --spark-y-end: 25px; }
+.spark:nth-child(6) { --spark-x: 12px; --spark-y: -25px; --spark-x-end: 20px; --spark-y-end: -40px; }
+.spark:nth-child(7) { --spark-x: 20px; --spark-y: 18px; --spark-x-end: 32px; --spark-y-end: 28px; }
+.spark:nth-child(8) { --spark-x: -25px; --spark-y: -12px; --spark-x-end: -40px; --spark-y-end: -20px; }
 
 /* Navigation Links */
 .nav-links {
@@ -289,6 +405,18 @@
     height: 36px;
   }
 
+  /* Adjust sparks for smaller logo */
+  .sparks-container {
+    width: 48px;
+    height: 48px;
+    left: 18px;
+  }
+
+  .spark {
+    width: 2px;
+    height: 2px;
+  }
+
   .mobile-menu-toggle {
     display: flex;
     order: 2;
@@ -386,6 +514,18 @@
 
   .logo img {
     height: 32px;
+  }
+
+  /* Adjust sparks for smallest logo */
+  .sparks-container {
+    width: 40px;
+    height: 40px;
+    left: 16px;
+  }
+
+  .spark {
+    width: 1.5px;
+    height: 1.5px;
   }
 
   .mobile-menu-toggle span {

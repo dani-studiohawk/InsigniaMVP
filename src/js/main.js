@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const SCROLL_THRESHOLD = 100;
     let isScrolling = false;
 
+    // Initialize sparks effect for logo
+    initializeLogoSparks();
+
     // Mobile menu toggle functionality
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', () => {
@@ -487,3 +490,33 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCharacterSlide();
     }
 });
+
+// Function to initialize logo sparks effect
+function initializeLogoSparks() {
+    const logoContainer = document.querySelector('.logo-container');
+    
+    if (!logoContainer) return;
+    
+    // Create sparks container
+    const sparksContainer = document.createElement('div');
+    sparksContainer.className = 'sparks-container';
+    
+    // Create 8 spark elements
+    for (let i = 0; i < 8; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+        sparksContainer.appendChild(spark);
+    }
+    
+    // Add sparks container to logo container
+    logoContainer.appendChild(sparksContainer);
+    
+    // Optional: Add event listeners for additional control
+    logoContainer.addEventListener('mouseenter', () => {
+        sparksContainer.style.opacity = '1';
+    });
+    
+    logoContainer.addEventListener('mouseleave', () => {
+        sparksContainer.style.opacity = '0';
+    });
+}
