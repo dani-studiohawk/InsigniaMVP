@@ -402,4 +402,88 @@ document.addEventListener('DOMContentLoaded', () => {
         portrait.setAttribute('role', 'button');
         portrait.setAttribute('aria-label', `Select character`);
     });
+
+    // Mobile Character Gallery functionality
+    const mobileCharacterGallery = document.getElementById('character-gallery-mobile');
+    const characterNextBtn = document.getElementById('character-next');
+    const characterPrevBtn = document.getElementById('character-prev');
+    const characterDiamondDots = document.querySelectorAll('.character-diamond-dot');
+    
+    if (mobileCharacterGallery) {
+        const slides = mobileCharacterGallery.querySelectorAll('img');
+        let currentCharacterSlide = 0;
+        const totalCharacterSlides = slides.length;
+
+        function updateCharacterSlide() {
+            mobileCharacterGallery.style.transform = `translateX(-${currentCharacterSlide * 100}%)`;
+            updateCharacterActiveDot();
+            
+            // Update character info based on current slide
+            const currentSlide = slides[currentCharacterSlide];
+            const characterKey = currentSlide.getAttribute('data-character');
+            updateCharacterInfoOnly(characterKey);
+        }
+        
+        function updateCharacterActiveDot() {
+            characterDiamondDots.forEach((dot, index) => {
+                if (index === currentCharacterSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Function to update only character info (for mobile gallery)
+        function updateCharacterInfoOnly(characterKey) {
+            const character = characterData[characterKey];
+            if (!character) return;
+
+            // Update character name
+            if (characterName) {
+                characterName.textContent = character.name;
+            }
+
+            // Update character descriptions
+            if (characterInfoContainer) {
+                // Clear existing descriptions
+                characterInfoContainer.querySelectorAll('.character-description').forEach(p => p.remove());
+                
+                // Add new descriptions
+                character.description.forEach(text => {
+                    const p = document.createElement('p');
+                    p.className = 'character-description';
+                    p.textContent = text;
+                    characterInfoContainer.appendChild(p);
+                });
+            }
+        }
+
+        // Next button
+        if (characterNextBtn) {
+            characterNextBtn.addEventListener('click', () => {
+                currentCharacterSlide = (currentCharacterSlide + 1) % totalCharacterSlides;
+                updateCharacterSlide();
+            });
+        }
+
+        // Previous button
+        if (characterPrevBtn) {
+            characterPrevBtn.addEventListener('click', () => {
+                currentCharacterSlide = (currentCharacterSlide - 1 + totalCharacterSlides) % totalCharacterSlides;
+                updateCharacterSlide();
+            });
+        }
+
+        // Diamond dot navigation
+        characterDiamondDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentCharacterSlide = index;
+                updateCharacterSlide();
+            });
+        });
+
+        // Initialize mobile gallery
+        updateCharacterSlide();
+    }
 });

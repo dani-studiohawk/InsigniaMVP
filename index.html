@@ -126,7 +126,30 @@
                         </div>
                         
                         <div class="character-display">
+                            <!-- Desktop artwork display -->
                             <img src="src/assets/images/armin-walking-colour.png" alt="Character Artwork" class="character-artwork" id="character-artwork">
+                            
+                            <!-- Mobile gallery structure (hidden on desktop) -->
+                            <div class="character-gallery-mobile" id="character-gallery-mobile">
+                                <img src="src/assets/images/armin-walking-colour.png" alt="Armin Artwork" data-character="armin">
+                                <img src="src/assets/images/ensign-blueorange.png" alt="Unknown Character 2" data-character="char2">
+                                <img src="src/assets/images/ensign-blueteal.png" alt="Unknown Character 3" data-character="char3">
+                                <img src="src/assets/images/armin-walking-colour.png" alt="Unknown Character 4" data-character="char4">
+                            </div>
+                            
+                            <!-- Mobile gallery navigation -->
+                            <button class="character-gallery-nav prev" id="character-prev">‹</button>
+                            <button class="character-gallery-nav next" id="character-next">›</button>
+                            
+                            <!-- Mobile diamond navigation -->
+                            <div class="character-diamond-nav">
+                                <div class="character-diamond-indicator">
+                                    <div class="character-diamond-dot active" data-index="0"></div>
+                                    <div class="character-diamond-dot" data-index="1"></div>
+                                    <div class="character-diamond-dot" data-index="2"></div>
+                                    <div class="character-diamond-dot" data-index="3"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
