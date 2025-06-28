@@ -548,7 +548,7 @@ main {
 /* Elevator Pitch */
 .elevator-pitch {
   width: 100%;
-  max-width: 1400px;
+  max-width: 800px;
   padding: clamp(2rem, 6vw, 4rem) 1rem;
   text-align: center;
 }
