@@ -1,0 +1,71 @@
+/* Full-screen Image Modal */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  cursor: pointer;
+}
+
+.image-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-modal img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 237, 211, 0.3);
+  border-radius: 4px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: all 0.3s ease;
+  padding: 10px;
+  line-height: 1;
+  user-select: none;
+}
+
+.modal-close:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Mobile modal adjustments */
+@media (max-width: 768px) {
+  .image-modal img {
+    max-width: 98vw;
+    max-height: 90vh;
+  }
+  
+  .modal-close {
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    padding: 15px;
+  }
+}
+
+/* Feature gallery image cursor indication */
+.feature-gallery img {
+  cursor: pointer;
+}

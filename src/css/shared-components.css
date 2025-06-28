@@ -1,0 +1,135 @@
+/* Shared animations and utilities used across components */
+
+/* Pulse animation for hero logo */
+@keyframes pulse {
+  from {
+    filter: drop-shadow(0 0 15px rgba(255, 237, 211, 0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(255, 237, 211, 0.9));
+  }
+}
+
+/* Common button styles - base for CTA buttons */
+.btn-base {
+  display: inline-block;
+  padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  transition: all 0.3s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-base:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Diamond navigation styles - shared across galleries */
+.diamond-nav-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  width: auto;
+  height: auto;
+}
+
+.diamond-indicator-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 80px;
+  gap: 12px;
+  background: var(--tertiary-color);
+  border: none;
+}
+
+.diamond-dot-base {
+  width: 8px;
+  height: 8px;
+  background-color: var(--secondary-color);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.diamond-dot-base.active {
+  background-color: rgb(132, 132, 132);
+  transform: rotate(45deg) scale(1.25);
+}
+
+/* Gallery navigation buttons - shared pattern */
+.gallery-nav-base {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 0.75rem;
+  cursor: pointer;
+  border: none;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: all 0.3s ease;
+  z-index: 2;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.gallery-nav-base:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-nav-base.prev {
+  left: 15px;
+}
+
+.gallery-nav-base.next {
+  right: 15px;
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .gallery-nav-base {
+    opacity: 1;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+  
+  .diamond-dot-base {
+    position: relative;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .diamond-dot-base::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    background: transparent;
+  }
+}

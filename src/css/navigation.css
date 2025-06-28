@@ -1,0 +1,404 @@
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: 90%;
+  max-width: 1400px;
+  padding: 15px 2rem;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  background-color: var(--secondary-color);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  /* Add these properties for GPU acceleration */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.navbar.nav-sticky {
+  transform: translate3d(-50%, 0, 0);
+}
+
+.navbar.nav-hidden {
+  transform: translate3d(-50%, -100%, 0);
+  opacity: 0;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 3px 0;
+  transition: 0.3s;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Logo */
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 0; /* Allow shrinking */
+}
+
+.logo img {
+  height: 48px;
+  width: auto;
+  margin-right: 5px;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(1, 255, 242, 0.2));
+  transition: all 0.5s ease;
+}
+
+.logo:hover img {
+  filter: drop-shadow(0 0 12px rgba(4, 244, 232, 0.8));
+  transform: scale(1.05);
+}
+
+/* Navigation Links */
+.nav-links {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: clamp(2rem, 4vw, 4rem); /* Increased gap to accommodate diamonds */
+  min-width: 0; /* Allow shrinking */
+}
+
+.nav-links li a {
+  font-family: var(--font-family);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: clamp(0.7rem, 1.5vw, 0.85rem); /* Responsive font size */
+  text-align: center;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.nav-links li a:hover {
+  opacity: 0.8;
+}
+
+/* Diamond separators for desktop only */
+@media (min-width: 769px) {
+  .nav-links li:not(.social-media-mobile)::after {
+    content: "♦";
+    color: var(--primary-color);
+    font-size: 0.6rem;
+    opacity: 0.7;
+    position: absolute;
+    right: calc(-1rem - clamp(0.5rem, 1vw, 1rem)); /* Position diamond in the center of the gap */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Remove diamond from the last regular nav item (FAQ) */
+  .nav-links li:nth-last-child(2)::after {
+    display: none;
+  }
+  
+  /* Make nav items position relative for absolute positioning of diamonds */
+  .nav-links li:not(.social-media-mobile) {
+    position: relative;
+  }
+}
+
+/* Social Media */
+.social-media {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  min-width: fit-content; /* Prevent shrinking below content size */
+}
+
+.social-media img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  vertical-align: middle;
+}
+
+.social-media a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-media a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Extra Large Desktop - maintain consistent max-width */
+@media (min-width: 1441px) and (max-width: 1600px) {
+  .navbar {
+    width: 90%;
+    max-width: 1400px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .navbar.nav-sticky {
+    transform: translateX(-50%);
+  }
+  
+  .navbar.nav-hidden {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Large Desktop - Full width navbar with original flex proportions */
+@media (max-width: 1440px) and (min-width: 1200px) {
+  .navbar {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+    padding: 15px 2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar.nav-sticky {
+    transform: translateX(0);
+  }
+  
+  .navbar.nav-hidden {
+    transform: translateX(0) translateY(-100%);
+    opacity: 0;
+  }
+  
+  .logo-container {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .nav-links {
+    flex: 3;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    min-width: 0;
+  }
+  
+  .social-media {
+    flex: 1;
+    gap: 15px;
+    min-width: 0;
+  }
+}
+
+/* Large Desktop - Full width navbar with original flex proportions */
+@media (max-width: 1200px) and (min-width: 1025px) {
+  .navbar {
+    width: 100%;
+    left: 0;
+    right: 0;
+    transform: translateX(0);
+    padding: 15px 2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar.nav-sticky {
+    transform: translateX(0);
+  }
+  
+  .navbar.nav-hidden {
+    transform: translateX(0) translateY(-100%);
+    opacity: 0;
+  }
+  
+  .logo-container {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .nav-links {
+    flex: 3;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    min-width: 0;
+  }
+  
+  .social-media {
+    flex: 1;
+    gap: 8px;
+    min-width: fit-content;
+  }
+}
+
+/* Ensure mobile menu is hidden on larger screens */
+@media (min-width: 1025px) {
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+}
+
+/* Switch to mobile layout - Final breakpoint before mobile menu */
+@media (max-width: 1024px) {
+  .navbar {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+    padding: 10px 20px;
+    flex-wrap: wrap;
+  }
+
+  .navbar.nav-hidden {
+    transform: translateY(-100%);
+  }
+
+  .logo-container {
+    flex: 0 0 auto;
+    order: 1;
+  }
+
+  .logo img {
+    height: 36px;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--secondary-color);
+    flex-direction: column;
+    gap: 0;
+    padding: 80px 0 40px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    order: 4;
+    box-shadow: none;
+    justify-content: center;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-links li:last-child {
+    padding-bottom: 15px;
+  }
+
+  .nav-links li a {
+    font-size: 0.85rem;
+    padding: 15px;
+    display: block;
+    width: 100%;
+  }
+
+  /* Social media in mobile menu */
+  .social-media-mobile {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0 20px !important;
+    margin-top: 20px;
+  }
+
+  .social-media-mobile a {
+    padding: 12px !important;
+    min-width: 56px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .social-media-mobile a:hover {
+    background-color: rgba(255, 237, 211, 0.1);
+    transform: scale(1.1);
+  }
+
+  .social-media-mobile img {
+    width: 36px;
+    height: 36px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Hide desktop social media on mobile */
+  .social-media {
+    display: none;
+  }
+}
+
+/* Hide mobile social media on desktop */
+.social-media-mobile {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 15px;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+
+  .mobile-menu-toggle span {
+    width: 20px;
+    height: 2px;
+  }
+
+  .social-media-mobile {
+    gap: 10px !important;
+  }
+
+  .social-media-mobile img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}

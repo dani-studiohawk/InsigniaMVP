@@ -1,0 +1,213 @@
+/* Features Section */
+.features-section {
+  padding: 50px 20px; /* Add horizontal padding for mobile */
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: 2rem;
+  width: min(1400px, 95%);
+  margin: 0 auto;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Desktop and up - 3 column layout */
+@media (min-width: 1025px) {
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.card {
+  background-color: var(--tertiary-color);
+  border: clamp(15px, 3vw, 30px) solid var(--tertiary-color); /* Responsive border */
+  box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0; /* Prevent content from breaking grid */
+}
+
+.card h2 {
+  text-align: center;
+  font-family: var(--font-family);
+  font-style: bold;
+  font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
+  font-weight: bold;
+  margin: 20px 0 15px;
+  color: var(--secondary-color);
+}
+
+.card p {
+  font-family: var(--font-family);
+  font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font size */
+  line-height: 1.5;
+  padding: 0 0 clamp(15px, 3vw, 30px); /* Only bottom padding */
+  text-align: left;
+  color: var(--secondary-color);
+  flex-grow: 1;
+}
+
+/* Feature Gallery Component (used in feature cards) */
+.feature-gallery {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.feature-gallery-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: pan-y pinch-zoom;
+}
+
+.feature-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.feature-gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 0.5rem;
+  cursor: pointer;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.feature-gallery:hover .feature-gallery-nav {
+  opacity: 1;
+}
+
+.feature-gallery-nav.prev {
+  left: 10px;
+}
+
+.feature-gallery-nav.next {
+  right: 10px;
+}
+
+/* Diamond navigation */
+.diamond-nav {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  width: auto;
+  height: auto;
+}
+
+.diamond-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 80px;
+  gap: 12px;
+  background: var(--tertiary-color);
+  border: none;
+}
+
+.diamond-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--secondary-color);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.diamond-dot.active {
+  background-color: rgb(132, 132, 132);
+  transform: rotate(45deg) scale(1.25);
+}
+
+/* Mobile adjustments for feature gallery */
+@media (max-width: 720px) {
+  .feature-gallery-nav {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .feature-gallery-nav.prev {
+    left: 5px;
+  }
+
+  .feature-gallery-nav.next {
+    right: 5px;
+  }
+
+  .diamond-indicator {
+    height: 25px;
+    width: 70px;
+    gap: 10px;
+  }
+
+  .diamond-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Touch device optimizations for feature gallery */
+@media (hover: none) {
+  .feature-gallery-nav {
+    opacity: 1;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+  
+  .diamond-dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    /* Larger touch target */
+  }
+  
+  .diamond-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px; /* Minimum touch target size */
+    height: 44px;
+    background: transparent;
+  }
+}

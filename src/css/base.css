@@ -1,0 +1,37 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Crimson+Pro:wght@400;600&display=swap');
+
+/* CSS Variables */
+:root {
+  /* Colors */
+  --primary-color: #FFEDD3;
+  --secondary-color: #151724;
+  --tertiary-color: #FFF6E8;
+  
+  /* Typography */
+  --font-family: 'Montserrat', sans-serif;
+  --font-family-secondary: 'Crimson Pro', serif;
+  --font-size: 12px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply Montserrat as default font to body */
+body {
+  font-family: var(--font-family);
+}
+
+/* Header base */
+header {
+  background-image: url(../assets/steam/page\ background.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
