@@ -283,4 +283,123 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { passive: false });
     }
+
+    // Character Gallery functionality
+    const characterPortraits = document.querySelectorAll('.character-portrait');
+    const characterName = document.getElementById('character-name');
+    const characterInfoContainer = document.querySelector('.character-info');
+
+    // Character data
+    const characterData = {
+        armin: {
+            name: 'Armin',
+            description: [
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
+            ],
+            artwork: 'src/assets/images/armin-walking-colour.png'
+        },
+        char2: {
+            name: 'Unknown',
+            description: [
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
+            ],
+            artwork: 'src/assets/images/ensign-blueorange.png'
+        },
+        char3: {
+            name: 'Unknown',
+            description: [
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
+            ],
+            artwork: 'src/assets/images/ensign-blueteal.png'
+        },
+        char4: {
+            name: 'Unknown',
+            description: [
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
+                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
+            ],
+            artwork: 'src/assets/images/armin-walking-colour.png'
+        }
+    };
+
+    // Function to update character display
+    function updateCharacterDisplay(characterKey) {
+        const character = characterData[characterKey];
+        if (!character) return;
+
+        // Get fresh reference to character artwork element
+        const artworkElement = document.getElementById('character-artwork');
+        
+        // Add fade out effect
+        if (artworkElement) {
+            artworkElement.classList.add('fade-out');
+        }
+
+        setTimeout(() => {
+            // Update character name
+            if (characterName) {
+                characterName.textContent = character.name;
+            }
+
+            // Update character descriptions
+            if (characterInfoContainer) {
+                // Clear existing descriptions
+                characterInfoContainer.querySelectorAll('.character-description').forEach(p => p.remove());
+                
+                // Add new descriptions
+                character.description.forEach(text => {
+                    const p = document.createElement('p');
+                    p.className = 'character-description';
+                    p.textContent = text;
+                    characterInfoContainer.appendChild(p);
+                });
+            }
+
+            // Update character artwork
+            if (artworkElement) {
+                artworkElement.src = character.artwork;
+                artworkElement.alt = `${character.name} Artwork`;
+                artworkElement.classList.remove('fade-out');
+                artworkElement.classList.add('fade-in');
+            }
+
+            // Remove fade-in class after animation
+            setTimeout(() => {
+                if (artworkElement) {
+                    artworkElement.classList.remove('fade-in');
+                }
+            }, 400);
+        }, 200);
+    }
+
+    // Add click event listeners to character portraits
+    characterPortraits.forEach(portrait => {
+        portrait.addEventListener('click', () => {
+            // Remove active class from all portraits
+            characterPortraits.forEach(p => p.classList.remove('active'));
+            
+            // Add active class to clicked portrait
+            portrait.classList.add('active');
+            
+            // Get character key and update display
+            const characterKey = portrait.getAttribute('data-character');
+            updateCharacterDisplay(characterKey);
+        });
+
+        // Add keyboard support
+        portrait.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                portrait.click();
+            }
+        });
+
+        // Make portraits focusable for accessibility
+        portrait.setAttribute('tabindex', '0');
+        portrait.setAttribute('role', 'button');
+        portrait.setAttribute('aria-label', `Select character`);
+    });
 });
