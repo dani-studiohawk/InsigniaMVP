@@ -126,7 +126,7 @@ header {
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: clamp(1rem, 4vw, 3rem); /* Responsive gap */
+  gap: clamp(2rem, 4vw, 4rem); /* Increased gap to accommodate diamonds */
   min-width: 0; /* Allow shrinking */
 }
 
@@ -145,6 +145,31 @@ header {
 
 .nav-links li a:hover {
   opacity: 0.8;
+}
+
+/* Diamond separators for desktop only */
+@media (min-width: 769px) {
+  .nav-links li:not(.social-media-mobile)::after {
+    content: "♦";
+    color: var(--primary-color);
+    font-size: 0.6rem;
+    opacity: 0.7;
+    position: absolute;
+    right: calc(-1rem - clamp(0.5rem, 1vw, 1rem)); /* Position diamond in the center of the gap */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Remove diamond from the last regular nav item (FAQ) */
+  .nav-links li:nth-last-child(2)::after {
+    display: none;
+  }
+  
+  /* Make nav items position relative for absolute positioning of diamonds */
+  .nav-links li:not(.social-media-mobile) {
+    position: relative;
+  }
 }
 
 /* Social Media */
