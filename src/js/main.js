@@ -85,8 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     });
 
-    document.querySelectorAll('.gallery').forEach(gallery => {
-        const container = gallery.querySelector('.gallery-container');
+    // Initialize feature card galleries (with diamond navigation)
+    document.querySelectorAll('.feature-gallery').forEach(gallery => {
+        const container = gallery.querySelector('.feature-gallery-container');
         const slides = gallery.querySelectorAll('img');
         let currentSlide = 0;
         const totalSlides = slides.length;
@@ -154,15 +155,53 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        gallery.querySelector('.next').addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlide();
-        });
+        // Check if navigation buttons exist before adding event listeners
+        const nextBtn = gallery.querySelector('.next');
+        const prevBtn = gallery.querySelector('.prev');
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlide();
+            });
+        }
 
-        gallery.querySelector('.prev').addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlide();
-        });
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            });
+        }
+    });
+
+    // Initialize mobile gallery (no diamond navigation, just arrow buttons)
+    document.querySelectorAll('.mobile-gallery').forEach(gallery => {
+        const container = gallery.querySelector('.mobile-gallery-container');
+        const slides = gallery.querySelectorAll('img');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function updateSlide() {
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Check if navigation buttons exist before adding event listeners
+        const nextBtn = gallery.querySelector('.next');
+        const prevBtn = gallery.querySelector('.prev');
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlide();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            });
+        }
     });
 
     // FAQ Section Horizontal Scroll with Mouse Wheel
