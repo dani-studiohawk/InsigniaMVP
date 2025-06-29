@@ -74,7 +74,6 @@
   width: auto;
   margin-right: 5px;
   display: block;
-  filter: drop-shadow(0 0 8px rgba(1, 255, 242, 0.2));
   transition: all 0.5s ease;
 }
 
@@ -224,7 +223,7 @@
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: clamp(2rem, 4vw, 4rem); /* Increased gap to accommodate diamonds */
+  gap: clamp(0.8rem, 2vw, 1.5rem); /* Reduced gap since diamonds are now HTML elements */
   min-width: 0; /* Allow shrinking */
 }
 
@@ -241,32 +240,27 @@
   white-space: nowrap; /* Prevent text wrapping */
 }
 
-.nav-links li a:hover {
-  opacity: 0.8;
+/*.nav-links li a:hover {
 }
 
-/* Diamond separators for desktop only */
-@media (min-width: 769px) {
-  .nav-links li:not(.social-media-mobile)::after {
-    content: "♦";
-    color: var(--primary-color);
-    font-size: 0.6rem;
-    opacity: 0.7;
-    position: absolute;
-    right: calc(-1rem - clamp(0.5rem, 1vw, 1rem)); /* Position diamond in the center of the gap */
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-  
-  /* Remove diamond from the last regular nav item (FAQ) */
-  .nav-links li:nth-last-child(2)::after {
-    display: none;
-  }
-  
-  /* Make nav items position relative for absolute positioning of diamonds */
-  .nav-links li:not(.social-media-mobile) {
-    position: relative;
+/* Diamond separators */
+.diamond-separator {
+  color: var(--primary-color);
+  font-size: 0.6rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  flex-shrink: 0; /* Prevent diamonds from shrinking */
+  min-width: 0.5rem; /* Minimal width for diamonds */
+}
+
+/* Hide diamonds on mobile */
+@media (max-width: 768px) {
+  .diamond-separator {
+    display: none !important;
   }
 }
 
@@ -344,7 +338,7 @@
   
   .nav-links {
     flex: 3;
-    gap: clamp(1.5rem, 3vw, 3rem);
+    gap: clamp(0.6rem, 1.5vw, 1.2rem);
     min-width: 0;
   }
   
@@ -383,7 +377,7 @@
   
   .nav-links {
     flex: 3;
-    gap: clamp(1rem, 2.5vw, 2rem);
+    gap: clamp(0.5rem, 1.2vw, 1rem);
     min-width: 0;
   }
   
