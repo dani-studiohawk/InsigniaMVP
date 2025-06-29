@@ -6,7 +6,15 @@ main {
   justify-content: flex-start;
   background-color: var(--secondary-color);
   min-height: 100vh;
-  padding: clamp(2rem, 8vw, 4rem) 0;
+}
+
+/* Hero Sections Wrapper with Background */
+.hero-sections-wrapper {
+  width: 100%;
+  background-image: url('../assets/backgrounds/video-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .video-section {
@@ -14,7 +22,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 
 .video-embed {

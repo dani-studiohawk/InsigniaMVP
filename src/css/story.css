@@ -4,7 +4,6 @@
   overflow: hidden;
   padding: clamp(50px, 15vw, 50px) 0;
   width: 100%;
-  background-color: var(--secondary-color);
   z-index: 1;
   min-height: clamp(450px, 80vh, 450px);
 }
