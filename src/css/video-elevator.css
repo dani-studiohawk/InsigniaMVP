@@ -67,6 +67,7 @@ main {
   max-width: 800px;
   padding: clamp(2rem, 6vw, 4rem) 1rem;
   text-align: center;
+  margin: 0 auto;
 }
 
 .elevator-pitch p {

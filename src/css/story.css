@@ -2,7 +2,7 @@
 .story-section {
   position: relative;
   overflow: hidden;
-  padding: clamp(50px, 15vw, 50px) 0;
+  padding: clamp(0px, 15vw, 0px) 0;
   width: 100%;
   z-index: 1;
   min-height: clamp(450px, 80vh, 450px);
@@ -12,9 +12,18 @@
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px; /* Add horizontal padding for all sizes */
+  padding: clamp(2rem, 5vw, 3rem);
   color: var(--primary-color);
-  z-index: 2; /* Keep text above particles */
+  z-index: 2;
+  
+  /* Opaque background that matches your dark space theme */
+  background: #0a0f1c; /* Solid dark blue/black to match your background */
+  
+  /* Inset shadows to create the carved/recessed effect */
+  box-shadow: 
+    inset 3px 3px 16px rgba(0,0,0,0.4),
+    inset -2px -2px 4px rgba(255,255,255,0.02),
+    0px 1px 0px rgba(255,255,255,0.03); /* Subtle rim light */
 }
 
 .story-text h2 {
