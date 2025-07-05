@@ -27,7 +27,7 @@ body {
 }
 
 /* Header base */
-header {
+header.main-header {
   background-image: url(../assets/steam/page\ background.png);
   background-size: cover;
   background-position: center;
