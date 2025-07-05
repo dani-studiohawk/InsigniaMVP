@@ -13,11 +13,11 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: clamp(2rem, 5vw, 3rem);
-  color: var(--primary-color);
+  color: var(--font-family-secondary);
   z-index: 2;
   
   /* Opaque background that matches your dark space theme */
-  background: #0a0f1c; /* Solid dark blue/black to match your background */
+  background: var(--primary-color); /* Solid dark blue/black to match your background */
   
   /* Inset shadows to create the carved/recessed effect */
   box-shadow: 
@@ -47,50 +47,7 @@
   margin-bottom: 0;
 }
 
-/* Anvil and Hammer positioning with animation support */
-.forge-elements {
-  position: absolute;
-  bottom: clamp(10px, 3vw, 20px);
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 2;
-  width: clamp(100px, 25vw, 150px);
-}
 
-.anvil-image {
-  max-width: clamp(40px, 10vw, 60px);
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 0 10px rgba(255, 160, 0, 0.1));
-}
-
-.hammer-image {
-  max-width: clamp(20px, 6vw, 30px);
-  height: auto;
-  margin-bottom: 5px; /* Space above anvil */
-  margin-left: 10px;
-  transform: rotate(-5deg); /* Initial angle */
-  transform-origin: bottom right;
-  transition: transform 0.15s ease; /* Smooth hammer animation */
-  cursor: pointer;
-  filter: drop-shadow(0 0 8px rgba(255, 160, 0, 0.1));
-}
-
-/* Hover effect for hammer */
-.hammer-image:hover {
-  filter: drop-shadow(0 0 12px rgba(255, 160, 0, 0.2));
-  transform: rotate(-20deg) scale(1.05);
-}
-
-.ember-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1; /* Below text and hammer/anvil */
-  pointer-events: none; /* So mouse can click through it */
-}
 
 /* Mobile Story Section */
 @media (max-width: 1024px) {

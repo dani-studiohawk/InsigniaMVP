@@ -11,6 +11,7 @@
 @import url('hero.css');
 
 /* 4. Content sections */
+@import url('forge-elements.css');
 @import url('video-elevator.css');
 @import url('features.css');
 @import url('gallery.css');

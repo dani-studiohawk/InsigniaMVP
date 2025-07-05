@@ -2,7 +2,7 @@
 .features-section {
   padding: 50px 20px; /* Add horizontal padding for mobile */
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 .card-grid {
