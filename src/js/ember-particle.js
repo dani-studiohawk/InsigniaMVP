@@ -189,10 +189,26 @@ animate();
 const hammer = document.querySelector('.hammer-image');
 if (hammer) {
   hammer.addEventListener('click', () => {
-    for (let i = 0; i < 30; i++) {
+    const burstCount = isMobile ? 20 : 35; // Fewer particles on mobile
+    
+    for (let i = 0; i < burstCount; i++) {
       const p = new Particle();
-      p.x = canvasWidth / 2;
-      p.y = canvasHeight - 80;
+      
+      // Position near hammer strike point
+      p.x = canvasWidth / 2 + (Math.random() - 0.5) * 40; // Spread source area
+      p.y = canvasHeight - 45 + (Math.random() - 0.5) * 20;
+      
+      // Realistic forge burst physics
+      const angle = Math.PI * 0.3 + Math.random() * Math.PI * 0.4; // 54° to 126° arc
+      const force = 2.5 + Math.random() * 3; // Variable initial force
+      
+      p.speedX = Math.cos(angle) * force * (Math.random() > 0.5 ? 1 : -1); // Random left/right
+      p.speedY = -Math.sin(angle) * force; // Upward trajectory
+      
+      // Larger, brighter burst particles
+      p.size = Math.random() * 3 + 2; // 2-5 size range
+      p.opacity = 0.95 + Math.random() * 0.05; // Very bright
+      
       particles.push(p);
     }
   });
