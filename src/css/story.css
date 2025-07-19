@@ -10,7 +10,7 @@
 
 .story-text {
   position: relative;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: clamp(2rem, 5vw, 3rem);
   color: var(--font-family-secondary);

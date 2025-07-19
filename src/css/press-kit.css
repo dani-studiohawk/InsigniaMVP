@@ -22,7 +22,7 @@ html, body {
 /* Container for the entire press kit layout */
 .press-kit-container {
   display: flex;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding-top: 0; /* Remove top padding since hero is now full width */
 }
@@ -144,7 +144,7 @@ html, body {
 /* Content sections container - wraps everything after hero */
 .press-kit-sections-container {
   display: flex;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   background-color: var(--blue);
 }
@@ -158,7 +158,7 @@ html, body {
   margin: 0 auto;
   padding: 1.5rem 1rem;
   background-color: var(--blue);
-  max-width: 1400px;
+  max-width: 1280px;
   width: 100%;
   box-sizing: border-box;
   color: var(--white);

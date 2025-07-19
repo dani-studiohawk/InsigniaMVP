@@ -42,7 +42,7 @@ header {
   left: 50%;
   transform: translateX(-50%) translateY(0);
   width: 90%;
-  max-width: 1400px;
+  max-width: 1280px;
   padding: 15px 2rem;
   display: flex;
   align-items: center;
@@ -204,7 +204,7 @@ header {
 @media (min-width: 1441px) and (max-width: 1600px) {
   .navbar {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1280px;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -536,7 +536,7 @@ main {
 
 .video-embed {
   position: relative;
-  width: min(60%, 900px);
+  width: min(60%, 800px);
   padding-top: 33.75%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) * 60% = 33.75% */
   margin: 0 auto;
 }
@@ -638,7 +638,7 @@ main {
   display: grid;
   grid-template-columns: 1fr; /* Single column by default */
   gap: 2rem;
-  width: min(1400px, 95%);
+  width: min(1280px, 95%);
   margin: 0 auto;
   justify-content: center;
   align-items: stretch;
@@ -862,7 +862,7 @@ main {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 200px 200px 300px 200px 200px 300px;
   gap: 1rem;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -872,7 +872,7 @@ main {
   display: none;
   position: relative;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0;
   height: 70vh;
@@ -1123,7 +1123,7 @@ main {
 
 .story-text {
   position: relative;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px; /* Add horizontal padding for all sizes */
   color: var(--primary-color);
@@ -1245,7 +1245,7 @@ main {
 }
 
 .character-gallery-container {
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
@@ -1690,7 +1690,7 @@ main {
 
 .faq-container {
   position: relative;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -1954,7 +1954,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -1966,7 +1966,7 @@ main {
 }
 
 .footer-bottom {
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }

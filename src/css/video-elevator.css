@@ -27,7 +27,7 @@ main {
 
 .video-embed {
   position: relative;
-  width: min(60%, 900px);
+  width: min(60%, 800px);
   padding-top: 33.75%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) * 60% = 33.75% */
   margin: 0 auto;
 }

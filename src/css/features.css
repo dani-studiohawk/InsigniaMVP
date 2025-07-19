@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: 1fr; /* Single column by default */
   gap: 2rem;
-  width: min(1400px, 95%);
+  width: min(1280px, 95%);
   margin: 0 auto;
   justify-content: center;
   align-items: stretch;
