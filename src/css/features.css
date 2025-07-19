@@ -38,7 +38,7 @@
   text-align: center;
   font-family: var(--font-family);
   font-style: bold;
-  font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
+  font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font size - reduced */
   font-weight: bold;
   margin: 20px 0 15px;
   color: var(--secondary-color);
@@ -46,7 +46,7 @@
 
 .card p {
   font-family: var(--font-family);
-  font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font size */
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem); /* Responsive font size - reduced */
   line-height: 1.5;
   padding: 0 0 clamp(15px, 3vw, 30px); /* Only bottom padding */
   text-align: left;
