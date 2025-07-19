@@ -7,7 +7,7 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Single column by default */
+  grid-template-columns: 1fr; /* Single column by default - mobile */
   gap: 2rem;
   width: min(1280px, 95%);
   margin: 0 auto;
@@ -15,11 +15,11 @@
   align-items: stretch;
 }
 
-/* Desktop and up - 3 column layout */
-@media (min-width: 1025px) {
+/* Medium screens and up - 2x2 grid */
+@media (min-width: 768px) {
   .card-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 }
 
