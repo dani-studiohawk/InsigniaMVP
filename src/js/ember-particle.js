@@ -1,9 +1,16 @@
 // src/js/ember-particle.js
+document.addEventListener('DOMContentLoaded', () => {
 //------------------------------------------------------------
 //  Setup
 //------------------------------------------------------------
 const forgeSection = document.querySelector('.forge-elements-section');
+// Check if forge section exists on current page
+if (!forgeSection) {
+    console.log('Forge section not found, ember particles will not be initialized');
+    return; // Exit early if the forge section isn't on this page
+}
 
+console.log('Forge section found, initializing ember particles');
 const canvas = document.createElement('canvas');
 canvas.classList.add('ember-canvas');
 forgeSection.appendChild(canvas);
@@ -212,4 +219,4 @@ if (hammer) {
       particles.push(p);
     }
   });
-}
+}});
