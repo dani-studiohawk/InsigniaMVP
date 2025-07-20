@@ -223,7 +223,7 @@
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: clamp(0.8rem, 2vw, 1.5rem); /* Reduced gap since diamonds are now HTML elements */
+  gap: clamp(0.8rem, 2vw, 1rem); /* Reduced gap since diamonds are now HTML elements */
   min-width: 0; /* Allow shrinking */
 }
 
@@ -567,15 +567,22 @@
 /* Uppon Hill Extended Section */
 .uppon-hill-section {
   position: fixed;
+  height: 120px;
   top: 0;
   right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
   background-color: #A52A2A; /* Deep red background that complements the color scheme */
-  padding: 15px 25px 35px 25px; /* Extra padding at bottom to extend lower than navbar */
+  padding: 15px 25px 15px 25px; /* Extra padding at bottom to extend lower than navbar */
   z-index: 1001; /* Above the navbar (navbar is z-index 1000) */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.uppon-hill-section.uppon-hill-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
 }
 
 .uppon-hill-logo {
@@ -587,8 +594,8 @@
 }
 
 .uppon-hill-logo img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   filter: brightness(0) invert(1); /* Make SVG white */
   transition: transform 0.3s ease, opacity 0.3s ease;
 }

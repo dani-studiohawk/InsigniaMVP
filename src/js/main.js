@@ -1,6 +1,7 @@
 // main.js
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
+    const upponHillSection = document.querySelector('.uppon-hill-section');
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     let lastScroll = 0;
@@ -62,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Don't process if we're near the top
         if (currentScroll < 50) {
             navbar.classList.remove('nav-hidden');
+            if (upponHillSection) {
+                upponHillSection.classList.remove('uppon-hill-hidden');
+            }
             lastScroll = currentScroll;
             return;
         }
@@ -69,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentScroll > lastScroll && currentScroll > SCROLL_THRESHOLD) {
             // Scrolling down
             navbar.classList.add('nav-hidden');
+            if (upponHillSection) {
+                upponHillSection.classList.add('uppon-hill-hidden');
+            }
             // Close mobile menu if open while scrolling
             if (navLinks.classList.contains('active')) {
                 mobileMenuToggle.classList.remove('active');
@@ -78,6 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentScroll < lastScroll) {
             // Scrolling up
             navbar.classList.remove('nav-hidden');
+            if (upponHillSection) {
+                upponHillSection.classList.remove('uppon-hill-hidden');
+            }
         }
 
         lastScroll = currentScroll;
