@@ -632,6 +632,7 @@ function initializeUpponHillAnimation() {
     const fullLogo = document.querySelector('.uppon-hill-full-logo');
     const initialsLogo = document.querySelector('.uppon-hill-initials-logo');
     const upponHillSection = document.querySelector('.uppon-hill-section');
+    const upponHillPlaceholder = document.querySelector('.uppon-hill-placeholder');
     
     if (!fullLogo || !initialsLogo || !upponHillSection) return;
     
@@ -661,6 +662,10 @@ function initializeUpponHillAnimation() {
                 // Shrink the red box to fit the initials
                 setTimeout(() => {
                     upponHillSection.classList.add('shrink-section');
+                    // Also shrink the navbar placeholder at the same time
+                    if (upponHillPlaceholder) {
+                        upponHillPlaceholder.classList.add('shrink-placeholder');
+                    }
                 }, 150); // Start shrinking slightly after initials appear
                 
                 // Hide full logo completely after transition
@@ -672,5 +677,5 @@ function initializeUpponHillAnimation() {
             
         }, 1300); // Faster timing to match new animation duration (1.2s + small buffer)
         
-    }, 1500); // Start 1.5 seconds after page load (reduced from 2s)
+    }, 1000); // Start 1 second after page load
 }

@@ -562,6 +562,12 @@
 .uppon-hill-placeholder {
   width: 110px; /* Width to match the Uppon Hill section */
   margin-left: 15px; /* Space from social media icons */
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* Match the red box shrinking animation */
+}
+
+/* Shrink the placeholder after handwriting completes */
+.uppon-hill-placeholder.shrink-placeholder {
+  width: 70px; /* Smaller width to match the shrunken red box */
 }
 
 /* Uppon Hill Extended Section */
@@ -755,5 +761,14 @@
   .uppon-hill-section.shrink-section {
     min-width: 75px; /* Even smaller on tablets */
     padding: 15px 15px 15px 15px;
+  }
+  
+  /* Adjust placeholder for tablets */
+  .uppon-hill-placeholder {
+    width: 90px; /* Smaller initial width on tablets */
+  }
+  
+  .uppon-hill-placeholder.shrink-placeholder {
+    width: 60px; /* Smaller shrunken width on tablets */
   }
 }
