@@ -26,8 +26,7 @@
   max-height: 95vh;
   object-fit: contain;
   cursor: pointer;
-  box-shadow: 0 0 30px rgba(255, 237, 211, 0.3);
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .modal-close {
