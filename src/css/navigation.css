@@ -316,8 +316,10 @@
 /* Large Desktop - Full width navbar with original flex proportions */
 @media (max-width: 1440px) and (min-width: 1200px) {
   .navbar {
+    max-width: 100%;
     width: 100%;
     left: 0;
+    right: 0;
     transform: translateX(0);
     padding: 15px 0; /* Remove horizontal padding for true full-width */
     display: flex;
@@ -360,15 +362,35 @@
     flex: 1;
     gap: 15px;
     min-width: fit-content; /* Prevent shrinking below content size */
-    padding-right: 1rem; /* Minimal right spacing, less than usual to accommodate Uppon Hill */
+    padding-right: 1.5rem; /* Minimal right spacing, less than usual to accommodate Uppon Hill */
+  }
+
+  .uppon-hill-logo img {
+    width: 25px;
+    height: 25px;
   }
   
+  .uppon-hill-full-logo {
+    width: 40px !important; /* Smaller full logo for tablets */
+  }
   
-}
+  .uppon-hill-placeholder {
+    width: 55px; /* Width to match the Uppon Hill section */
+    margin-left: 15px; /* Space from social media icons */
+  }
 
-/* Large Desktop - Full width navbar with original flex proportions */
+  .uppon-hill-section {
+    right: 0 !important;
+    padding-right: 25 !important;
+    height: 100px !important;
+  }
+
+  
+  
+}/* Large Desktop - Full width navbar with original flex proportions */
 @media (max-width: 1200px) and (min-width: 1025px) {
   .navbar {
+    max-width: 100%;
     width: 100%;
     left: 0;
     right: 0;
@@ -420,7 +442,17 @@
     width: 26px; /* Reduced from 30px */
     height: 26px; /* Reduced from 30px */
   }
-  
+
+  .uppon-hill-placeholder {
+    width: 55px; /* Width to match the Uppon Hill section */
+    margin-left: 15px; /* Space from social media icons */
+  }
+
+  .uppon-hill-section {
+    right: 0 !important;
+    padding-right: 10 !important;
+    height: 100px !important;
+  }
   
 }
 
@@ -429,6 +461,7 @@
   .mobile-menu-toggle {
     display: none !important;
   }
+  
 }
 
 /* Switch to mobile layout - Final breakpoint before mobile menu */
@@ -437,7 +470,7 @@
     width: 100%;
     left: 0;
     transform: translateX(0);
-    padding: 10px 20px;
+    padding: 10px 20px 10px 10px; /* Added left padding */
     flex-wrap: wrap;
   }
 
@@ -766,11 +799,53 @@
 }
 
 /* Mobile adjustments */
+@media (max-width: 1024px) {
+  .uppon-hill-section {
+    height: 57px !important; /* Smaller height for mobile */
+    right: auto;
+    left: 0;
+    transform: translateY(0);
+  }
+
+  /* Stop the animation on mobile */
+  .uppon-hill-full-logo.show-handwriting,
+  .uppon-hill-initials-logo.show-initials {
+    animation: none !important;
+  }
+
+  /* Ensure the final state is visible without animation */
+  .uppon-hill-full-logo {
+    opacity: 0 !important; /* Keep full logo hidden */
+  }
+
+  .uppon-hill-initials-logo {
+    opacity: 1 !important; /* Show initials logo directly */
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .uppon-hill-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .uppon-hill-section.shrink-section {
+    min-width: 75px !important;
+    padding: 15px 15px 15px 15px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .uppon-hill-section {
-    display: none; /* Hide on mobile for now, can be adjusted later */
+    height: 56px !important; /* Match navbar height */
+    padding: 10px 15px;
+    min-width: 60px;
   }
-  
+
+  .uppon-hill-logo img {
+    width: 40px;
+    height: 40px;
+  }
+
   .uppon-hill-placeholder {
     display: none; /* Hide placeholder on mobile too */
   }
@@ -778,8 +853,8 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .uppon-hill-logo img {
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
   }
   
   .uppon-hill-full-logo {
