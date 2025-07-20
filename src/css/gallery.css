@@ -2,7 +2,7 @@
 .gallery-section {
   width: 100%;
   padding: 50px 20px;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 .gallery-section h2 {
@@ -10,7 +10,7 @@
   font-family: var(--font-family);
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .gallery-grid {

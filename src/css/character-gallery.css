@@ -3,7 +3,7 @@
   position: relative;
   padding: clamp(80px, 15vw, 120px) 0;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   overflow: hidden;
 }
 
@@ -90,7 +90,7 @@
   font-family: var(--font-family-secondary);
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -103,7 +103,7 @@
   font-family: var(--font-family);
   font-size: clamp(0.8rem, 2vw, 0.95rem);
   line-height: 1.6;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
 }
 
@@ -140,34 +140,7 @@
   opacity: 1;
 }
 
-/* Decorative elements */
-.character-gallery-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 200px;
-  height: 200px;
-  background: url('../assets/images/diamond.svg') no-repeat center;
-  background-size: contain;
-  opacity: 0.05;
-  transform: rotate(15deg);
-  pointer-events: none;
-}
 
-.character-gallery-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 150px;
-  height: 150px;
-  background: url('../assets/images/diamond.svg') no-repeat center;
-  background-size: contain;
-  opacity: 0.05;
-  transform: rotate(-15deg);
-  pointer-events: none;
-}
 
 /* Character Gallery Responsive Visibility Controls */
 /* Desktop: Show normal artwork, hide mobile gallery */

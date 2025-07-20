@@ -240,7 +240,9 @@
   white-space: nowrap; /* Prevent text wrapping */
 }
 
-/*.nav-links li a:hover {
+.nav-links li a:hover {
+  font-size: calc(1.1 * clamp(0.7rem, 1.5vw, 0.85rem));
+  opacity: 0.8;
 }
 
 /* Diamond separators */

@@ -11,10 +11,7 @@ main {
 /* Hero Sections Wrapper with Background */
 .hero-sections-wrapper {
   width: 100%;
-  background-image: url('../assets/backgrounds/video-background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: var(--secondary-color);
 }
 
 .video-section {

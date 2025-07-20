@@ -143,10 +143,6 @@ header {
   white-space: nowrap; /* Prevent text wrapping */
 }
 
-.nav-links li a:hover {
-  opacity: 0.8;
-}
-
 /* Diamond separators for desktop only */
 @media (min-width: 769px) {
   .nav-links li:not(.social-media-mobile)::after {
@@ -845,7 +841,7 @@ main {
 .gallery-section {
   width: 100%;
   padding: 50px 20px;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 
 }
 
@@ -854,7 +850,7 @@ main {
   font-family: var(--font-family);
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .gallery-grid {
@@ -1240,7 +1236,7 @@ main {
   position: relative;
   padding: clamp(80px, 15vw, 120px) 0;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   overflow: hidden;
 }
 
@@ -1327,7 +1323,7 @@ main {
   font-family: var(--font-family-secondary);
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1340,7 +1336,7 @@ main {
   font-family: var(--font-family);
   font-size: clamp(0.8rem, 2vw, 0.95rem);
   line-height: 1.6;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
 }
 
