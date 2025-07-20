@@ -558,17 +558,24 @@
   }
 }
 
+/* Uppon Hill placeholder - creates empty space in navbar */
+.uppon-hill-placeholder {
+  width: 90px; /* Width to match the Uppon Hill section */
+  margin-left: 15px; /* Space from social media icons */
+}
+
 /* Uppon Hill Extended Section */
 .uppon-hill-section {
-  position: absolute;
-  top: 100%; /* Position it below the navbar */
-  right: 0;
+  position: fixed;
+  top: 0;
+  right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
   background-color: #A52A2A; /* Deep red background that complements the color scheme */
-  padding: 20px 25px 30px 25px; /* Extra padding at bottom to extend lower */
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  z-index: 999; /* Slightly below navbar but above other content */
+  padding: 15px 25px 35px 25px; /* Extra padding at bottom to extend lower than navbar */
+  z-index: 1001; /* Above the navbar (navbar is z-index 1000) */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .uppon-hill-logo {
@@ -596,6 +603,10 @@
 @media (max-width: 768px) {
   .uppon-hill-section {
     display: none; /* Hide on mobile for now, can be adjusted later */
+  }
+  
+  .uppon-hill-placeholder {
+    display: none; /* Hide placeholder on mobile too */
   }
 }
 
