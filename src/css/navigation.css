@@ -319,7 +319,7 @@
     width: 100%;
     left: 0;
     transform: translateX(0);
-    padding: 15px 2rem;
+    padding: 15px 0; /* Remove horizontal padding for true full-width */
     display: flex;
     align-items: center;
   }
@@ -336,19 +336,34 @@
   .logo-container {
     flex: 1;
     min-width: 0;
+    padding-left: 2rem; /* Add internal spacing for logo */
+  }
+  
+  .logo img {
+    height: 40px; /* Reduced from default 48px for better proportions */
+  }
+  
+  /* Adjust sparks for smaller logo in this breakpoint */
+  .sparks-container {
+    width: 50px;
+    height: 50px;
+    left: 70px; /* Adjust position for smaller logo */
   }
   
   .nav-links {
     flex: 3;
-    gap: clamp(0.6rem, 1.5vw, 1.2rem);
+    gap: clamp(0.4rem, 1.2vw, 1rem); /* More conservative gap to prevent overflow */
     min-width: 0;
   }
   
   .social-media {
     flex: 1;
     gap: 15px;
-    min-width: 0;
+    min-width: fit-content; /* Prevent shrinking below content size */
+    padding-right: 1rem; /* Minimal right spacing, less than usual to accommodate Uppon Hill */
   }
+  
+  
 }
 
 /* Large Desktop - Full width navbar with original flex proportions */
@@ -377,17 +392,36 @@
     min-width: 0;
   }
   
+  .logo img {
+    height: 40px; /* Reduced from default 48px for better proportions */
+  }
+  
+  /* Adjust sparks for smaller logo in this breakpoint */
+  .sparks-container {
+    width: 50px;
+    height: 50px;
+    left: 70px; /* Adjust position for smaller logo */
+  }
+  
   .nav-links {
-    flex: 3;
-    gap: clamp(0.5rem, 1.2vw, 1rem);
+    flex: 3; /* Back to original ratio */
+    gap: clamp(0.3rem, 1vw, 0.8rem); /* Keep the tighter gap */
     min-width: 0;
   }
   
   .social-media {
-    flex: 1;
-    gap: 8px;
+    flex: 1; /* Back to original ratio */
+    gap: 4px; /* Even tighter gap between icons */
     min-width: fit-content;
   }
+  
+  /* Make social media icons smaller in this breakpoint to prevent overlap */
+  .social-media img {
+    width: 26px; /* Reduced from 30px */
+    height: 26px; /* Reduced from 30px */
+  }
+  
+  
 }
 
 /* Ensure mobile menu is hidden on larger screens */
