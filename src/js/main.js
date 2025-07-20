@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize sparks effect for logo
     initializeLogoSparks();
+    
+    // Initialize Uppon Hill logo animation
+    initializeUpponHillAnimation();
 
     // Mobile menu toggle functionality
     if (mobileMenuToggle) {
@@ -622,4 +625,52 @@ function initializeLogoSparks() {
     logoContainer.addEventListener('mouseleave', () => {
         sparksContainer.style.opacity = '0';
     });
+}
+
+// Function to initialize Uppon Hill logo animation
+function initializeUpponHillAnimation() {
+    const fullLogo = document.querySelector('.uppon-hill-full-logo');
+    const initialsLogo = document.querySelector('.uppon-hill-initials-logo');
+    const upponHillSection = document.querySelector('.uppon-hill-section');
+    
+    if (!fullLogo || !initialsLogo || !upponHillSection) return;
+    
+    // Set initial states
+    fullLogo.style.opacity = '0';
+    initialsLogo.style.opacity = '0';
+    
+    // Start the animation sequence
+    setTimeout(() => {
+        // Show the red section and start the logo animation at the same time
+        upponHillSection.classList.add('show-section');
+        fullLogo.style.opacity = '1';
+        fullLogo.classList.add('show-handwriting');
+        
+        // After handwriting completes, transition to initials
+        setTimeout(() => {
+            // Fade out full logo quickly
+            fullLogo.classList.remove('show-handwriting');
+            fullLogo.style.opacity = '0';
+            fullLogo.style.transition = 'opacity 0.25s ease-out';
+            
+            // Fade in initials logo with minimal delay
+            setTimeout(() => {
+                initialsLogo.style.opacity = '1';
+                initialsLogo.classList.add('show-initials');
+                
+                // Shrink the red box to fit the initials
+                setTimeout(() => {
+                    upponHillSection.classList.add('shrink-section');
+                }, 150); // Start shrinking slightly after initials appear
+                
+                // Hide full logo completely after transition
+                setTimeout(() => {
+                    fullLogo.style.display = 'none';
+                }, 300);
+                
+            }, 100); // Faster transition
+            
+        }, 1300); // Faster timing to match new animation duration (1.2s + small buffer)
+        
+    }, 1500); // Start 1.5 seconds after page load (reduced from 2s)
 }
