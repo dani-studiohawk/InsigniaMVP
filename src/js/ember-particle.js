@@ -10,6 +10,7 @@ if (!forgeSection) {
     return; // Exit early if the forge section isn't on this page
 }
 
+const forgeElements = document.querySelector('.forge-elements');
 console.log('Forge section found, initializing ember particles');
 const canvas = document.createElement('canvas');
 canvas.classList.add('ember-canvas');
@@ -86,13 +87,21 @@ class Particle {
   reset(seedEverywhere = false) {
     this.x = Math.random() * canvasWidth;
 
+    // Get the actual position of forge elements
+    let forgeY = canvasHeight - 80; // fallback position
+    if (forgeElements) {
+      const forgeRect = forgeElements.getBoundingClientRect();
+      const sectionRect = forgeSection.getBoundingClientRect();
+      forgeY = forgeRect.top - sectionRect.top + forgeRect.height / 2;
+    }
+
     if (seedEverywhere) {
-      // first batch: anywhere on screen
-      this.y = Math.random() * canvasHeight;
+      // first batch: concentrate around forge area
+      this.y = forgeY + (Math.random() - 0.5) * 150;
     } else {
-      // later: random band 40-80 px from the bottom
+      // later: random band around forge elements
       const band = 40 + Math.random() * 40;
-      this.y = canvasHeight - band;
+      this.y = forgeY + (Math.random() - 0.5) * band;
     }
 
     this.size   = Math.random() * 2.5 + 1;
@@ -201,9 +210,17 @@ if (hammer) {
     for (let i = 0; i < burstCount; i++) {
       const p = new Particle();
       
+      // Get the actual position of forge elements
+      let forgeY = canvasHeight - 45; // fallback position
+      if (forgeElements) {
+        const forgeRect = forgeElements.getBoundingClientRect();
+        const sectionRect = forgeSection.getBoundingClientRect();
+        forgeY = forgeRect.top - sectionRect.top + forgeRect.height / 2;
+      }
+      
       // Position near hammer strike point
       p.x = canvasWidth / 2 + (Math.random() - 0.5) * 40; // Spread source area
-      p.y = canvasHeight - 45 + (Math.random() - 0.5) * 20;
+      p.y = forgeY + (Math.random() - 0.5) * 20;
       
       // Realistic forge burst physics
       const angle = Math.PI * 0.3 + Math.random() * Math.PI * 0.4; // 54° to 126° arc
