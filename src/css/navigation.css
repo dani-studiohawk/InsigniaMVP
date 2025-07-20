@@ -1,4 +1,24 @@
-/* Navigation */
+/**********************************************
+ * NAVIGATION STYLESHEET
+ * 
+ * Table of Contents:
+ * 1. Base Navbar Styles
+ * 2. Mobile Menu Toggle
+ * 3. Logo & Sparks Effect
+ * 4. Navigation Links
+ * 5. Social Media
+ * 6. Uppon Hill Section
+ * 7. Responsive Styles
+ *    - Desktop (1441px - 1600px)
+ *    - Large Desktop (1201px - 1440px)
+ *    - Medium Desktop (1025px - 1200px)
+ *    - Tablet & Mobile (max-width: 1024px)
+ *    - Tablet-specific (769px - 1024px)
+ *    - Mobile (max-width: 768px)
+ *    - Small Mobile (max-width: 480px)
+ **********************************************/
+
+/* 1. Base Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -12,7 +32,7 @@
   z-index: 1000;
   background-color: var(--secondary-color);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  /* Add these properties for GPU acceleration */
+  /* GPU acceleration */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
@@ -29,9 +49,12 @@
   opacity: 0;
 }
 
-/* Mobile Menu Toggle */
+/**********************************************
+ * 2. MOBILE MENU TOGGLE
+ **********************************************/
+
 .mobile-menu-toggle {
-  display: none;
+  display: none; /* Hidden by default, shown in mobile view */
   flex-direction: column;
   cursor: pointer;
   padding: 5px;
@@ -59,7 +82,11 @@
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Logo */
+/**********************************************
+ * 3. LOGO & SPARKS EFFECT
+ **********************************************/
+
+/* Logo Container */
 .logo-container {
   flex: 1;
   display: flex;
@@ -69,6 +96,7 @@
   position: relative; /* For sparks positioning */
 }
 
+/* Logo Image */
 .logo img {
   height: 48px;
   width: auto;
@@ -82,26 +110,15 @@
   animation: logoGlow 2s ease-in-out infinite;
 }
 
-/* Logo glow color animation */
+/* Logo Animations */
 @keyframes logoGlow {
-  0% {
-    filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.8));
-  }
-  
-  33% {
-    filter: drop-shadow(0 0 6px rgba(255, 20, 147, 0.8));
-  }
-  
-  66% {
-    filter: drop-shadow(0 0 6px rgba(4, 244, 232, 0.8));
-  }
-  
-  100% {
-    filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.8));
-  }
+  0%   { filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.8)); }
+  33%  { filter: drop-shadow(0 0 6px rgba(255, 20, 147, 0.8)); }
+  66%  { filter: drop-shadow(0 0 6px rgba(4, 244, 232, 0.8)); }
+  100% { filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.8)); }
 }
 
-/* Sparks Effect */
+/* Sparks Container */
 .sparks-container {
   position: absolute;
   top: 50%;
@@ -118,6 +135,7 @@
   opacity: 1;
 }
 
+/* Individual Sparks */
 .spark {
   position: absolute;
   width: 3px;
@@ -128,6 +146,7 @@
   animation: sparkFly 1.2s ease-out infinite;
 }
 
+/* Spark Positions */
 .spark:nth-child(1) {
   top: 15px;
   left: 30px;
@@ -184,29 +203,15 @@
   animation-duration: 1.0s;
 }
 
+/* Spark Animation */
 @keyframes sparkFly {
-  0% {
-    transform: translate(0, 0) scale(0);
-    opacity: 0;
-  }
-  
-  10% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  
-  50% {
-    transform: translate(var(--spark-x, 0), var(--spark-y, 0)) scale(1.2);
-    opacity: 0.8;
-  }
-  
-  100% {
-    transform: translate(var(--spark-x-end, 0), var(--spark-y-end, 0)) scale(0.3);
-    opacity: 0;
-  }
+  0%   { transform: translate(0, 0) scale(0); opacity: 0; }
+  10%  { transform: translate(0, 0) scale(1); opacity: 1; }
+  50%  { transform: translate(var(--spark-x, 0), var(--spark-y, 0)) scale(1.2); opacity: 0.8; }
+  100% { transform: translate(var(--spark-x-end, 0), var(--spark-y-end, 0)) scale(0.3); opacity: 0; }
 }
 
-/* Dynamic spark trajectories */
+/* Dynamic Spark Trajectories */
 .spark:nth-child(1) { --spark-x: 15px; --spark-y: -20px; --spark-x-end: 25px; --spark-y-end: -35px; }
 .spark:nth-child(2) { --spark-x: -20px; --spark-y: -15px; --spark-x-end: -35px; --spark-y-end: -25px; }
 .spark:nth-child(3) { --spark-x: 18px; --spark-y: 12px; --spark-x-end: 30px; --spark-y-end: 20px; }
@@ -216,17 +221,22 @@
 .spark:nth-child(7) { --spark-x: 20px; --spark-y: 18px; --spark-x-end: 32px; --spark-y-end: 28px; }
 .spark:nth-child(8) { --spark-x: -25px; --spark-y: -12px; --spark-x-end: -40px; --spark-y-end: -20px; }
 
-/* Navigation Links */
+/**********************************************
+ * 4. NAVIGATION LINKS
+ **********************************************/
+
+/* Nav Links Container */
 .nav-links {
   flex: 3;
   display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: clamp(0.8rem, 2vw, 1rem); /* Reduced gap since diamonds are now HTML elements */
+  gap: clamp(0.8rem, 2vw, 1rem);
   min-width: 0; /* Allow shrinking */
 }
 
+/* Nav Link Items */
 .nav-links li a {
   font-family: var(--font-family);
   font-weight: 800;
@@ -245,7 +255,7 @@
   opacity: 0.8;
 }
 
-/* Diamond separators */
+/* Diamond Separators */
 .diamond-separator {
   color: var(--primary-color);
   font-size: 0.6rem;
@@ -259,14 +269,11 @@
   min-width: 0.5rem; /* Minimal width for diamonds */
 }
 
-/* Hide diamonds on mobile */
-@media (max-width: 768px) {
-  .diamond-separator {
-    display: none !important;
-  }
-}
+/**********************************************
+ * 5. SOCIAL MEDIA
+ **********************************************/
 
-/* Social Media */
+/* Social Media Container */
 .social-media {
   flex: 1;
   display: flex;
@@ -276,6 +283,7 @@
   min-width: fit-content; /* Prevent shrinking below content size */
 }
 
+/* Social Media Icons */
 .social-media img {
   width: 30px;
   height: 30px;
@@ -294,8 +302,148 @@
   opacity: 0.8;
 }
 
-/* Extra Large Desktop - maintain consistent max-width */
+/* Mobile Social Media (hidden by default) */
+.social-media-mobile {
+  display: none;
+}
+
+/**********************************************
+ * 6. UPPON HILL SECTION
+ **********************************************/
+
+/* Placeholder (creates empty space in navbar) */
+.uppon-hill-placeholder {
+  width: 110px;
+  margin-left: 15px; /* Space from social media icons */
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.uppon-hill-placeholder.shrink-placeholder {
+  width: 70px; /* Smaller width to match the shrunken red box */
+}
+
+/* Main Section */
+.uppon-hill-section {
+  position: fixed;
+  height: 120px;
+  top: 0;
+  right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
+  background-color: #A52A2A; /* Deep red background */
+  padding: 15px 25px 15px 25px;
+  z-index: 1001; /* Above the navbar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  min-width: 140px;
+  opacity: 0; /* Start hidden */
+  transform: translateY(-100%); /* Start off-screen */
+}
+
+/* Section States */
+.uppon-hill-section.uppon-hill-hidden {
+  transform: translateY(-100%) !important;
+  opacity: 0 !important;
+}
+
+.uppon-hill-section.show-section {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-out;
+}
+
+.uppon-hill-section.shrink-section {
+  min-width: 90px; /* Smaller width for just the initials */
+  padding: 15px 20px 15px 20px; /* Reduced padding */
+  transition: min-width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              padding 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              transform 0.3s ease-in-out, 
+              opacity 0.3s ease-in-out;
+}
+
+/* Logo Container */
+.uppon-hill-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Logo Image Base Styles */
+.uppon-hill-logo img {
+  width: 60px;
+  height: 60px;
+  filter: brightness(0) invert(1); /* Make SVG white */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Full Logo Variant */
+.uppon-hill-full-logo {
+  width: 120px !important; /* Larger for full logo */
+  height: auto !important;
+  opacity: 0; /* Start hidden, JavaScript will control */
+  position: relative;
+}
+
+/* Initials Logo Variant */
+.uppon-hill-initials-logo {
+  opacity: 0; /* Start hidden, JavaScript will control */
+}
+
+/* Hover Effects */
+.uppon-hill-section:hover .uppon-hill-initials-logo,
+.uppon-hill-logo:hover .uppon-hill-initials-logo {
+  transform: translate(-50%, -50%) scale(1.1) !important;
+  opacity: 0.9 !important;
+}
+
+.uppon-hill-section:hover .uppon-hill-full-logo,
+.uppon-hill-logo:hover .uppon-hill-full-logo {
+  transform: translate(-50%, -50%) scale(1.02) !important;
+}
+
+/* Animation Classes */
+.uppon-hill-full-logo.show-handwriting {
+  animation: handwritingReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.uppon-hill-initials-logo.show-initials {
+  animation: fadeInInitials 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Animations */
+@keyframes handwritingReveal {
+  0%   { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); opacity: 1; transform: translate(-50%, -50%) scale(0.98); }
+  8%   { clip-path: polygon(0 0, 12% 0, 12% 100%, 0 100%); transform: translate(-50%, -50%) scale(0.99); }
+  18%  { clip-path: polygon(0 0, 28% 0, 28% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
+  32%  { clip-path: polygon(0 0, 45% 0, 45% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
+  48%  { clip-path: polygon(0 0, 62% 0, 62% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
+  65%  { clip-path: polygon(0 0, 78% 0, 78% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
+  82%  { clip-path: polygon(0 0, 92% 0, 92% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
+  92%  { clip-path: polygon(0 0, 98% 0, 98% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.01); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; transform: translate(-50%, -50%) scale(1.0); }
+}
+
+@keyframes fadeInInitials {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  60%  { opacity: 0.9; transform: translate(-50%, -50%) scale(1.05); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/**********************************************
+ * 7. RESPONSIVE STYLES
+ **********************************************/
+
+/* Extra Large Desktop (1441px - 1600px) */
 @media (min-width: 1441px) and (max-width: 1600px) {
+  /* Navbar */
   .navbar {
     width: 90%;
     max-width: 1280px;
@@ -313,15 +461,16 @@
   }
 }
 
-/* Large Desktop - Full width navbar with original flex proportions */
+/* Large Desktop (1201px - 1440px) */
 @media (max-width: 1440px) and (min-width: 1200px) {
+  /* Navbar */
   .navbar {
     max-width: 100%;
     width: 100%;
     left: 0;
     right: 0;
     transform: translateX(0);
-    padding: 15px 0; /* Remove horizontal padding for true full-width */
+    padding: 15px 0;
     display: flex;
     align-items: center;
   }
@@ -335,60 +484,63 @@
     opacity: 0;
   }
   
+  /* Logo */
   .logo-container {
     flex: 1;
     min-width: 0;
-    padding-left: 2rem; /* Add internal spacing for logo */
+    padding-left: 2rem;
   }
   
   .logo img {
-    height: 40px; /* Reduced from default 48px for better proportions */
+    height: 40px;
   }
   
-  /* Adjust sparks for smaller logo in this breakpoint */
   .sparks-container {
     width: 50px;
     height: 50px;
-    left: 70px; /* Adjust position for smaller logo */
+    left: 70px;
   }
   
+  /* Navigation Links */
   .nav-links {
     flex: 3;
-    gap: clamp(0.4rem, 1.2vw, 1rem); /* More conservative gap to prevent overflow */
+    gap: clamp(0.4rem, 1.2vw, 1rem);
     min-width: 0;
   }
   
+  /* Social Media */
   .social-media {
     flex: 1;
     gap: 15px;
-    min-width: fit-content; /* Prevent shrinking below content size */
-    padding-right: 1.5rem; /* Minimal right spacing, less than usual to accommodate Uppon Hill */
+    min-width: fit-content;
+    padding-right: 1.5rem;
   }
 
+  /* Uppon Hill */
   .uppon-hill-logo img {
-    width: 25px;
-    height: 25px;
+    width: 55px;
+    height: 55px;
   }
   
   .uppon-hill-full-logo {
-    width: 40px !important; /* Smaller full logo for tablets */
+    width: 40px !important;
   }
   
   .uppon-hill-placeholder {
-    width: 55px; /* Width to match the Uppon Hill section */
-    margin-left: 15px; /* Space from social media icons */
+    width: 55px;
+    margin-left: 15px;
   }
 
   .uppon-hill-section {
     right: 0 !important;
-    padding-right: 25 !important;
+    padding-right: 25px !important;
     height: 100px !important;
   }
+}
 
-  
-  
-}/* Large Desktop - Full width navbar with original flex proportions */
+/* Medium Desktop (1025px - 1200px) */
 @media (max-width: 1200px) and (min-width: 1025px) {
+  /* Navbar */
   .navbar {
     max-width: 100%;
     width: 100%;
@@ -409,68 +561,75 @@
     opacity: 0;
   }
   
+  /* Logo */
   .logo-container {
     flex: 1;
     min-width: 0;
   }
   
   .logo img {
-    height: 40px; /* Reduced from default 48px for better proportions */
+    height: 40px;
   }
   
-  /* Adjust sparks for smaller logo in this breakpoint */
   .sparks-container {
     width: 50px;
     height: 50px;
-    left: 70px; /* Adjust position for smaller logo */
+    left: 70px;
   }
   
+  /* Navigation Links */
   .nav-links {
-    flex: 3; /* Back to original ratio */
-    gap: clamp(0.3rem, 1vw, 0.8rem); /* Keep the tighter gap */
+    flex: 3;
+    gap: clamp(0.3rem, 1vw, 0.8rem);
     min-width: 0;
   }
   
+  /* Social Media */
   .social-media {
-    flex: 1; /* Back to original ratio */
-    gap: 4px; /* Even tighter gap between icons */
+    flex: 1;
+    gap: 4px;
     min-width: fit-content;
   }
   
-  /* Make social media icons smaller in this breakpoint to prevent overlap */
   .social-media img {
-    width: 26px; /* Reduced from 30px */
-    height: 26px; /* Reduced from 30px */
+    width: 26px;
+    height: 26px;
   }
 
+  /* Uppon Hill */
   .uppon-hill-placeholder {
-    width: 55px; /* Width to match the Uppon Hill section */
-    margin-left: 15px; /* Space from social media icons */
+    width: 55px;
+    margin-left: 15px;
   }
+
+
 
   .uppon-hill-section {
     right: 0 !important;
-    padding-right: 10 !important;
+    padding-right: 10px !important;
     height: 100px !important;
   }
-  
 }
 
-/* Ensure mobile menu is hidden on larger screens */
+/**********************************************
+ * 7. RESPONSIVE STYLES - MOBILE/TABLET
+ **********************************************/
+
+/* Hide mobile menu on desktop */
 @media (min-width: 1025px) {
   .mobile-menu-toggle {
     display: none !important;
   }
-  
 }
 
-/* Switch to mobile layout - Final breakpoint before mobile menu */
+/* Mobile & Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
+  /* Navbar */
   .navbar {
     width: 100%;
     left: 0;
     transform: translateX(0);
-    padding: 10px 20px 10px 10px; /* Added left padding */
+    padding: 10px 20px 10px 10px;
     flex-wrap: wrap;
   }
 
@@ -478,6 +637,7 @@
     transform: translateY(-100%);
   }
 
+  /* Logo */
   .logo-container {
     flex: 0 0 auto;
     order: 1;
@@ -487,7 +647,6 @@
     height: 36px;
   }
 
-  /* Adjust sparks for smaller logo */
   .sparks-container {
     width: 48px;
     height: 48px;
@@ -499,12 +658,16 @@
     height: 2px;
   }
 
+  /* Mobile Menu Toggle */
   .mobile-menu-toggle {
     display: flex;
     order: 2;
     margin-left: auto;
+    z-index: 1002; /* Ensure it's above the Uppon Hill section */
+    position: relative; /* Needed for proper z-index stacking */
   }
 
+  /* Navigation Links */
   .nav-links {
     position: fixed;
     top: 0;
@@ -546,7 +709,7 @@
     width: 100%;
   }
 
-  /* Social media in mobile menu */
+  /* Social Media - Mobile Menu Version */
   .social-media-mobile {
     display: flex !important;
     justify-content: center;
@@ -582,23 +745,128 @@
   .social-media {
     display: none;
   }
+  
+  /* Uppon Hill - Mobile Adjustments */
+  .uppon-hill-section {
+    height: 57px !important;
+    right: auto;
+    left: 0;
+    transform: translateY(0);
+    z-index: 1001;
+  }
+
+  /* No animations on mobile */
+  .uppon-hill-full-logo.show-handwriting,
+  .uppon-hill-initials-logo.show-initials {
+    animation: none !important;
+  }
+
+  /* Initial states */
+  .uppon-hill-full-logo {
+    opacity: 0 !important;
+  }
+
+  .uppon-hill-initials-logo {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .uppon-hill-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .uppon-hill-section.shrink-section {
+    min-width: 75px !important;
+    padding: 15px !important;
+  }
 }
 
-/* Hide mobile social media on desktop */
-.social-media-mobile {
-  display: none;
+/* Tablet-specific (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Uppon Hill - Tablet Adjustments */
+  .uppon-hill-logo img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .uppon-hill-full-logo {
+    width: 60px !important;
+  }
+  
+  .uppon-hill-section {
+    padding: 15px 20px 25px 20px;
+    min-width: 100px;
+  }
+  
+  .uppon-hill-section.shrink-section {
+    min-width: 75px;
+    padding: 15px;
+  }
+  
+  .uppon-hill-placeholder {
+    width: 90px;
+  }
+  
+  .uppon-hill-placeholder.shrink-placeholder {
+    width: 60px;
+  }
 }
 
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Navbar adjustments */
+  .navbar {
+    padding-left: 70px; /* Make space for Uppon Hill logo */
+  }
+  
+  /* Logo container */
+  .logo-container {
+    padding-left: 15px; /* Fine-tune spacing with Uppon Hill logo */
+  }
+
+  /* Diamond Separators */
+  .diamond-separator {
+    display: none !important;
+  }
+  
+  /* Uppon Hill - Mobile Adjustments */
+  .uppon-hill-section {
+    height: 56px !important;
+    padding: 10px 15px;
+    min-width: 60px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+  }
+
+  .uppon-hill-logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .uppon-hill-placeholder {
+    display: none;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
+  /* Navbar */
   .navbar {
     padding: 8px 15px;
   }
 
+  /* Logo */
+  .logo-container {
+    padding-left: 65px; /* Make space for Uppon Hill logo on the left */
+  }
+  
   .logo img {
     height: 32px;
   }
 
-  /* Adjust sparks for smallest logo */
   .sparks-container {
     width: 40px;
     height: 40px;
@@ -610,11 +878,17 @@
     height: 1.5px;
   }
 
+  /* Mobile Menu Toggle */
+  .mobile-menu-toggle {
+    margin-right: 0; /* No extra margin needed now */
+  }
+  
   .mobile-menu-toggle span {
     width: 20px;
     height: 2px;
   }
 
+  /* Social Media */
   .social-media-mobile {
     gap: 10px !important;
   }
@@ -623,261 +897,20 @@
     width: 32px !important;
     height: 32px !important;
   }
-}
-
-/* Uppon Hill placeholder - creates empty space in navbar */
-.uppon-hill-placeholder {
-  width: 110px; /* Width to match the Uppon Hill section */
-  margin-left: 15px; /* Space from social media icons */
-  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* Match the red box shrinking animation */
-}
-
-/* Shrink the placeholder after handwriting completes */
-.uppon-hill-placeholder.shrink-placeholder {
-  width: 70px; /* Smaller width to match the shrunken red box */
-}
-
-/* Uppon Hill Extended Section */
-.uppon-hill-section {
-  position: fixed;
-  height: 120px;
-  top: 0;
-  right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
-  background-color: #A52A2A; /* Deep red background that complements the color scheme */
-  padding: 15px 25px 15px 25px; /* Extra padding at bottom to extend lower than navbar */
-  z-index: 1001; /* Above the navbar (navbar is z-index 1000) */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  min-width: 140px; /* Ensure enough space for full logo animation */
-  opacity: 0; /* Start hidden */
-  transform: translateY(-100%); /* Start off-screen */
-}
-
-.uppon-hill-section.uppon-hill-hidden {
-  transform: translateY(-100%) !important;
-  opacity: 0 !important;
-}
-
-.uppon-hill-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none; /* Remove link underline */
-  cursor: pointer;
-  position: relative;
-}
-
-.uppon-hill-logo img {
-  width: 60px;
-  height: 60px;
-  filter: brightness(0) invert(1); /* Make SVG white */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Full logo with handwriting animation */
-.uppon-hill-full-logo {
-  width: 120px !important; /* Larger for full logo */
-  height: auto !important;
-  opacity: 0; /* Start hidden, JavaScript will control */
-  position: relative;
-}
-
-/* Initials logo (hidden initially) */
-.uppon-hill-initials-logo {
-  opacity: 0; /* Start hidden, JavaScript will control */
-}
-
-/* Handwriting reveal animation - smooth, faster writing effect */
-@keyframes handwritingReveal {
-  0% {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0.98);
-  }
   
-  8% {
-    clip-path: polygon(0 0, 12% 0, 12% 100%, 0 100%);
-    transform: translate(-50%, -50%) scale(0.99);
-  }
-  
-  18% {
-    clip-path: polygon(0 0, 28% 0, 28% 100%, 0 100%);
-    transform: translate(-50%, -50%) scale(1.0);
-  }
-  
-  32% {
-    clip-path: polygon(0 0, 45% 0, 45% 100%, 0 100%);
-    transform: translate(-50%, -50%) scale(1.0);
-  }
-  
-  48% {
-    clip-path: polygon(0 0, 62% 0, 62% 100%, 0 100%);
-    transform: translate(-50%, -50%) scale(1.0);
-  }
-  
-  65% {
-    clip-path: polygon(0 0, 78% 0, 78% 100%, 0 100%);
-    transform: translate(-50%, -50%) scale(1.0);
-  }
-  
-  82% {
-    clip-path: polygon(0 0, 92% 0, 92% 100%, 0 100%);
-    transform: translate(-50%, -50%) scale(1.0);
-  }
-  
-  92% {
-    clip-path: polygon(0 0, 98% 0, 98% 100%, 0 100%);
-    transform: translate(-50%, -50%) scale(1.01);
-  }
-  
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.0);
-  }
-}
-
-/* Animation classes for JavaScript control */
-.uppon-hill-full-logo.show-handwriting {
-  animation: handwritingReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.uppon-hill-initials-logo.show-initials {
-  animation: fadeInInitials 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* Fade in initials with subtle scale and bounce */
-@keyframes fadeInInitials {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-  
-  60% {
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1.05);
-  }
-  
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-/* Show the section when animation starts */
-.uppon-hill-section.show-section {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-out;
-}
-
-/* Shrink the section after handwriting completes */
-.uppon-hill-section.shrink-section {
-  min-width: 90px; /* Smaller width for just the initials */
-  padding: 15px 20px 15px 20px; /* Reduced padding */
-  transition: min-width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-/* Hover effects */
-.uppon-hill-section:hover .uppon-hill-initials-logo,
-.uppon-hill-logo:hover .uppon-hill-initials-logo {
-  transform: translate(-50%, -50%) scale(1.1) !important;
-  opacity: 0.9 !important;
-}
-
-/* Don't apply hover to full logo during animation */
-.uppon-hill-section:hover .uppon-hill-full-logo,
-.uppon-hill-logo:hover .uppon-hill-full-logo {
-  transform: translate(-50%, -50%) scale(1.02) !important;
-}
-
-/* Mobile adjustments */
-@media (max-width: 1024px) {
+  /* Uppon Hill - Small Mobile Adjustments */
   .uppon-hill-section {
-    height: 57px !important; /* Smaller height for mobile */
+    height: 50px !important;
+    width: 50px !important;
+    padding: 8px 10px !important;
     right: auto;
     left: 0;
-    transform: translateY(0);
+    position: absolute;
+    top: 0;
   }
-
-  /* Stop the animation on mobile */
-  .uppon-hill-full-logo.show-handwriting,
-  .uppon-hill-initials-logo.show-initials {
-    animation: none !important;
-  }
-
-  /* Ensure the final state is visible without animation */
-  .uppon-hill-full-logo {
-    opacity: 0 !important; /* Keep full logo hidden */
-  }
-
-  .uppon-hill-initials-logo {
-    opacity: 1 !important; /* Show initials logo directly */
-    transform: translate(-50%, -50%) scale(1) !important;
-  }
-
+  
   .uppon-hill-logo img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .uppon-hill-section.shrink-section {
-    min-width: 75px !important;
-    padding: 15px 15px 15px 15px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .uppon-hill-section {
-    height: 56px !important; /* Match navbar height */
-    padding: 10px 15px;
-    min-width: 60px;
-  }
-
-  .uppon-hill-logo img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .uppon-hill-placeholder {
-    display: none; /* Hide placeholder on mobile too */
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .uppon-hill-logo img {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .uppon-hill-full-logo {
-    width: 80px !important; /* Smaller full logo for tablets */
-  }
-  
-  .uppon-hill-section {
-    padding: 15px 20px 25px 20px;
-    min-width: 100px;
-  }
-  
-  /* Adjust shrinking for tablets */
-  .uppon-hill-section.shrink-section {
-    min-width: 75px; /* Even smaller on tablets */
-    padding: 15px 15px 15px 15px;
-  }
-  
-  /* Adjust placeholder for tablets */
-  .uppon-hill-placeholder {
-    width: 90px; /* Smaller initial width on tablets */
-  }
-  
-  .uppon-hill-placeholder.shrink-placeholder {
-    width: 60px; /* Smaller shrunken width on tablets */
+    width: 40px !important;
+    height: 40px !important;
   }
 }
