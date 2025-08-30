@@ -28,7 +28,7 @@ body {
 
 /* Header base */
 header.main-header {
-  background-image: url(../assets/steam/page\ background.png);
+  background-image: url('../assets/key-art/Insignia Capsule.png');
   background-size: cover;
   background-position: center;
   width: 100%;
