@@ -35,3 +35,38 @@ header.main-header {
   height: 100vh;
   position: relative;
 }
+
+/* Skip link accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  position: static;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 10px;
+  text-decoration: none;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background: var(--tertiary-color);
+  color: var(--secondary-color);
+}
