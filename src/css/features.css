@@ -25,7 +25,8 @@
 
 .card {
   background-color: transparent;
-  border: none;
+  border: 16px solid transparent;
+  border-image: url('../../assets/border.png') 16 fill repeat;
   box-shadow: none;
   overflow: hidden;
   display: flex;
@@ -49,7 +50,7 @@
   font-style: bold;
   font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font size - reduced */
   font-weight: bold;
-  margin: 20px 0 15px;
+  margin: 0px 0 15px;
   color: var(--secondary-color);
 }
 
@@ -67,7 +68,7 @@
 .feature-gallery {
   position: relative;
   width: 100%;
-  margin-bottom: 50px; /* Make space for diamonds below */
+  margin-bottom: 35px; /* Make space for diamonds below */
   padding-bottom: 10px;
 }
 
@@ -110,8 +111,8 @@
 }
 
 .feature-gallery-nav img {
-  width: 34px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
@@ -125,16 +126,16 @@
 }
 
 .feature-gallery-nav.next img {
-  width: 34px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
 }
 
 .feature-gallery-nav.prev {
-  left: 5px;
+  left: 10px;
 }
 
 .feature-gallery-nav.next {
-  right: 5px;
+  right: 10px;
 }
 
 /* Diamond navigation */
@@ -158,13 +159,14 @@
   width: auto;
   background: var(--tertiary-color);
   border: none;
-  padding: 0 4px;
-  margin: 0 auto;
+  padding: 0 2px;
+  
 }
 
 .diamond-dot {
   width: 48px;
   height: 48px;
+  top: 50%;
   background-image: url('../../assets/full-diamond.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -172,13 +174,17 @@
   transition: all 0.3s ease;
   pointer-events: auto;
   cursor: pointer;
-  margin: 0 -6px; /* Negative margin to bring diamonds closer */
+  margin: 0 -8px; /* Negative margin to bring diamonds closer */
   flex-shrink: 0;
 }
 
 .diamond-dot.active {
   background-image: url('../../assets/empty-diamond.svg');
   transform: scale(1);
+}
+
+.onhover .diamond-dot {
+  transform: scale(2);
 }
 
 /* Mobile adjustments for feature gallery */
