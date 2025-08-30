@@ -325,20 +325,34 @@
 /* Main Section */
 .uppon-hill-section {
   position: fixed;
-  height: 120px;
+  width: 128px;  /* Exact width - 2x the original 64px */
+  height: 128px; /* Exact height - 2x the original 64px */
   top: 0;
   right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
-  background-color: #A52A2A; /* Deep red background */
-  padding: 15px 25px 15px 25px;
-  z-index: 1001; /* Above the navbar */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0; /* Remove padding to avoid distorting size */
+  z-index: 1002; /* Increased to ensure it's above */
+  overflow: visible; /* Allow content to overflow */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  min-width: 140px;
-  opacity: 0; /* Start hidden */
-  transform: translateY(-100%); /* Start off-screen */
+  opacity: 1; /* Make visible */
+  transform: translateY(0); /* On screen */
+}
+
+/* Banner Image */
+.uppon-hill-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 128px; /* Exact size - 2x the original 64px */
+  height: 128px; /* Exact size - 2x the original 64px */
+  z-index: 1; /* Behind the logo but above other elements */
+  image-rendering: pixelated; /* Crisp pixel art rendering */
+  object-fit: none; /* Don't resize the image */
+  pointer-events: none; /* Allow clicking through to the logo */
+  object-fit: contain; /* Ensure the image maintains aspect ratio */
+  pointer-events: none; /* Allow clicks to pass through to logo */
 }
 
 /* Section States */
@@ -370,12 +384,15 @@
   text-decoration: none;
   cursor: pointer;
   position: relative;
+  z-index: 2; /* Ensure logo is above banner */
+  width: 64px; /* Exact original size */
+  height: 64px; /* Exact original size */
 }
 
 /* Logo Image Base Styles */
 .uppon-hill-logo img {
-  width: 60px;
-  height: 60px;
+  width: 64px; /* Exact original size */
+  height: 64px; /* Exact original size */
   filter: brightness(0) invert(1); /* Make SVG white */
   transition: transform 0.3s ease, opacity 0.3s ease;
   position: absolute;
@@ -388,13 +405,14 @@
 .uppon-hill-full-logo {
   width: 120px !important; /* Larger for full logo */
   height: auto !important;
-  opacity: 0; /* Start hidden, JavaScript will control */
+  opacity: 0; /* Hidden */
+  display: none; /* Completely hide */
   position: relative;
 }
 
 /* Initials Logo Variant */
 .uppon-hill-initials-logo {
-  opacity: 0; /* Start hidden, JavaScript will control */
+  opacity: 1; /* Always visible */
 }
 
 /* Hover Effects */
