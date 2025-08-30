@@ -1,9 +1,15 @@
 /* Character Gallery Section */
 .character-gallery-section {
   position: relative;
-  padding: clamp(80px, 15vw, 120px) 0;
+  border: 52px solid transparent;                 /* thicker border */
+  border-image-source: url('../../assets/frame.png');
+  border-image-slice: 16 fill;                    /* slice size stays the same */
+  border-image-repeat: repeat;
+  image-rendering: pixelated;                     /* keep it sharp */
+  background-color: #111118;                    /* your section background */
+  padding: 2rem;                                /* spacing inside the frame */
+  color: #fff;
   width: 100%;
-  background-color: var(--secondary-color);
   overflow: hidden;
 }
 
@@ -90,7 +96,7 @@
   font-family: var(--font-family-secondary);
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
-  color: var(--primary-color);
+  color: black;
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -103,7 +109,7 @@
   font-family: var(--font-family);
   font-size: clamp(0.8rem, 2vw, 0.95rem);
   line-height: 1.6;
-  color: var(--primary-color);
+  color: black;
   margin-bottom: 1.5rem;
 }
 
