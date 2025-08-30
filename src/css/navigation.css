@@ -21,7 +21,7 @@
 /* 1. Base Navbar */
 .navbar {
   position: fixed;
-  top: 0;
+  top: 5px; /* Moved down by 5px from the top */
   left: 50%;
   transform: translateX(-50%) translateY(0);
   width: 90%;
@@ -42,6 +42,7 @@
 
 .navbar.nav-sticky {
   transform: translate3d(-50%, 0, 0);
+  top: 5px; /* Maintain the 5px spacing when sticky */
 }
 
 .navbar.nav-hidden {
@@ -325,9 +326,9 @@
 /* Main Section */
 .uppon-hill-section {
   position: fixed;
-  width: 128px;  /* Exact width - 2x the original 64px */
-  height: 128px; /* Exact height - 2x the original 64px */
-  top: 0;
+  width: 128px;  /* Container size */
+  height: 128px; /* Container size */
+  top: 0px; /* Raised up by 15px */
   right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
   padding: 0; /* Remove padding to avoid distorting size */
   z-index: 1002; /* Increased to ensure it's above */
@@ -343,10 +344,11 @@
 /* Banner Image */
 .uppon-hill-banner {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 128px; /* Exact size - 2x the original 64px */
-  height: 128px; /* Exact size - 2x the original 64px */
+  top: 50%;
+  left: calc(50% + 5px); /* Moved 5px to the right */
+  width: 192px; /* Exact size - 3x the original 64px */
+  height: 192px; /* Exact size - 3x the original 64px */
+  transform: translate(-50%, -50%); /* Center precisely */
   z-index: 1; /* Behind the logo but above other elements */
   image-rendering: pixelated; /* Crisp pixel art rendering */
   object-fit: none; /* Don't resize the image */
@@ -383,21 +385,22 @@
   justify-content: center;
   text-decoration: none;
   cursor: pointer;
-  position: relative;
+  position: absolute;
   z-index: 2; /* Ensure logo is above banner */
-  width: 64px; /* Exact original size */
-  height: 64px; /* Exact original size */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 /* Logo Image Base Styles */
 .uppon-hill-logo img {
-  width: 64px; /* Exact original size */
-  height: 64px; /* Exact original size */
-  filter: brightness(0) invert(1); /* Make SVG white */
+  width: 80px;
+  filter: brightness(100) invert(1); /* Make SVG white */
   transition: transform 0.3s ease, opacity 0.3s ease;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 42%; /* Moved up from 50% to 42% */
+  left: calc(50% + 5px); /* Moved 5px to the right */
   transform: translate(-50%, -50%);
 }
 
