@@ -39,7 +39,7 @@
 
 .mobile-gallery-container {
   position: relative;
-  width: 100%;
+  width: 1000%; /* 10 images * 100% each */
   height: 100%;
   display: flex;
   transition: transform 0.3s ease-in-out;
@@ -49,7 +49,7 @@
 }
 
 .mobile-gallery img {
-  width: 100%;
+  width: 10%; /* 100% / 10 images */
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;

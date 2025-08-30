@@ -67,29 +67,26 @@
 .feature-gallery {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-  height: 0;
-  overflow: hidden;
+  margin-bottom: 50px; /* Make space for diamonds below */
+  padding-bottom: 10px;
 }
 
 .feature-gallery-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+}
+
+.feature-gallery-container > img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  -webkit-user-select: none;
-  user-select: none;
-  touch-action: pan-y pinch-zoom;
-}
-
-.feature-gallery img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
 .feature-gallery-nav {
@@ -120,6 +117,7 @@
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   transition: transform 0.2s ease;
+  display: block;
 }
 
 .feature-gallery-nav:hover img {
@@ -132,24 +130,23 @@
 }
 
 .feature-gallery-nav.prev {
-  left: 10px;
+  left: 5px;
 }
 
 .feature-gallery-nav.next {
-  right: 10px;
+  right: 5px;
 }
 
 /* Diamond navigation */
 .diamond-nav {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -40px;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 3;
-  width: auto;
+  width: 100%;
   height: auto;
 }
 
@@ -157,41 +154,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
-  width: 80px;
-  gap: 12px;
+  height: 48px;
+  width: auto;
   background: var(--tertiary-color);
   border: none;
+  padding: 0 4px;
+  margin: 0 auto;
 }
 
 .diamond-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--secondary-color);
-  transform: rotate(45deg);
+  width: 48px;
+  height: 48px;
+  background-image: url('../../assets/full-diamond.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   transition: all 0.3s ease;
   pointer-events: auto;
   cursor: pointer;
+  margin: 0 -6px; /* Negative margin to bring diamonds closer */
+  flex-shrink: 0;
 }
 
 .diamond-dot.active {
-  background-color: rgb(132, 132, 132);
-  transform: rotate(45deg) scale(1.25);
+  background-image: url('../../assets/empty-diamond.svg');
+  transform: scale(1);
 }
 
 /* Mobile adjustments for feature gallery */
 @media (max-width: 720px) {
+  .feature-gallery {
+    margin-bottom: 40px;
+  }
+  
   .feature-gallery-nav {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.3);
-    width: 40px;
-    height: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    width: 36px;
+    height: 36px;
     font-size: 1.2rem;
+    top: 50%;
   }
 
   .feature-gallery-nav img {
-    width: 34px;
-    height: 46px;
+    width: 28px;
+    height: 38px;
     image-rendering: -moz-crisp-edges;
     image-rendering: -webkit-crisp-edges;
     image-rendering: pixelated;
@@ -211,15 +218,20 @@
     right: 5px;
   }
 
+  .diamond-nav {
+    bottom: -40px;
+  }
+  
   .diamond-indicator {
-    height: 25px;
-    width: 70px;
-    gap: 10px;
+    height: 48px;
+    width: auto;
+    padding: 0 3px;
   }
 
   .diamond-dot {
-    width: 8px;
-    height: 8px;
+    width: 36px;
+    height: 36px;
+    margin: 0 -4px;
   }
 }
 
@@ -233,9 +245,13 @@
   
   .diamond-dot {
     position: relative;
-    width: 12px;
-    height: 12px;
-    /* Larger touch target */
+    width: 36px;
+    height: 36px;
+    margin: 0 -4px;
+    /* Pixel-perfect rendering */
+    image-rendering: pixelated;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
   
   .diamond-dot::after {

@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize feature card galleries (with diamond navigation)
     document.querySelectorAll('.feature-gallery').forEach(gallery => {
         const container = gallery.querySelector('.feature-gallery-container');
-        const slides = gallery.querySelectorAll('img');
+        const slides = gallery.querySelectorAll('.feature-gallery-container img');
         let currentSlide = 0;
         const totalSlides = slides.length;
         
@@ -157,7 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActiveDot();
 
         function updateSlide() {
-            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            slides.forEach((slide, index) => {
+                const basePosition = index * 100;
+                const slideOffset = currentSlide * 100;
+                slide.style.transform = `translateX(${basePosition - slideOffset}%)`;
+            });
             updateActiveDot();
         }
         
@@ -172,8 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Check if navigation buttons exist before adding event listeners
-        const nextBtn = gallery.querySelector('.next');
-        const prevBtn = gallery.querySelector('.prev');
+        const nextBtn = gallery.querySelector('button.next');
+        const prevBtn = gallery.querySelector('button.prev');
         
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
@@ -188,12 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateSlide();
             });
         }
+
+        // Initialize slide positions
+        updateSlide();
     });
 
     // Initialize mobile gallery (no diamond navigation, just arrow buttons)
     document.querySelectorAll('.mobile-gallery').forEach(gallery => {
         const container = gallery.querySelector('.mobile-gallery-container');
-        const slides = gallery.querySelectorAll('img');
+        const slides = gallery.querySelectorAll('.mobile-gallery-container img');
         let currentSlide = 0;
         const totalSlides = slides.length;
 
@@ -202,8 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Check if navigation buttons exist before adding event listeners
-        const nextBtn = gallery.querySelector('.next');
-        const prevBtn = gallery.querySelector('.prev');
+        const nextBtn = gallery.querySelector('button.next');
+        const prevBtn = gallery.querySelector('button.prev');
         
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
@@ -218,6 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateSlide();
             });
         }
+
+        // Initialize slide position
+        updateSlide();
     });
 
     // Full-screen Image Modal functionality
@@ -225,13 +235,13 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.className = 'image-modal';
     modal.innerHTML = `
         <span class="modal-close" title="Close">&times;</span>
-        <button class="modal-nav modal-prev" title="Previous Image">&lt;</button>
-        <button class="modal-nav modal-next" title="Next Image">&gt;</button>
-        <img src="" alt="Full-screen image">
+        <button class="modal-nav modal-prev" title="Previous Image"><img src="./assets/scroll-left.svg" alt="Previous"></button>
+        <button class="modal-nav modal-next" title="Next Image"><img src="./assets/scroll-right.svg" alt="Next"></button>
+        <img class="modal-main-image" src="" alt="Full-screen image">
     `;
     document.body.appendChild(modal);
 
-    const modalImg = modal.querySelector('img');
+    const modalImg = modal.querySelector('.modal-main-image');
     const modalClose = modal.querySelector('.modal-close');
     const modalPrev = modal.querySelector('.modal-prev');
     const modalNext = modal.querySelector('.modal-next');
@@ -314,10 +324,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.feature-gallery').forEach(gallery => {
         const featureImages = gallery.querySelectorAll('img');
         featureImages.forEach((img, index) => {
+            // Skip navigation arrow images
+            if (img.closest('.feature-gallery-nav')) {
+                return;
+            }
+            
             img.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                openModal(img.src, img.alt, Array.from(featureImages), index);
+                // Filter out navigation arrow images from the modal gallery
+                const modalImages = Array.from(featureImages).filter(img => !img.closest('.feature-gallery-nav'));
+                const modalIndex = modalImages.indexOf(img);
+                openModal(img.src, img.alt, modalImages, modalIndex);
             });
         });
     });
