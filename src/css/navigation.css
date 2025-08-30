@@ -58,7 +58,7 @@
 }
 
 .navbar::before { left: 50px;  transform: translate(-100%, -50%); } /* 100% of its own width outwards */
-.navbar::after  { right: 0; transform: translate(100%, -50%) scaleX(-1); }
+.navbar::after  { right: 0; transform: translate(20%, -50%) scaleX(-1); }
 
 
 .navbar.nav-sticky {
