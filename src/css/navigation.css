@@ -282,6 +282,8 @@
   align-items: center;
   gap: 15px;
   min-width: fit-content; /* Prevent shrinking below content size */
+  position: relative; /* Enable z-index stacking */
+  z-index: 1010; /* Much higher than Uppon Hill section to appear above it */
 }
 
 /* Social Media Icons */
@@ -314,25 +316,25 @@
 
 /* Placeholder (creates empty space in navbar) */
 .uppon-hill-placeholder {
-  width: 110px;
-  margin-left: 15px; /* Space from social media icons */
+  width: 170px; /* Increased to match larger container plus extra spacing */
+  margin-left: 30px; /* Increased space from social media icons */
   transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .uppon-hill-placeholder.shrink-placeholder {
-  width: 70px; /* Smaller width to match the shrunken red box */
+  width: 110px; /* Adjusted proportionally for the larger banner */
 }
 
 /* Main Section */
 .uppon-hill-section {
   position: fixed;
-  width: 128px;  /* Container size */
-  height: 128px; /* Container size */
-  top: 0px; /* Raised up by 15px */
-  right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
+  width: 200px;  /* Increased to accommodate 192px banner with some padding */
+  height: 200px; /* Increased to accommodate 192px banner with some padding */
+  top: -35px; /* Moved up to cover the navbar end completely */
+  right: calc((100vw - min(90vw, 1280px)) / 2 - 50px); /* Moved even further right to cover navbar end completely */
   padding: 0; /* Remove padding to avoid distorting size */
   z-index: 1002; /* Increased to ensure it's above */
-  overflow: visible; /* Allow content to overflow */
+  overflow: hidden; /* Prevent overflow from covering other elements */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,22 +347,22 @@
 .uppon-hill-banner {
   position: absolute;
   top: 50%;
-  left: calc(50% + 5px); /* Moved 5px to the right */
-  width: 192px; /* Exact size - 3x the original 64px */
-  height: 192px; /* Exact size - 3x the original 64px */
+  left: 50%; /* Centered in container */
+  width: 192px; /* Proper pixel art multiple of 64px (3x) */
+  height: 192px; /* Proper pixel art multiple of 64px (3x) */
   transform: translate(-50%, -50%); /* Center precisely */
-  z-index: 1; /* Behind the logo but above other elements */
+  z-index: -1; /* Behind everything to prevent covering social media icons */
   image-rendering: pixelated; /* Crisp pixel art rendering */
-  object-fit: none; /* Don't resize the image */
-  pointer-events: none; /* Allow clicking through to the logo */
   object-fit: contain; /* Ensure the image maintains aspect ratio */
   pointer-events: none; /* Allow clicks to pass through to logo */
 }
 
 /* Section States */
 .uppon-hill-section.uppon-hill-hidden {
-  transform: translateY(-100%) !important;
+  top: -200px !important; /* Move completely above viewport */
   opacity: 0 !important;
+  visibility: hidden !important; /* Also hide from layout */
+  transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out !important;
 }
 
 .uppon-hill-section.show-section {
@@ -399,8 +401,8 @@
   filter: brightness(100) invert(1); /* Make SVG white */
   transition: transform 0.3s ease, opacity 0.3s ease;
   position: absolute;
-  top: 42%; /* Moved up from 50% to 42% */
-  left: calc(50% + 5px); /* Moved 5px to the right */
+  top: 45%; /* Centered vertically in the banner */
+  left: 50%; /* Centered horizontally in the banner */
   transform: translate(-50%, -50%);
 }
 

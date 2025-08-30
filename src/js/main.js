@@ -654,4 +654,3 @@ function initializeUpponHillAnimation() {
     
     // No timeout or animation sequence needed
 }
-}
