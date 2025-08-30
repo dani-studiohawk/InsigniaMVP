@@ -636,46 +636,22 @@ function initializeUpponHillAnimation() {
     
     if (!fullLogo || !initialsLogo || !upponHillSection) return;
     
-    // Set initial states
-    fullLogo.style.opacity = '0';
-    initialsLogo.style.opacity = '0';
+    // Comment out animation code and directly show initials
+    fullLogo.style.opacity = '0'; // Hide full logo
+    fullLogo.style.display = 'none'; // Completely hide full logo
+    initialsLogo.style.opacity = '1'; // Show initials
     
-    // Start the animation sequence
-    setTimeout(() => {
-        // Show the red section and start the logo animation at the same time
-        upponHillSection.classList.add('show-section');
-        fullLogo.style.opacity = '1';
-        fullLogo.classList.add('show-handwriting');
-        
-        // After handwriting completes, transition to initials
-        setTimeout(() => {
-            // Fade out full logo quickly
-            fullLogo.classList.remove('show-handwriting');
-            fullLogo.style.opacity = '0';
-            fullLogo.style.transition = 'opacity 0.25s ease-out';
-            
-            // Fade in initials logo with minimal delay
-            setTimeout(() => {
-                initialsLogo.style.opacity = '1';
-                initialsLogo.classList.add('show-initials');
-                
-                // Shrink the red box to fit the initials
-                setTimeout(() => {
-                    upponHillSection.classList.add('shrink-section');
-                    // Also shrink the navbar placeholder at the same time
-                    if (upponHillPlaceholder) {
-                        upponHillPlaceholder.classList.add('shrink-placeholder');
-                    }
-                }, 150); // Start shrinking slightly after initials appear
-                
-                // Hide full logo completely after transition
-                setTimeout(() => {
-                    fullLogo.style.display = 'none';
-                }, 300);
-                
-            }, 100); // Faster transition
-            
-        }, 1300); // Faster timing to match new animation duration (1.2s + small buffer)
-        
-    }, 1000); // Start 1 second after page load
+    // Show section without animation
+    upponHillSection.classList.add('show-section');
+    
+    // Add shrink section to fit the initials
+    upponHillSection.classList.add('shrink-section');
+    
+    // Shrink the placeholder if it exists
+    if (upponHillPlaceholder) {
+        upponHillPlaceholder.classList.add('shrink-placeholder');
+    }
+    
+    // No timeout or animation sequence needed
+}
 }
