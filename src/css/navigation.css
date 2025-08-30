@@ -232,7 +232,7 @@
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: clamp(0.8rem, 2vw, 1rem);
+  gap: clamp(0.5rem, 1.5vw, 0.8rem);
   min-width: 0; /* Allow shrinking */
 }
 
@@ -244,7 +244,7 @@
   letter-spacing: 1px;
   color: var(--primary-color);
   text-decoration: none;
-  font-size: clamp(0.7rem, 1.5vw, 0.85rem); /* Responsive font size */
+  font-size: clamp(0.65rem, 1.3vw, 0.75rem); /* Responsive font size */
   text-align: center;
   transition: all 0.3s ease;
   white-space: nowrap; /* Prevent text wrapping */
@@ -285,8 +285,8 @@
 
 /* Social Media Icons */
 .social-media img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   vertical-align: middle;
 }
