@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="src/css/forge-elements.css">
 </head>
 <body>
-    <header class="main-header">
-        <nav class="navbar">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="main-header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="logo-container">
                 <!-- Properly structured logo with image -->
                 <a href="#home" class="logo">
@@ -93,10 +94,20 @@
         <div class="hero-section">
             <img src="src/assets/logo/Insignia Logo Colour.png" alt="Insignia Logo">
             <h1>Insignia - Epic Adventure</h1>
-            <a href="https://store.steampowered.com/app/1127370/Insignia/" class="cta-steam">Wishlist on Steam</a>
+            <a href="https://store.steampowered.com/app/1127370/Insignia/" class="cta-steam" data-event="cta_click" data-cta="wishlist_steam">Wishlist on Steam</a>
         </div>
     </header>
-    <main>
+    <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#features-section">Features</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#updates">Updates</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+    <main role="main" id="main-content">
         <div class="hero-sections-wrapper">
             <div class="elevator-pitch">
                 <p>Accompany Armin on the adventure of a lifetime to discover the fate of his lost father, uncover the magical arts of blacksmithing, and rise to meet a destructive force threatening the kingdom he calls home.</p>
@@ -445,12 +456,14 @@
             <div class="footer-separator">♦</div>
             <p>&copy; 2025 Insignia. All rights reserved.</p>
             <p>Developed by Uppon Hill Studios</p>
-            <p>Privacy statement</p>
-            <p>Uppon Hill</p>
-            <p>Press</p>
+            <p><a href="privacy.html">Privacy Policy</a></p>
+            <p><a href="terms.html">Terms of Service</a></p>
+            <p><a href="careers.html">Careers</a></p>
+            <p><a href="press-kit.html">Press</a></p>
             <div class="mailing-list"></div>
         </div>
     </footer>
+    <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
     
     <script type="application/ld+json">
     {
@@ -469,6 +482,50 @@
         "applicationCategory": "Game"
     }
     </script>
+    
+    <script>
+    // Anchor-aware UX
+    document.addEventListener('DOMContentLoaded', () => {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update hash
+                    history.pushState(null, null, this.getAttribute('href'));
+                    // Focus on heading
+                    const heading = target.querySelector('h1, h2, h3');
+                    if (heading) heading.focus();
+                }
+            });
+        });
+
+        // Back to top visibility
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        // Section view analytics (placeholder)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Track section view
+                    console.log('Section viewed:', entry.target.id);
+                    // Replace with analytics code, e.g., gtag('event', 'section_view', { section: entry.target.id });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
+    });
+    </script>
+    
     <script src="src/js/ember-particle.js"></script>
     <script src="src/js/main.js"></script>
 </body>
