@@ -24,6 +24,7 @@
   top: 5px; /* Moved down by 5px from the top */
   left: 50%;
   transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 90%;
   max-width: 1280px;
   padding: 15px 2rem;
