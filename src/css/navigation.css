@@ -338,7 +338,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, top 0.5s ease-in-out, visibility 0.5s ease-in-out;
   opacity: 1; /* Make visible */
   transform: translateY(0); /* On screen */
 }
@@ -359,10 +359,10 @@
 
 /* Section States */
 .uppon-hill-section.uppon-hill-hidden {
-  top: -200px !important; /* Move completely above viewport */
+  top: -250px !important; /* Move completely above viewport - increased to match larger banner */
   opacity: 0 !important;
   visibility: hidden !important; /* Also hide from layout */
-  transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out !important;
+  transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out !important;
 }
 
 .uppon-hill-section.show-section {
