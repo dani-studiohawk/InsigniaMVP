@@ -5,7 +5,7 @@
 :root {
   /* Colors */
   --primary-color: #F1F8F5;
-  --secondary-color: #151724;
+  --secondary-color: #001325;
   --tertiary-color: #FFF6E8;
   
   /* Typography */
@@ -24,17 +24,10 @@
 /* Apply Montserrat as default font to body */
 body {
   font-family: var(--font-family);
+  background-color: var(--secondary-color);
 }
 
-/* Header base */
-header.main-header {
-  background-image: url('../assets/key-art/Insignia Capsule.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-}
+
 
 /* Skip link accessibility */
 .skip-link {

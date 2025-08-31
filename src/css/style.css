@@ -5,7 +5,7 @@
 :root {
   /* Colors */
   --primary-color: #FFEDD3;
-  --secondary-color: #151724;
+  --secondary-color: #001325;
   --tertiary-color: #FFF6E8;
   
   /* Typography */
@@ -436,29 +436,7 @@ header {
   }
 }
 
-/* Hero Section */
-.hero-section {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(400px, 90%);
-  text-align: center;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 0 20px;
-}
-
-.hero-section img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 0 15px rgba(255, 237, 211, 0.7));
-  animation: pulse 3s infinite alternate;
-}
+/* Hero Section - Moved to hero.css */
 
 @keyframes pulse {
   from {
@@ -491,19 +469,7 @@ header {
   opacity: 0.9;
 }
 
-/* Mobile Hero Adjustments */
-@media (max-width: 720px) {
-  .hero-section {
-    width: min(350px, 85%);
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section {
-    width: min(300px, 80%);
-    gap: 1rem;
-  }
+/* Mobile Hero Adjustments - Moved to hero.css */
   
   .cta-steam {
     width: 100%;

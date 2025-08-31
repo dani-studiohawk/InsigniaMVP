@@ -1,64 +1,158 @@
-/* Hero Section */
-.hero-section {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% - 100px));
-  width: min(400px, 90%);
-  text-align: center;
+
+/* Main Header Styles */
+.main-header {
+  background-color: var(--secondary-color);
+  width: 100%;
+  position: relative;
   z-index: 1;
+}
+
+.body {
+  background-color: var(--secondary-color);
+
+}
+
+
+/* New Hero Image Section */
+.hero-image-section {
+  width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  padding: 0 20px;
+  justify-content: center;
+  margin-top: 30px; /* Space for navbar */
+  background-image: url('../assets/key-art/Insignia Capsule Dani Edit.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow: visible;
+  background-color: var(--secondary-color); /* Added secondary background color */
 }
 
-.hero-section img {
-  width: 1%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 0 15px rgba(255, 237, 211, 0.7));
-  animation: pulse 3s infinite alternate;
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 2;
 }
 
-.cta-steam {
-  /* Inherits from .btn-base class in HTML */
-  display: inline-block;
-  padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+.hero-logo {
+  max-width: 50%;
+  margin-top: 16rem;
+}
+
+/* New Steam CTA Button */
+.cta-steam-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  background-color: #1a2a3f;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 4px;
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size: 1rem;
   transition: all 0.3s ease;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 2px solid #3c99dc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem auto 1rem; /* Increased top margin to move it down below the logo */
 }
 
-.cta-steam:hover {
-  transform: scale(1.05);
+.cta-steam-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.cta-steam-button:hover {
+  background-color: #234567;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.cta-steam-button:hover:before {
+  left: 100%;
 }
 
 /* Mobile Hero Adjustments */
+@media (max-width: 1024px) {
+  .hero-image-section {
+    margin-top: 3rem;
+    padding: 1.5rem 0.5rem;
+    height: 100vh;
+  }
+  
+  .cta-steam-button {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
 @media (max-width: 720px) {
-  .hero-section {
-    width: min(350px, 85%);
-    gap: 1.5rem;
+  .hero-image-section {
+    margin-top: 2.5rem;
+    padding: 1rem 0.5rem;
+    height: 100vh;
+  }
+  
+  .hero-content {
+    padding: 1rem;
+    top: 45vh;
+  }
+  
+  .cta-steam-button {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+    width: 90%;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-section {
-    width: min(300px, 80%);
-    gap: 1rem;
+  .hero-image-section {
+    margin-top: 2rem;
+    height: 100vh;
   }
   
-  .cta-steam {
-    width: 100%;
+  .hero-content {
+    padding: 0.75rem;
+    top: 40vh;
+  }
+  
+  .cta-steam-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    width: 90%;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+  .hero-image-section {
+    margin-top: 1.75rem;
+    height: 100vh;
+  }
+  
+  .cta-steam-button {
+    font-size: 0.8rem;
+    width: 95%;
+    padding: 8px 15px;
   }
 }

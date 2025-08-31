@@ -18,14 +18,27 @@
  *    - Small Mobile (max-width: 480px)
  **********************************************/
 
-.navbar {
+/* Full-width background for the navbar area */
+.nav-background {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Adjust as needed to match navbar height */
+  background-color: var(--secondary-color);
+  z-index: 999; /* Just below navbar z-index */
+}
+
+.navbar {
+  position: fixed;
+  border-radius: 5px; 
+  border: 2px solid #3c99dc;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   max-width: 1280px;
-  padding: 15px 2rem;
+  padding: 15px 1rem;
   display: flex;
   align-items: center;
   z-index: 1000;
@@ -38,50 +51,7 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
   will-change: transform;
-
-  /* knobs */
-  --stroke: 2px;      /* border thickness */
-  --color:  #e6e6e6;  /* border colour */
-  --chamfer: 14px;    /* corner cut size */
-  --inset: 5px;      /* how far inside the border sits */
-  --diamond: 12px;    /* diamond size */
 }
-
-/* chamfered inset border drawn on ::before */
-.navbar::before {
-  content: "";
-  position: absolute;
-  inset: var(--inset);
-  border: var(--stroke) solid var(--color);
-  clip-path: polygon(
-    var(--chamfer) 0,
-    calc(100% - var(--chamfer)) 0,
-    100% var(--chamfer),
-    100% calc(100% - var(--chamfer)),
-    calc(100% - var(--chamfer)) 100%,
-    var(--chamfer) 100%,
-    0 calc(100% - var(--chamfer)),
-    0 var(--chamfer)
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* inside diamonds as real spans */
-.navbar > .diamond {
-  position: absolute;
-  top: 50%;
-  width: var(--diamond);
-  height: var(--diamond);
-  transform: translateY(-50%) rotate(45deg);
-  background: var(--secondary-color);
-  border: var(--stroke) solid var(--color);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.navbar > .diamond.left  { left:  calc(var(--inset) - var(--diamond) / 2); }
-.navbar > .diamond.right { right: calc(var(--inset) - var(--diamond) / 2); }
 
 /* sticky + hidden states */
 .navbar.nav-sticky {
@@ -95,14 +65,7 @@
 }
 
 
-.navbar.nav-sticky {
-  transform: translate3d(-50%, 0, 0);
-}
 
-.navbar.nav-hidden {
-  transform: translate3d(-50%, -100%, 0);
-  opacity: 0;
-}
 
 /**********************************************
  * 2. MOBILE MENU TOGGLE
@@ -171,6 +134,74 @@
   33%  { filter: drop-shadow(0 0 6px rgba(255, 20, 147, 0.8)); }
   66%  { filter: drop-shadow(0 0 6px rgba(4, 244, 232, 0.8)); }
   100% { filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.8)); }
+}
+
+/* Individual Sparks */
+.spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgba(255, 165, 0, 0.8) 40%, rgba(255, 69, 0, 0.6) 70%, transparent 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.8), 0 0 12px rgba(255, 165, 0, 0.6);
+  animation: sparkFly 1.2s ease-out infinite;
+}
+
+/* Spark Positions */
+.spark:nth-child(1) {
+  top: 15px;
+  left: 30px;
+  animation-delay: 0s;
+  animation-duration: 1.1s;
+}
+
+.spark:nth-child(2) {
+  top: 25px;
+  left: 10px;
+  animation-delay: 0.2s;
+  animation-duration: 1.3s;
+}
+
+.spark:nth-child(3) {
+  top: 35px;
+  left: 45px;
+  animation-delay: 0.1s;
+  animation-duration: 1.0s;
+}
+
+.spark:nth-child(4) {
+  top: 20px;
+  left: 50px;
+  animation-delay: 0.3s;
+  animation-duration: 1.4s;
+}
+
+.spark:nth-child(5) {
+  top: 40px;
+  left: 20px;
+  animation-delay: 0.15s;
+  animation-duration: 1.2s;
+}
+
+.spark:nth-child(6) {
+  top: 10px;
+  left: 40px;
+  animation-delay: 0.25s;
+  animation-duration: 1.1s;
+}
+
+.spark:nth-child(7) {
+  top: 45px;
+  left: 35px;
+  animation-delay: 0.05s;
+  animation-duration: 1.3s;
+}
+
+.spark:nth-child(8) {
+  top: 30px;
+  left: 5px;
+  animation-delay: 0.35s;
+  animation-duration: 1.0s;
 }
 
 /* Sparks Container */
@@ -303,25 +334,43 @@
   text-align: center;
   transition: all 0.3s ease;
   white-space: nowrap; /* Prevent text wrapping */
+  position: relative;
+  overflow: hidden;
+  padding: 2px 5px;
+  border: 2px solid transparent;
+  border-radius: 4px;
 }
 
 .nav-links li a:hover {
   font-size: calc(1.1 * clamp(0.7rem, 1.5vw, 0.85rem));
   opacity: 0.8;
+  color: #ffffff;
+  transform: translateY(-2px);
+  background-color: #1a2a3f;
+  border: 2px solid #3c99dc;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
+
+
+
 
 /* Diamond Separators */
 .diamond-separator {
-  color: var(--primary-color);
-  font-size: 0.6rem;
-  opacity: 0.7;
+  background-image: url('../assets/images/diamond-2.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 12px;
+  height: 12px;
+  filter: brightness(0) invert(1); /* Make the SVG white */
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
   user-select: none;
   flex-shrink: 0; /* Prevent diamonds from shrinking */
-  min-width: 0.5rem; /* Minimal width for diamonds */
+  min-width: 12px; /* Minimal width for diamonds */
 }
 
 /**********************************************
@@ -334,7 +383,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   min-width: fit-content; /* Prevent shrinking below content size */
 }
 
@@ -352,9 +401,15 @@
   justify-content: center;
 }
 
+.social-media a:hover {
+  background-color: #c6afec;
+  border-radius: 3px;
+  padding: 2px;
+}
+
 .social-media a:hover img {
   transform: scale(1.1);
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Mobile Social Media (hidden by default) */
@@ -380,20 +435,18 @@
 /* Main Section */
 .uppon-hill-section {
   position: fixed;
-  height: 120px;
-  top: 0;
+  height: 78px;
+  top: 10px;
   right: calc((100vw - min(90vw, 1280px)) / 2); /* Align with right edge of navbar */
-  background-color: #A52A2A; /* Deep red background */
   padding: 15px 25px 15px 25px;
   z-index: 1001; /* Above the navbar */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   min-width: 140px;
-  opacity: 0; /* Start hidden */
-  transform: translateY(-100%); /* Start off-screen */
+  opacity: 1; /* Start visible since JavaScript animation is removed */
+  transform: translateY(0); /* Start in position */
 }
 
 /* Section States */
@@ -430,66 +483,13 @@
 /* Logo Image Base Styles */
 .uppon-hill-logo img {
   width: 60px;
-  height: 60px;
+  height: 48px;
   filter: brightness(0) invert(1); /* Make SVG white */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Full Logo Variant */
-.uppon-hill-full-logo {
-  width: 120px !important; /* Larger for full logo */
-  height: auto !important;
-  opacity: 0; /* Start hidden, JavaScript will control */
-  position: relative;
 }
 
 /* Initials Logo Variant */
 .uppon-hill-initials-logo {
-  opacity: 0; /* Start hidden, JavaScript will control */
-}
-
-/* Hover Effects */
-.uppon-hill-section:hover .uppon-hill-initials-logo,
-.uppon-hill-logo:hover .uppon-hill-initials-logo {
-  transform: translate(-50%, -50%) scale(1.1) !important;
-  opacity: 0.9 !important;
-}
-
-.uppon-hill-section:hover .uppon-hill-full-logo,
-.uppon-hill-logo:hover .uppon-hill-full-logo {
-  transform: translate(-50%, -50%) scale(1.02) !important;
-}
-
-/* Animation Classes */
-.uppon-hill-full-logo.show-handwriting {
-  animation: handwritingReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.uppon-hill-initials-logo.show-initials {
-  animation: fadeInInitials 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* Animations */
-@keyframes handwritingReveal {
-  0%   { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); opacity: 1; transform: translate(-50%, -50%) scale(0.98); }
-  8%   { clip-path: polygon(0 0, 12% 0, 12% 100%, 0 100%); transform: translate(-50%, -50%) scale(0.99); }
-  18%  { clip-path: polygon(0 0, 28% 0, 28% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
-  32%  { clip-path: polygon(0 0, 45% 0, 45% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
-  48%  { clip-path: polygon(0 0, 62% 0, 62% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
-  65%  { clip-path: polygon(0 0, 78% 0, 78% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
-  82%  { clip-path: polygon(0 0, 92% 0, 92% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.0); }
-  92%  { clip-path: polygon(0 0, 98% 0, 98% 100%, 0 100%); transform: translate(-50%, -50%) scale(1.01); }
-  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; transform: translate(-50%, -50%) scale(1.0); }
-}
-
-@keyframes fadeInInitials {
-  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-  60%  { opacity: 0.9; transform: translate(-50%, -50%) scale(1.05); }
-  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  opacity: 1; /* Make visible since animations are removed */
 }
 
 /**********************************************
@@ -759,9 +759,13 @@
 
   .nav-links li a {
     font-size: 0.85rem;
-    padding: 15px;
+    padding: 12px 8px;
     display: block;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 4px;
   }
 
   /* Social Media - Mobile Menu Version */
@@ -786,7 +790,7 @@
   }
 
   .social-media-mobile a:hover {
-    background-color: rgba(255, 237, 211, 0.1);
+    background-color: #c6afec;
     transform: scale(1.1);
   }
 
