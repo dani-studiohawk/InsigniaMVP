@@ -18,27 +18,82 @@
  *    - Small Mobile (max-width: 480px)
  **********************************************/
 
-/* 1. Base Navbar */
 .navbar {
   position: fixed;
   top: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%);
   width: 90%;
   max-width: 1280px;
   padding: 15px 2rem;
   display: flex;
   align-items: center;
   z-index: 1000;
-  background-color: var(--secondary-color);
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  /* GPU acceleration */
+  background: var(--secondary-color);
+  isolation: isolate;
+
+  /* gpu / rendering tweaks */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform-style: preserve-3d;
   will-change: transform;
+
+  /* knobs */
+  --stroke: 2px;      /* border thickness */
+  --color:  #e6e6e6;  /* border colour */
+  --chamfer: 14px;    /* corner cut size */
+  --inset: 5px;      /* how far inside the border sits */
+  --diamond: 12px;    /* diamond size */
 }
+
+/* chamfered inset border drawn on ::before */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: var(--inset);
+  border: var(--stroke) solid var(--color);
+  clip-path: polygon(
+    var(--chamfer) 0,
+    calc(100% - var(--chamfer)) 0,
+    100% var(--chamfer),
+    100% calc(100% - var(--chamfer)),
+    calc(100% - var(--chamfer)) 100%,
+    var(--chamfer) 100%,
+    0 calc(100% - var(--chamfer)),
+    0 var(--chamfer)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* inside diamonds as real spans */
+.navbar > .diamond {
+  position: absolute;
+  top: 50%;
+  width: var(--diamond);
+  height: var(--diamond);
+  transform: translateY(-50%) rotate(45deg);
+  background: var(--secondary-color);
+  border: var(--stroke) solid var(--color);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.navbar > .diamond.left  { left:  calc(var(--inset) - var(--diamond) / 2); }
+.navbar > .diamond.right { right: calc(var(--inset) - var(--diamond) / 2); }
+
+/* sticky + hidden states */
+.navbar.nav-sticky {
+  transform: translate3d(-50%, 0, 0);
+  top: 5px; /* maintain spacing when sticky */
+}
+
+.navbar.nav-hidden {
+  transform: translate3d(-50%, -100%, 0);
+  opacity: 0;
+}
+
 
 .navbar.nav-sticky {
   transform: translate3d(-50%, 0, 0);
@@ -232,7 +287,7 @@
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: clamp(0.8rem, 2vw, 1rem);
+  gap: clamp(1rem, 2vw, 1rem);
   min-width: 0; /* Allow shrinking */
 }
 
@@ -279,7 +334,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   min-width: fit-content; /* Prevent shrinking below content size */
 }
 
