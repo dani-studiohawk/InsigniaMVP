@@ -1,10 +1,10 @@
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Crimson+Pro:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Crimson+Pro:wght@400;500;600;700&display=swap');
 
 /* CSS Variables */
 :root {
   /* Colors */
-  --primary-color: #faecdf;
+  --white: #eaeaea;
   --secondary-color: #001325;
   --off-white: #fffcf6;
   --tertiary-color: #ffffff;
@@ -12,9 +12,11 @@
   --gold: #f39a4a;
 
   /* Typography */
-  --font-family: 'Montserrat', sans-serif;
+  --font-family: 'Inter', sans-serif;
   --font-family-secondary: 'Crimson Pro', serif;
-  --font-size: 12px;
+  --font-size: 14px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
 }
 
 /* Reset */
@@ -42,7 +44,7 @@ body {
 .skip-link:focus {
   position: static;
   background: var(--secondary-color);
-  color: var(--primary-color);
+  color: var(--white);
   padding: 10px;
   text-decoration: none;
 }
@@ -53,7 +55,7 @@ body {
   bottom: 20px;
   right: 20px;
   background: var(--secondary-color);
-  color: var(--primary-color);
+  color: var(--white);
   border: none;
   padding: 10px 15px;
   border-radius: 50%;

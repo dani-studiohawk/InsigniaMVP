@@ -7,14 +7,16 @@
   background-color: var(--secondary-color);
   z-index: 1;
   min-height: clamp(450px, 80vh, 450px);
+  margin-top: 100px;
 }
 
 .story-text {
   position: relative;
   max-width: 1280px;
   margin: 0 auto;
-  padding: clamp(2rem, 5vw, 3rem);
-  color: var(--primary-color);
+  padding-top: 20px;
+
+  color: var(--off-white);
   z-index: 2;
 }
 
@@ -23,7 +25,7 @@
   font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: 800;
   text-align: left;
-  margin-bottom: clamp(2rem, 6vw, 3rem);
+  margin-bottom: 10px;
   letter-spacing: 2px;
 }
 
@@ -37,6 +39,14 @@
 
 .story-text p:last-child {
   margin-bottom: 0;
+}
+
+.story-image {
+  display: block;
+  margin: 0 auto 2rem;
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
 }
 
 

@@ -1,16 +1,39 @@
 /* Character Gallery Section */
 .character-gallery-section {
   position: relative;
-  padding: clamp(80px, 15vw, 120px) 0;
+  padding: clamp(80px, 15vw, 120px) 20px;
   width: 100%;
-  background-color: var(--secondary-color);
   overflow: hidden;
 }
+
+/* wrapper holds the torn edges, text stays in an unmasked child */
+.characters-shell {
+  position: relative;
+  background-color: var(--off-white);
+    z-index: 5;                 /* higher than whatever the next section uses */
+}
+
+
+/* torn edges as siblings so they do not affect text AA */
+.characters-tear {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: var(--off-white);
+  mask-image: url('../assets/images/tear.svg');
+  mask-repeat: repeat-x;
+  mask-size: auto 100%;
+  mask-position: centre;
+  z-index: 0;
+}
+.characters-tear--top { top: -40px; }
+.characters-tear--bottom { bottom: -40px; transform: scaleY(-1); }
 
 .character-gallery-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   display: grid;
   grid-template-columns: 200px 1fr 400px;
   grid-template-areas: "portraits info display";

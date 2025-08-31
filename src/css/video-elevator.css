@@ -72,7 +72,7 @@ main {
   font-family: var(--font-family-secondary);
   font-size: clamp(1rem, 3vw, 1.2rem);
   line-height: 1.6;
-  color: var(--primary-color);
+  color: var(--white);
   font-weight: 400;
   position: relative;
   padding: 0 clamp(1rem, 6vw, 3rem);
@@ -83,7 +83,7 @@ main {
   content: '"';
   position: absolute;
   font-size: clamp(2.5rem, 8vw, 4rem);
-  color: var(--primary-color);
+  color: var(--white);
   opacity: 0.3;
 }
 

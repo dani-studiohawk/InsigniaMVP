@@ -45,8 +45,8 @@
   isolation: isolate;
 
   /* gpu / rendering tweaks */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
   backface-visibility: hidden;
   transform-style: preserve-3d;
   will-change: transform;
@@ -81,7 +81,7 @@
 .mobile-menu-toggle span {
   width: 25px;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: var(--white);
   margin: 3px 0;
   transition: 0.3s;
   transform-origin: center;

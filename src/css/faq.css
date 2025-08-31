@@ -17,7 +17,7 @@
   font-family: var(--font-family-secondary);
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary-color);
+  color: var(--white);
   margin-bottom: 4rem;
   letter-spacing: 2px;
 }
@@ -43,13 +43,13 @@
 }
 
 .faq-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: var(--white);
   border-radius: 4px;
   opacity: 0.7;
 }
 
 .faq-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color);
+  background: var(--white);
   opacity: 1;
 }
 

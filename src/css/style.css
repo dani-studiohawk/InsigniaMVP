@@ -1,15 +1,15 @@
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Crimson+Pro:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Crimson+Pro:wght@400;600&display=swap');
 
 /* CSS Variables */
 :root {
   /* Colors */
-  --primary-color: #FFEDD3;
+  --white: #FFEDD3;
   --secondary-color: #001325;
   --tertiary-color: #FFF6E8;
   
   /* Typography */
-  --font-family: 'Montserrat', sans-serif;
+  --font-family: 'Inter', sans-serif;
   --font-family-secondary: 'Crimson Pro', serif;
   --font-size: 12px;
 }
@@ -78,7 +78,7 @@ header {
 .mobile-menu-toggle span {
   width: 25px;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: var(--white);
   margin: 3px 0;
   transition: 0.3s;
   transform-origin: center;
@@ -135,7 +135,7 @@ header {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--primary-color);
+  color: var(--white);
   text-decoration: none;
   font-size: clamp(0.7rem, 1.5vw, 0.85rem); /* Responsive font size */
   text-align: center;
@@ -147,7 +147,7 @@ header {
 @media (min-width: 769px) {
   .nav-links li:not(.social-media-mobile)::after {
     content: "♦";
-    color: var(--primary-color);
+    color: var(--white);
     font-size: 0.6rem;
     opacity: 0.7;
     position: absolute;
@@ -451,7 +451,7 @@ header {
   display: inline-block;
   padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
   background-color: var(--secondary-color);
-  color: var(--primary-color);
+  color: var(--white);
   text-decoration: none;
   border-radius: 4px;
   font-family: var(--font-family);
@@ -544,7 +544,7 @@ main {
   font-family: var(--font-family-secondary);
   font-size: clamp(1rem, 3vw, 1.2rem);
   line-height: 1.6;
-  color: var(--primary-color);
+  color: var(--white);
   font-weight: 400;
   position: relative;
   padding: 0 clamp(1rem, 6vw, 3rem);
@@ -555,7 +555,7 @@ main {
   content: '"';
   position: absolute;
   font-size: clamp(2.5rem, 8vw, 4rem);
-  color: var(--primary-color);
+  color: var(--white);
   opacity: 0.3;
 }
 
@@ -593,7 +593,7 @@ main {
 .features-section {
   padding: 50px 20px; /* Add horizontal padding for mobile */
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--white);
 }
 
 .card-grid {
@@ -816,7 +816,7 @@ main {
   font-family: var(--font-family);
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: var(--primary-color);
+  color: var(--white);
 }
 
 .gallery-grid {
@@ -1088,7 +1088,7 @@ main {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px; /* Add horizontal padding for all sizes */
-  color: var(--primary-color);
+  color: var(--white);
   z-index: 2; /* Keep text above particles */
 }
 
@@ -1289,7 +1289,7 @@ main {
   font-family: var(--font-family-secondary);
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
-  color: var(--primary-color);
+  color: var(--white);
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1302,7 +1302,7 @@ main {
   font-family: var(--font-family);
   font-size: clamp(0.8rem, 2vw, 0.95rem);
   line-height: 1.6;
-  color: var(--primary-color);
+  color: var(--white);
   margin-bottom: 1.5rem;
 }
 
@@ -1662,7 +1662,7 @@ main {
   font-family: var(--font-family-secondary);
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary-color);
+  color: var(--white);
   margin-bottom: 4rem;
   letter-spacing: 2px;
 }
@@ -1688,13 +1688,13 @@ main {
 }
 
 .faq-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: var(--white);
   border-radius: 4px;
   opacity: 0.7;
 }
 
 .faq-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color);
+  background: var(--white);
   opacity: 1;
 }
 
@@ -1860,7 +1860,7 @@ main {
   position: absolute;
   top: 20px;
   right: 30px;
-  color: var(--primary-color);
+  color: var(--white);
   font-size: 2.5rem;
   font-weight: bold;
   cursor: pointer;
@@ -1907,7 +1907,7 @@ main {
 /* FOOTER STYLES */
 .footer {
   background-color: var(--secondary-color);
-  color: var(--primary-color);
+  color: var(--white);
   padding: 60px 0 20px;
   margin-top: 0;
 }
@@ -1934,7 +1934,7 @@ main {
 }
 
 .footer-separator {
-  color: var(--primary-color);
+  color: var(--white);
   font-size: 1rem;
   font-family: var(--font-family-secondary);
   padding: 1rem 0;
@@ -1950,7 +1950,7 @@ main {
 .footer-bottom p:last-child {
   margin-bottom: 0;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--white);
 }
 
 /* FOOTER RESPONSIVE STYLES */
