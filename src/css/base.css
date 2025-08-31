@@ -4,10 +4,13 @@
 /* CSS Variables */
 :root {
   /* Colors */
-  --primary-color: #F1F8F5;
+  --primary-color: #faecdf;
   --secondary-color: #001325;
-  --tertiary-color: #FFF6E8;
-  
+  --off-white: #fffcf6;
+  --tertiary-color: #ffffff;
+  --accent-blue: #3c99dc;
+  --gold: #f39a4a;
+
   /* Typography */
   --font-family: 'Montserrat', sans-serif;
   --font-family-secondary: 'Crimson Pro', serif;

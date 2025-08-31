@@ -19,14 +19,17 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem 0;
+  padding-top: 0;
+  padding: 0rem 3rem 20px;
+  margin-bottom: 100px;
 }
 
 .video-embed {
   position: relative;
-  width: min(60%, 800px);
-  padding-top: 33.75%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) * 60% = 33.75% */
+  width: min(87%, 1162px);
+  aspect-ratio: 200 / 113;
   margin: 0 auto;
+  
 }
 
 .video-embed iframe {
@@ -35,7 +38,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  border: none;
+  border: 2px solid var(--gold);
   /* Add parameters to URL in HTML: ?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1 */
 }
 
@@ -47,14 +50,12 @@ main {
 @media (max-width: 720px) {
   .video-embed {
     width: 85%;
-    padding-top: 47.8125%; /* 85% * (9/16) = 47.8125% */
   }
 }
 
 @media (max-width: 480px) {
   .video-embed {
     width: 95%;
-    padding-top: 53.4375%; /* 95% * (9/16) = 53.4375% */
   }
 }
 

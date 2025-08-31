@@ -4,7 +4,6 @@
   background-color: var(--secondary-color);
   width: 100%;
   position: relative;
-  z-index: 1;
 }
 
 .body {
@@ -21,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 30px; /* Space for navbar */
+  margin-top: 40px; /* Space for navbar */
   background-image: url('../assets/key-art/Insignia Capsule Dani Edit.png');
   background-size: cover;
   background-position: center;
@@ -52,7 +51,7 @@
   align-items: center;
   justify-content: center;
   padding: 15px 30px;
-  background-color: #1a2a3f;
+  background-color: var(--secondary-color);
   color: #ffffff;
   text-decoration: none;
   border-radius: 4px;
@@ -60,7 +59,7 @@
   font-weight: 700;
   font-size: 1rem;
   transition: all 0.3s ease;
-  border: 2px solid #3c99dc;
+  border: 2px solid #f39a4a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -76,14 +75,14 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 118, 0.2), transparent);
   transition: left 0.7s ease;
 }
 
 .cta-steam-button:hover {
-  background-color: #234567;
+  background-color: var(--gold);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 193, 118, 0.2);
 }
 
 .cta-steam-button:hover:before {

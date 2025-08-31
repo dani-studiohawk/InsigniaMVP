@@ -1,15 +1,49 @@
 /* Features Section */
 .features-section {
-  padding: 50px 20px; /* Add horizontal padding for mobile */
+  padding: 3rem 20px; /* Add horizontal padding for mobile */
   width: 100%;
-  background-color: var(--secondary-color);
+  background-color: var(--off-white);
+  position: relative;
+}
+
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: -40px; /* Increase overlap upwards */
+  left: 0;
+  width: 100%;
+  height: 100px; /* Make taller so it covers fully */
+  background-color: var(--off-white);
+  mask-image: url('../assets/images/tear.svg');
+  mask-repeat: repeat-x;
+  mask-size: auto 100%;
+  mask-position: center;
+  z-index: 2;
+}
+
+.features-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: var(--off-white);
+  mask-image: url('../assets/images/tear.svg');
+  mask-repeat: repeat-x;
+  mask-size: auto 100%;
+  mask-position: center;
+  z-index: 2;
+  transform: scaleY(-1);
 }
 
 .card-grid {
+  position: relative;
+  z-index: 3;
   display: grid;
   grid-template-columns: 1fr; /* Single column by default - mobile */
   gap: 2rem;
-  width: min(1280px, 95%);
+  width: min(1152px, 85%);
   margin: 0 auto;
   justify-content: center;
   align-items: stretch;
@@ -23,25 +57,31 @@
   }
 }
 
-.card {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  overflow: hidden;
+/* outer card box – no ornate border here */
+.card-content {
+  background-color: var(--primary-color);
+  box-shadow: 0 8px 8px -4px rgba(79, 62, 33, 0.223);
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-width: 0; /* Prevent content from breaking grid */
+  /* no border, no padding */
 }
 
-.card-content {
-  background-color: var(--tertiary-color);
-  border: clamp(8px, 1.5vw, 15px) solid var(--tertiary-color); /* Medium responsive border */
-  box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.2);
+/* draws the border and insets it away from the edges */
+.card-inner {
+
+  margin: 8px;                     /* controls the inset */
+  border: clamp(8px, 1.5vw, 14px) solid transparent;  /* style is required */
+  border-image: url('../assets/images/filagree-border.svg')
+                14 / clamp(8px, 1.5vw, 14px);
+  border-image-repeat: stretch;                        /* or round if needed */
+  padding: clamp(16px, 2vw, 20px);                     /* space inside frame */
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+  color: var(--tertiary-color); /* <-- this changes the SVG border colour */
 }
+
 
 .card h2 {
   text-align: center;
@@ -49,16 +89,17 @@
   font-style: bold;
   font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font size - reduced */
   font-weight: bold;
-  margin: 20px 0 15px;
+  margin: 10px 0 5px;
   color: var(--secondary-color);
 }
 
 .card p {
+  text-align: center;
   font-family: var(--font-family);
   font-size: clamp(0.8rem, 1.5vw, 0.9rem); /* Responsive font size - reduced */
   line-height: 1.5;
-  padding: 0 0 clamp(15px, 3vw, 30px); /* Only bottom padding */
-  text-align: left;
+  margin: 0.5vw;
+  padding: 0vw 1.5vw;
   color: var(--secondary-color);
   flex-grow: 1;
 }
@@ -66,30 +107,33 @@
 /* Feature Gallery Component (used in feature cards) */
 .feature-gallery {
   position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-  height: 0;
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
   overflow: hidden;
+  padding-bottom: 28px;   /* ≈ diamond height + a little gap */
 }
 
 .feature-gallery-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   transition: transform 0.3s ease-in-out;
   -webkit-user-select: none;
   user-select: none;
   touch-action: pan-y pinch-zoom;
+  margin-top: 22px; 
 }
 
 .feature-gallery img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   flex-shrink: 0;
+  border: 10px;
+  border-style: solid; /* required */
+  border-image: url('../assets/images/filagree-border.svg') 14 / clamp(8px, 1.5vw, 14px);
+  box-sizing: border-box;
 }
 
 .feature-gallery-nav {
@@ -142,10 +186,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
+  height: 15px;
   width: 80px;
   gap: 12px;
-  background: var(--tertiary-color);
+  background: transparent;
   border: none;
 }
 
@@ -153,15 +197,22 @@
   width: 8px;
   height: 8px;
   background-color: var(--secondary-color);
-  transform: rotate(45deg);
+  -webkit-mask-image: url('../assets/images/diamond-2.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url('../assets/images/diamond-2.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
   transition: all 0.3s ease;
   pointer-events: auto;
   cursor: pointer;
 }
 
 .diamond-dot.active {
-  background-color: rgb(132, 132, 132);
-  transform: rotate(45deg) scale(1.25);
+  background-color: var(--gold);
+  transform: scale(2);
 }
 
 /* Mobile adjustments for feature gallery */

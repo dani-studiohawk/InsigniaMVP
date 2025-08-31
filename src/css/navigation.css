@@ -32,7 +32,6 @@
 .navbar {
   position: fixed;
   border-radius: 5px; 
-  border: 2px solid #3c99dc;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
@@ -328,7 +327,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--primary-color);
+  color: var(--tertiary-color);
   text-decoration: none;
   font-size: clamp(0.7rem, 1.5vw, 0.85rem); /* Responsive font size */
   text-align: center;
@@ -344,7 +343,7 @@
 .nav-links li a:hover {
   font-size: calc(1.1 * clamp(0.7rem, 1.5vw, 0.85rem));
   opacity: 0.8;
-  color: #ffffff;
+  color: var(--gold);
   transform: translateY(-2px);
   background-color: #1a2a3f;
   border: 2px solid #3c99dc;
@@ -354,23 +353,15 @@
 
 
 
-
-/* Diamond Separators */
 .diamond-separator {
   background-image: url('../assets/images/diamond-2.svg');
-  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   width: 12px;
   height: 12px;
-  filter: brightness(0) invert(1); /* Make the SVG white */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  user-select: none;
-  flex-shrink: 0; /* Prevent diamonds from shrinking */
-  min-width: 12px; /* Minimal width for diamonds */
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 /**********************************************
