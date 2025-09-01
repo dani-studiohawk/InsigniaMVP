@@ -69,16 +69,16 @@ html {
 /* draws the border and insets it away from the edges */
 .card-inner {
 
-  margin: 8px;                     /* controls the inset */
+  margin: 20px;                     /* controls the inset */
   border: clamp(8px, 1.5vw, 14px) solid transparent;  /* style is required */
   border-image: url('../assets/images/filagree-border.svg')
                 14 / clamp(8px, 1.5vw, 14px);
   border-image-repeat: stretch;                        /* or round if needed */
-  padding: clamp(16px, 2vw, 20px);                     /* space inside frame */
   display: flex;
   flex-direction: column;
   flex: 1;
   color: var(--tertiary-color); /* <-- this changes the SVG border colour */
+  padding-bottom: 20px;
 }
 
 
@@ -109,7 +109,7 @@ html {
 /* Feature Gallery Component (used in feature cards) */
 .feature-gallery {
   position: relative;
-  width: 88%;
+  width: 100%;
   margin: 0 auto;
   height: auto;
   overflow: hidden;
@@ -125,17 +125,12 @@ html {
   -webkit-user-select: none;
   user-select: none;
   touch-action: pan-y pinch-zoom;
-  margin-top: 22px; 
 }
 
 .feature-gallery img {
   width: 100%;
   height: auto;
   flex-shrink: 0;
-  border: 10px;
-  border-style: solid; /* required */
-  border-image: url('../assets/images/filagree-border.svg') 14 / clamp(8px, 1.5vw, 14px);
-  box-sizing: border-box;
 }
 
 .feature-gallery-nav {
