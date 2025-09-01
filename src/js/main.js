@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // FAQ Section Horizontal Scroll with Mouse Wheel
-    const faqScrollWrapper = document.querySelector('.faq-scroll-wrapper');
+    const faqScrollWrapper = document.querySelector('.faq-carousel-scroll-wrapper');
     
     if (faqScrollWrapper) {
         faqScrollWrapper.addEventListener('wheel', (event) => {

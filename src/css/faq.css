@@ -1,225 +1,171 @@
-/* FAQ Section */
-.faq-section {
-  position: relative;
-  padding: clamp(80px, 15vw, 120px) 0 clamp(100px, 20vw, 140px) 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-/* wrapper holds the torn edges, text stays in an unmasked child */
-.faq-shell {
-  position: relative;
-  background-color: var(--off-white);
-  z-index: 1;
-}
-
-/* torn edges as siblings so they do not affect text AA */
-.faq-tear {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: var(--off-white);
-  mask-image: url('../assets/images/tear.svg');
-  mask-repeat: repeat-x;
-  mask-size: auto 100%;
-  mask-position: centre;
-  z-index: 0; /* Lower than the container content */
-}
-.faq-tear--top { top: -40px; }
-.faq-tear--bottom { bottom: -70px; transform: scaleY(-1); }
-
+/* FAQ Page Styles */
 .faq-container {
-  position: relative;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 20px;
-  z-index: 2; /* Higher z-index to appear above tears */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.faq-section h2 {
-  text-align: center;
-  font-family: var(--font-family-secondary);
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--white);
-  margin-bottom: 4rem;
-  letter-spacing: 2px;
+.faq-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
 }
 
-.faq-scroll-wrapper {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 20px 0 5px;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  z-index: 3; /* Higher than the container */
-  position: relative; /* Added to ensure z-index works */
+.faq-container h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
-/* Custom Scrollbar */
-.faq-scroll-wrapper::-webkit-scrollbar {
-  height: 8px;
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
-.faq-scroll-wrapper::-webkit-scrollbar-track {
-  background: var(--light-gold);
-  border-radius: 4px;
+.faq-item:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
 }
 
-.faq-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 4px;
-  opacity: 0.7;
+.faq-question {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 25px;
+    cursor: pointer;
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: none;
+    text-align: left;
+    width: 100%;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.faq-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-  background: var(--light-gold);
-  opacity: 1;
+.faq-question:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
 }
 
-.faq-card {
-  flex: 0 0 320px;
-  background-color: var(--light-gold);
-  position: relative;
-  min-height: 280px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: none;
-  z-index: 4; /* Higher z-index to appear above tears */
+.faq-question:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
 
-.faq-card-content {
-  padding: 40px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  margin: 8px;                     /* controls the inset */
-  border: clamp(8px, 1.5vw, 14px) solid transparent;  /* style is required */
-  border-image: url('../assets/images/filagree-border.svg')
-                14 / clamp(8px, 1.5vw, 14px);
-  border-image-repeat: stretch;                        /* or round if needed */
-  padding: clamp(16px, 2vw, 20px);                     /* space inside frame */
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  color: var(--tertiary-color); /* <-- this changes the SVG border colour */
-
+.faq-question::after {
+    content: '+';
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: white;
+    margin-left: 15px;
 }
 
-.faq-card h3 {
-  font-family: var(--font-family-secondary);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  margin-bottom: 15px;
-  line-height: 1.3;
-  text-align: center;
+.faq-question.active::after {
+    content: '−';
+    transform: rotate(180deg);
 }
 
-.faq-divider-line {
-  position: relative;
-  width: 100%;
-  height: 2px;
-  background-color: var(--gold);
-  margin: 10px 0 25px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
 }
 
-.faq-separator {
-  background-color: var(--light-gold);
-  background-image: url('../assets/images/diamond-2.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  width: 20px;
-  height: 20px;
-  padding: 0 20px;
-  opacity: 1;
-  position: relative;
-  z-index: 2;
-  font-size: 0; /* Hide the diamond character */
+.faq-answer.show {
+    max-height: 500px;
+    padding: 25px;
 }
 
-.faq-card p {
-  font-family: var(--font-familyy);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--secondary-color);
-  margin-bottom: 0.8rem;
-  flex-grow: 1;
-  text-align: center;
+.faq-answer p {
+    margin: 0 0 15px 0;
+    line-height: 1.7;
+    color: #495057;
+    font-size: 1em;
 }
 
-.faq-card p:last-child {
-  margin-bottom: 0;
-}
- 
-/* Decorative Accent Line */
-.faq-accent-line {
-  position: absolute;
-  right: 17px;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background-color: var(--gold);
-  pointer-events: none;
-  box-shadow: -4px 0px 8px rgba(250, 212, 159, 0.766);
+.faq-answer p:last-child {
+    margin-bottom: 0;
 }
 
 /* Responsive Design */
-@media (max-width: 720px) {
-  .faq-section {
-    padding: 60px 0 80px 0;
-  }
-  
-  .faq-section h2 {
-    font-size: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .faq-card {
-    flex: 0 0 280px;
-    min-height: 260px;
-  }
-  
-  .faq-card-content {
-    padding: 30px;
-  }
-  
-  .faq-card h3 {
-    font-size: 1rem;
-  }
-  
-  .faq-card p {
-    font-size: 0.9rem;
-  }
-  
-  .faq-accent-line {
-    display: none;
-  }
+@media (max-width: 768px) {
+    .faq-container {
+        padding: 20px 15px;
+    }
+
+    .faq-container h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .faq-question {
+        padding: 18px 20px;
+        font-size: 1em;
+    }
+
+    .faq-answer.show {
+        padding: 20px;
+    }
+
+    .faq-answer p {
+        font-size: 0.95em;
+    }
 }
 
 @media (max-width: 480px) {
-  .faq-container {
-    padding: 0 15px;
-  }
-  
-  .faq-card {
-    flex: 0 0 260px;
-    min-height: 240px;
-  }
-  
-  .faq-card-content {
-    padding: 25px;
-  }
-  
-  .faq-scroll-wrapper {
-    gap: 1rem;
-  }
+    .faq-container h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .faq-question {
+        padding: 15px 18px;
+        font-size: 0.95em;
+    }
+
+    .faq-answer.show {
+        padding: 18px;
+    }
+}
+
+/* Animation for smooth transitions */
+.faq-item {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.2s; }
+.faq-item:nth-child(3) { animation-delay: 0.3s; }
+.faq-item:nth-child(4) { animation-delay: 0.4s; }
+.faq-item:nth-child(5) { animation-delay: 0.5s; }
+.faq-item:nth-child(6) { animation-delay: 0.6s; }
+.faq-item:nth-child(7) { animation-delay: 0.7s; }
+.faq-item:nth-child(8) { animation-delay: 0.8s; }
+.faq-item:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
