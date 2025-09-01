@@ -27,13 +27,15 @@
   mask-position: centre;
   z-index: 0;
 }
-.characters-tear--top { top: -40px; }
-.characters-tear--bottom { bottom: -40px; transform: scaleY(-1); }
+.characters-tear--top { top: -90px; }
+.characters-tear--bottom { bottom: -90px; transform: scaleY(-1); }
 
 .character-gallery-container {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 50px auto 0 auto;
   padding: 0;
+  position: relative;
+  z-index: 10;
   display: grid;
   grid-template-columns: 200px 1fr 400px;
   grid-template-areas: "portraits info display";

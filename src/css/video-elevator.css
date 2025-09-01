@@ -63,7 +63,7 @@ main {
 .elevator-pitch {
   width: 100%;
   max-width: 800px;
-  padding: clamp(2rem, 6vw, 4rem) 1rem;
+  padding: 0 1rem clamp(2rem, 6vw, 4rem);
   text-align: center;
   margin: 0 auto;
 }
@@ -100,7 +100,7 @@ main {
 /* Mobile Elevator Pitch */
 @media (max-width: 720px) {
   .elevator-pitch {
-    padding: clamp(3rem, 10vw, 6rem) 1.5rem;
+    padding: 0 1.5rem clamp(3rem, 10vw, 6rem);
   }
   
   .elevator-pitch p {
@@ -110,7 +110,7 @@ main {
 
 @media (max-width: 480px) {
   .elevator-pitch {
-    padding: clamp(2rem, 8vw, 4rem) 1rem;
+    padding: 0 1rem clamp(2rem, 8vw, 4rem);
   }
   
   .elevator-pitch p {

@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px; /* Space for navbar */
+
   background-image: url('../assets/key-art/Insignia Capsule Dani Edit.png');
   background-size: cover;
   background-position: center;
@@ -42,7 +42,7 @@
 
 .hero-logo {
   max-width: 50%;
-  margin-top: 16rem;
+  margin-top: 0rem;
 }
 
 /* New Steam CTA Button */

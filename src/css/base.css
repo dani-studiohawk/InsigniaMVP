@@ -10,6 +10,7 @@
   --tertiary-color: #ffffff;
   --accent-blue: #3c99dc;
   --gold: #f39a4a;
+  --light-gold: rgb(255, 247, 233);
 
   /* Typography */
   --font-family: 'Inter', sans-serif;
