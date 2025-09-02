@@ -277,21 +277,18 @@ html {
   background-repeat: no-repeat;
   opacity: 0.1;
   z-index: 0;
-  width: 600px;
-  height: 400px;
+  width: 1000px;
+  height: 800px;
 }
 
 .swoosh-1 {
   top: 5%;
-  left: 5%;
+  left: 60%;
+  transform: translateX(-25%);
 }
 
 .swoosh-2 {
-  top: 25%;
-  right: 5%;
-}
-
-.swoosh-3 {
-  bottom: 5%;
-  left: 30%;
+  top: 35%;
+  left: 40%;
+  transform: translateX(-55%) scaleY(-1);
 }
