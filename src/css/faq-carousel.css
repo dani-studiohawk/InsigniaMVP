@@ -11,6 +11,9 @@
   position: relative;
   background-color: var(--off-white);
   z-index: 1;
+  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
+  background-repeat: repeat;
+  background-size: 200px;
 }
 
 /* torn edges as siblings so they do not affect text AA */
@@ -25,6 +28,9 @@
   mask-size: auto 100%;
   mask-position: centre;
   z-index: 0; /* Lower than the container content */
+  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
+  background-repeat: repeat;
+  background-size: 200px;
 }
 .faq-carousel-tear--top { top: -40px; }
 .faq-carousel-tear--bottom { bottom: -70px; transform: scaleY(-1); }

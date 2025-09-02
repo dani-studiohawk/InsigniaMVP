@@ -83,7 +83,24 @@
 
     } catch (e) {
       console.error("Playlist carousel failed:", e);
-      track.innerHTML = `<p style="color:var(--white);opacity:.8">Could not load videos.</p>`;
+      // Show helpful fallback message
+      if (e.message.includes('403') || e.message.includes('forbidden')) {
+        track.innerHTML = `
+          <article class="update-card">
+            <a class="card-media" href="https://www.youtube.com/playlist?list=PLLdxW--S_0h4zWBPwp-GO2FwzI2ArYYEr" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/placeholder.jpg" alt="YouTube Playlist">
+            </a>
+            <div class="card-body">
+              <p class="card-meta">API Restricted · YouTube</p>
+              <h3 class="card-title">Development Videos</h3>
+              <p class="card-excerpt">View our latest development videos on YouTube</p>
+            </div>
+          </article>
+          <p style="color:var(--white);opacity:.6;font-size:0.9em;margin-top:1rem;">Note: API access blocked locally. Check Google Cloud Console referrer settings for production.</p>
+        `;
+      } else {
+        track.innerHTML = `<p style="color:var(--white);opacity:.8">Could not load videos.</p>`;
+      }
     }
   }
 
@@ -133,7 +150,24 @@
         </article>`;
     } catch (err) {
       console.error("Live card failed:", err);
-      grid.innerHTML = `<p style="color:var(--white);opacity:.8">Could not load livestream.</p>`;
+      // Show helpful fallback message
+      if (err.message.includes('403') || err.message.includes('forbidden')) {
+        grid.innerHTML = `
+          <article class="update-card">
+            <a class="card-media" href="https://www.youtube.com/@indietaleslive" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/placeholder.jpg" alt="YouTube Channel">
+            </a>
+            <div class="card-body">
+              <p class="card-meta">API Restricted · YouTube</p>
+              <h3 class="card-title">Live Development</h3>
+              <p class="card-excerpt">Follow our development streams on YouTube</p>
+            </div>
+          </article>
+          <p style="color:var(--white);opacity:.6;font-size:0.9em;margin-top:1rem;">Note: API access blocked locally. Check Google Cloud Console referrer settings for production.</p>
+        `;
+      } else {
+        grid.innerHTML = `<p style="color:var(--white);opacity:.8">Could not load livestream.</p>`;
+      }
     }
   }
 

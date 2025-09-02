@@ -12,7 +12,22 @@
   width: 100%;
   background-color: var(--off-white);
   z-index: 2;
+  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
+  background-repeat: repeat;
+  background-size: 200px;
 }
+
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Semi-transparent white tint - adjust opacity as needed */
+  z-index: 1;
+}
+
 
 /* torn edges as siblings so they do not affect text AA */
 .features-tear {
@@ -20,7 +35,9 @@
   left: 0;
   width: 100%;
   height: 100px;
-  background-color: var(--off-white);
+  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
+  background-repeat: repeat;
+  background-size: 200px;
   mask-image: url('../assets/images/tear.svg');
   mask-repeat: repeat-x;
   mask-size: auto 100%;
@@ -69,7 +86,7 @@ html {
 /* draws the border and insets it away from the edges */
 .card-inner {
 
-  margin: 20px;                     /* controls the inset */
+  margin: 10px;                     /* controls the inset */
   border: clamp(8px, 1.5vw, 14px) solid transparent;  /* style is required */
   border-image: url('../assets/images/filagree-border.svg')
                 14 / clamp(8px, 1.5vw, 14px);
