@@ -1,0 +1,22 @@
+[
+  {
+    "id": "2025-10-02-new-characters",
+    "type": "post",
+    "title": "New characters added",
+    "date": "2025-10-02",
+    "tags": ["devlog"],
+    "excerpt": "Exciting new characters have been added to Insignia, bringing fresh stories and gameplay.",
+    "url": "updates/2025-10-02-new-characters.html",
+    "image": "src/assets/updates/new-characters.png"
+  },
+  {
+    "id": "2025-09-02-new-abilities",
+    "type": "post",
+    "title": "New character abilities in development",
+    "date": "2025-09-02",
+    "tags": ["devlog"],
+    "excerpt": "Work continues on expanding Armin’s combat kit and the blacksmithing loop.",
+    "url": "updates/2025-09-02-new-abilities.html",
+    "image": "src/assets/updates/new-abilities.png"
+  }
+]

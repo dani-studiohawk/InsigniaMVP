@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="src/css/video-elevator.css">
     <link rel="stylesheet" href="src/css/faq-carousel.css">
+    <link rel="stylesheet" href="src/css/index-updates.css">
 </head>
 
 <body>
@@ -121,20 +122,44 @@
             </section>
     </header>
     <main role="main" id="main-content">
+  <section class="video-section" id="trailer">
+    <div class="elevator-pitch">
+    <p>Accompany Armin on the adventure of a lifetime to discover the fate of his lost father, uncover the
+      magical arts of blacksmithing, and rise to meet a destructive force threatening the kingdom he calls
+      home.</p>
+  </div>
+    <div class="trailer-header">
+      <span class="premiere-tag">WATCH THE TRAILER</span>
+    </div>
 
-        <div class="elevator-pitch">
-            <p>Accompany Armin on the adventure of a lifetime to discover the fate of his lost father, uncover the
-                magical arts of blacksmithing, and rise to meet a destructive force threatening the kingdom he calls
-                home.</p>
-        </div>
-        <div class="video-section">
-            <div class="video-embed">
-                <iframe
-                    src="https://www.youtube-nocookie.com/embed/2tYQzPXfff8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1"
-                    allow="autoplay" frameborder="0" allowfullscreen>
-                </iframe>
-            </div>
-        </div>
+    <div class="video-embed">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/2tYQzPXfff8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1"
+        allow="autoplay" frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section id="updates" class="updates-section">
+  <div class="updates-header">
+    <h2>Updates</h2>
+  </div>
+
+   <div id="update-grid"
+       class="update-grid"
+       data-playlist-id="PLLdxW--S_0h5eSgnpeUFt5jGN2nnRN7oh"
+       data-max="3"></div>
+
+
+  <div class="updates-footer">
+    <a class="btn-more" href="updates.html">See all updates</a>
+  </div>
+<script src="src/js/config.js"></script>
+<script src="src/js/index-updates.js" defer></script>
+</section>
+
+
+
 
 <!-- Features wrapper with tears kept as siblings -->
 <section class="features-shell">
@@ -541,7 +566,6 @@
             <p>Developed by Uppon Hill Studios</p>
             <p><a href="privacy.html">Privacy Policy</a></p>
             <p><a href="terms.html">Terms of Service</a></p>
-            <p><a href="careers.html">Careers</a></p>
             <p><a href="press-kit.html">Press</a></p>
             <div class="mailing-list"></div>
         </div>
@@ -609,7 +633,6 @@
         });
     </script>
 
-    <script src="src/js/ember-particle.js"></script>
     <script src="src/js/main.js"></script>
 </body>
 

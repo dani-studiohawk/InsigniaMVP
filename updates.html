@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia | Updates</title>
+    <meta name="description" content="Latest updates and news for Insignia, an epic pixel art action platformer. Follow development progress, watch gameplay videos, and stay updated on the latest features.">
+    <link rel="canonical" href="https://dani-studiohawk.github.io/InsigniaMVP/updates.html">
+    <meta property="og:title" content="Insignia | Updates">
+    <meta property="og:description" content="Latest updates and news for Insignia, an epic pixel art action platformer. Follow development progress, watch gameplay videos, and stay updated on the latest features.">
+    <meta property="og:image" content="https://dani-studiohawk.github.io/InsigniaMVP/src/assets/logo/Insignia%20Logo%20Colour.png">
+    <meta property="og:url" content="https://dani-studiohawk.github.io/InsigniaMVP/updates.html">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/updates.css">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <span class="diamond left" aria-hidden="true"></span>
+            <span class="diamond right" aria-hidden="true"></span>
+            <div class="logo-container">
+                <!-- Properly structured logo with image -->
+                <a href="index.html" class="logo">
+                    <img src="src/assets/logo/Insignia Logo Mono.png" alt="Insignia Logo">
+                </a>
+                <!-- Sparks Container -->
+                <div class="sparks-container">
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                    <div class="spark"></div>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#features-section">FEATURES</a></li>
+                <li class="diamond-separator" aria-hidden="true"></li>
+                <li><a href="index.html#story">STORY</a></li>
+                <li class="diamond-separator" aria-hidden="true"></li>
+                <li><a href="index.html#gallery">GALLERY</a></li>
+                <li class="diamond-separator" aria-hidden="true"></li>
+                <li><a href="index.html#updates">UPDATES</a></li>
+                <li class="diamond-separator" aria-hidden="true"></li>
+                <li><a href="press-kit.html">PRESS&nbsp;KIT</a></li>
+                <li class="diamond-separator" aria-hidden="true"></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li class="social-media-mobile">
+                    <a href="https://x.com/adamcyounis" target="_blank">
+                        <img src="src/assets/socialMedia/x.svg" alt="X">
+                    </a>
+                    <a href="https://discord.com/invite/9WkRG7s" target="_blank">
+                        <img src="src/assets/socialMedia/discord.svg" alt="Discord">
+                    </a>
+                    <a href="https://www.youtube.com/adamcyounis" target="_blank">
+                        <img src="src/assets/socialMedia/youtube.svg" alt="YouTube">
+                    </a>
+                    <a href="https://www.twitch.tv/adamcyounis" target="_blank">
+                        <img src="src/assets/socialMedia/twitch.svg" alt="Twitch">
+                    </a>
+                    <a href="https://store.steampowered.com/app/1127370/Insignia/" target="_blank">
+                        <img src="src/assets/socialMedia/steam.svg" alt="Steam">
+                    </a>
+                </li>
+            </ul>
+            <div class="social-media">
+                <a href="https://x.com/adamcyounis" target="_blank">
+                    <img src="src/assets/socialMedia/x.svg" alt="X">
+                </a>
+                <a href="https://discord.com/invite/9WkRG7s" target="_blank">
+                    <img src="src/assets/socialMedia/discord.svg" alt="Discord">
+                </a>
+                <a href="https://www.youtube.com/adamcyounis" target="_blank">
+                    <img src="src/assets/socialMedia/youtube.svg" alt="YouTube">
+                </a>
+                <a href="https://www.twitch.tv/adamcyounis" target="_blank">
+                    <img src="src/assets/socialMedia/twitch.svg" alt="Twitch">
+                </a>
+                <a href="https://store.steampowered.com/app/1127370/Insignia/" target="_blank">
+                    <img src="src/assets/socialMedia/steam.svg" alt="Steam">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+<main id="main-content">
+  <section class="updates-section" aria-labelledby="updates-title">
+    <div class="updates-header">
+      <h1 id="updates-title">Updates</h1>
+      <!-- optional: simple tag filter later -->
+    </div>
+
+    <div id="local-updates-grid"
+         class="update-grid"
+         data-src="src/data/updates.json"
+         data-limit="0"></div> <!-- 0 = show all; set to 6 if you want a cap -->
+
+    <div class="updates-footer">
+      <a class="btn-more" href="index.html#updates">Back to home</a>
+    </div>
+  </section>
+</main>
+
+<!-- Load after the grid -->
+<script src="src/js/updates-local.js" defer></script>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="src/assets/logo/Insignia Logo Colour.png" alt="Insignia Logo">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-separator">♦</div>
+            <p>&copy; 2025 Insignia. All rights reserved.</p>
+            <p>Developed by Uppon Hill Studios</p>
+            <p><a href="privacy.html">Privacy Policy</a></p>
+            <p><a href="terms.html">Terms of Service</a></p>
+            <p><a href="press-kit.html">Press</a></p>
+            <div class="mailing-list"></div>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/updates.js" defer></script>
+</body>
+</html>

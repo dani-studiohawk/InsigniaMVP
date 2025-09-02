@@ -13,33 +13,76 @@ main {
   width: 100%;
   background-color: var(--secondary-color);
 }
-
-.video-section {
+/* Stack header + video */
+.video-section{
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 20px;
   padding-top: 0;
   padding: 0rem 3rem 20px;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
 }
 
+/* Header */
+.trailer-header{
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* Elevator Pitch */
+.elevator-pitch {
+  width: 100%;
+  max-width: 1162px;
+  text-align: center;
+}
+
+.elevator-pitch p {
+  font-family: var(--font-family-secondary);
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--white);
+  font-weight: 400;
+  position: relative;
+  padding: 0 clamp(1rem, 6vw, 3rem);
+}
+
+
+
+.premiere-tag{
+  display: inline-block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: clamp(12px, 1.2vw, 14px);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: rgba(243, 154, 74, 0.12);
+  border-radius: 4px;
+  line-height: 1;          /* normalise cap height */
+  padding: 0.6em 1.2em;    /* padding is now predictable */
+  display: inline-flex;    /* centers text neatly */
+  align-items: center;     /* centers vertically */
+  justify-content: center; /* centers horizontally */
+}
+
+
+
+
+/* Make the player large */
 .video-embed {
   position: relative;
   width: min(87%, 1162px);
   aspect-ratio: 200 / 113;
   margin: 0 auto;
-  
 }
 
-.video-embed iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.video-embed iframe{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
   border: 2px solid var(--gold);
-  /* Add parameters to URL in HTML: ?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1 */
+  border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,.35);
 }
 
 .video-embed:hover iframe {
@@ -59,48 +102,12 @@ main {
   }
 }
 
-/* Elevator Pitch */
-.elevator-pitch {
-  width: 100%;
-  max-width: 800px;
-  padding: 0 1rem clamp(2rem, 6vw, 4rem);
-  text-align: center;
-  margin: 0 auto;
-}
 
-.elevator-pitch p {
-  font-family: var(--font-family-secondary);
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  line-height: 1.6;
-  color: var(--white);
-  font-weight: 400;
-  position: relative;
-  padding: 0 clamp(1rem, 6vw, 3rem);
-}
-
-.elevator-pitch p::before,
-.elevator-pitch p::after {
-  content: '"';
-  position: absolute;
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  color: var(--white);
-  opacity: 0.3;
-}
-
-.elevator-pitch p::before {
-  left: 0;
-  top: clamp(-0.5rem, -2vw, -1rem);
-}
-
-.elevator-pitch p::after {
-  right: 0;
-  bottom: clamp(-1rem, -4vw, -2rem);
-}
 
 /* Mobile Elevator Pitch */
 @media (max-width: 720px) {
   .elevator-pitch {
-    padding: 0 1.5rem clamp(3rem, 10vw, 6rem);
+    padding: clamp(3rem, 10vw, 6rem) 1.5rem;
   }
   
   .elevator-pitch p {
@@ -110,7 +117,7 @@ main {
 
 @media (max-width: 480px) {
   .elevator-pitch {
-    padding: 0 1rem clamp(2rem, 8vw, 4rem);
+    padding: clamp(2rem, 8vw, 4rem) 1rem;
   }
   
   .elevator-pitch p {

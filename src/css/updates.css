@@ -1,0 +1,144 @@
+/* Container */
+.updates-section {
+  width: min(1152px, 90vw);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) 0;
+}
+
+/* Header */
+.updates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(12px, 2vw, 20px);
+}
+.updates-header h1 {
+  margin: 0;
+  font-size: clamp(22px, 3.2vw, 32px);
+  color: var(--off-white);
+}
+
+/* Grid */
+.update-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+/* Card */
+.update-card {
+  background: color-mix(in oklab, var(--secondary-color) 92%, black);
+  border: 1px solid rgba(243, 154, 74, .35);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+.update-card:hover {
+  border-color: rgba(243, 154, 74, .6);
+  transform: translateY(-2px);
+}
+
+/* Thumbnail */
+.card-media {
+  display: block;
+  position: relative;
+}
+.card-media img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+/* Card body */
+.card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.card-meta {
+  margin: 0;
+  font-size: .85rem;
+  font-weight: 500;
+  color: rgba(234, 234, 234, .7);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.card-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.card-title a {
+  color: var(--off-white);
+  text-decoration: none;
+}
+.card-title a:hover {
+  color: var(--gold);
+}
+.card-excerpt {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(234, 234, 234, .9);
+  line-height: 1.4;
+}
+
+/* Footer */
+.updates-footer {
+  text-align: center;
+  margin-top: clamp(16px, 3vw, 28px);
+}
+.btn-more {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+.btn-more:hover {
+  background: var(--gold);
+  color: var(--secondary-color);
+}
+
+
+.update-article {
+  width: min(760px, 90vw);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) 0;
+  color: var(--off-white);
+}
+
+.article-header {
+  margin-bottom: 1rem;
+}
+.article-meta {
+  font-size: .9rem;
+  color: rgba(234,234,234,.7);
+  margin: 0 0 .3rem;
+}
+.article-header h1 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 36px);
+}
+
+.article-hero img {
+  width: 100%;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.article-body p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.article-footer {
+  margin-top: 2rem;
+}
