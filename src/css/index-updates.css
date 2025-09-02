@@ -1,93 +1,156 @@
+/* Clamp whole section */
 .updates-section{
-  width:min(1152px, 90vw);
-  margin:0 auto;
-  padding:clamp(24px,4vw,48px) 0;
+  width: min(1162px, 90vw);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) 0;
 }
 
-.updates-header{
-  display:flex; justify-content:space-between; align-items:center;
-  margin-bottom:clamp(12px,2vw,20px);
+/* Two columns: left grows, right fixed */
+.updates-split{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;   /* ← right rail width adjusted for 320px card + padding */
+  gap: clamp(16px, 3vw, 32px);
+  align-items: start;
 }
 
-.updates-header h2{
-  margin:0;
-  font-size:clamp(22px,3.2vw,32px);
-  color:var(--off-white);
+/* Simple vertical divider on the right rail */
+.updates-right{
+  border-left: 1px solid rgba(243,154,74,.35);
+  padding-left: clamp(12px, 2vw, 20px);
 }
 
-.update-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(12px, 2vw, 20px);
+/* Keep the live card within the rail */
+.updates-right .update-card{ width: 100%; max-width: 320px; }
+.updates-right .card-media img{ width:100%; aspect-ratio:16/9; object-fit:cover; }
+
+/* Subheads */
+.updates-subhead{
+  margin: 0 0 .5rem;
+  font-size: clamp(14px, 1.4vw, 16px);
+  color: rgba(234,234,234,.85);
+  font-weight: 700;
+  letter-spacing: .02em;
 }
 
+
+
+/* ---- Cards ---- */
 .update-card{
   background: color-mix(in oklab, var(--secondary-color) 92%, black);
-  border:1px solid rgba(243,154,74,.35);
-  border-radius:8px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
+  border: 1px solid rgba(243,154,74,.35);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.update-card:hover{ border-color: rgba(243,154,74,.6); transform: translateY(-2px); }
+
+.card-media{ position: relative; display:block; }
+.card-media img{ width:100%; display:block; aspect-ratio:16/9; object-fit:cover; }
+.card-body{ padding:12px; display:flex; flex-direction:column; gap:.35rem; }
+.card-meta{ margin:0; font-size:.85rem; color: rgba(234,234,234,.7); text-transform: uppercase; letter-spacing:.03em; }
+.card-title{ margin:0; font-size:1.05rem; font-weight:600; color: var(--off-white); }
+.card-title a{ color: inherit; text-decoration: none; }
+.card-title a:hover{ color: var(--gold); }
+
+/* LIVE badge when JS adds .is-live */
+.update-card.is-live .card-media::after{
+  content: "LIVE";
+  position: absolute; top: 8px; left: 8px;
+  padding: .25em .5em; font-weight: 800; font-size: .75rem; line-height: 1;
+  color: #fff; background: #e53935; border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.35);
 }
 
-.update-card img{
-  width:100%;
-  display:block;
-  aspect-ratio:16/9;
-  object-fit:cover;
+/* ---- Carousel ---- */
+.carousel { position: relative; }
+
+/* Top bar with arrows */
+.carousel-bar{
+  display:flex; justify-content: space-between; align-items: center;
+  margin: .5rem 0 0;
+}
+.carousel-nav { display:flex; gap:.4rem; }
+.car-btn{
+  width:34px; height:34px; border:1px solid var(--gold); border-radius:6px;
+  background: rgba(243,154,74,.1); color: var(--gold); font-weight:800;
+  cursor:pointer; line-height:1;
+}
+.car-btn:disabled{ opacity:.45; cursor:default; }
+
+/* Let the rail fill its column */
+.carousel-track{
+  max-width: 100%;         /* was 1162px – remove that cap */
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 320px;  /* Fixed width to match live card */
+  gap: clamp(12px, 2vw, 20px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar{ display:none; }
+
+
+/* Cards snap to start */
+.carousel-track .update-card{ scroll-snap-align: start; }
+
+/* Edge fades */
+.carousel::before,
+.carousel::after{
+  content:""; position:absolute; top:0; bottom:0; width:28px; pointer-events:none;
+  background: linear-gradient(to right, var(--secondary-color), transparent);
+}
+.carousel::after{ right:0; transform: scaleX(-1); }
+.carousel::before{ left:0; }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px){
+  .updates-split{ grid-template-columns: 1fr; }
+  .updates-right{ border-left: 0; padding-left: 0; }
+  .update-grid.grid-3{ grid-template-columns: 1fr; }
 }
 
-.card-body{
-  padding:12px;
-  display:flex;
-  flex-direction:column;
-  gap:.3rem;
+/* ---- Button Styles ---- */
+.btn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid #f39a4a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  padding: 10px 18px;
 }
-
-.card-meta{
-  margin:0;
-  font-size:.85rem;
-  color: rgba(234,234,234,.7);
+.btn-more:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 118, 0.2), transparent);
+  transition: left 0.7s ease;
 }
-
-.card-title{
-  margin:0;
-  font-size:1rem;
-  color: var(--off-white);
+.btn-more:hover {
+  background-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 193, 118, 0.2);
 }
-.card-title:hover{ color: var(--gold); }
-
-.updates-footer{
-  text-align:center;
-  margin-top:clamp(16px,3vw,28px);
-}
-
-/* Text Updates Styles */
-.text-updates-container,
-.past-updates-container{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(16px, 2vw, 24px);
-  margin-bottom: clamp(32px, 4vw, 48px);
-}
-
-.text-update-card{
-  background: color-mix(in oklab, var(--secondary-color) 92%, black);
-  border:1px solid rgba(243,154,74,.35);
-  border-radius:8px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  transition: border-color 0.3s ease;
-}
-
-.text-update-card:hover{
-  border-color: rgba(243,154,74,.6);
-}
-
-.card-content{
-  margin:0;
-  font-size:0.95rem;
-  color: rgba(234,234,234,.9);
-  line-height:1.5;
+.btn-more:hover:before {
+  left: 100%;
 }

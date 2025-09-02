@@ -129,23 +129,7 @@
     </div>
   </section>
 
-  <section id="updates" class="updates-section">
-  <div class="updates-header">
-    <h2>Updates</h2>
-  </div>
 
-   <div id="update-grid"
-       class="update-grid"
-       data-playlist-id="PLLdxW--S_0h4zWBPwp-GO2FwzI2ArYYEr"
-       data-max="3"></div>
-
-
-  <div class="updates-footer">
-    <a class="btn-more" href="updates.html">See all updates</a>
-  </div>
-<script src="src/js/config.js"></script>
-<script src="src/js/index-updates.js" defer></script>
-</section>
 
 
 
@@ -413,6 +397,50 @@
 
     </main>
 
+
+<section id="updates" class="updates-section">
+  <div class="updates-header">
+    <h2>Updates</h2>
+  </div>
+
+  <div class="updates-split">
+    <div class="updates-left">
+      <h3 class="updates-subhead">Playlist</h3>
+      <div class="carousel" aria-label="Video updates">
+        <div id="playlist-track"
+             class="carousel-track"
+             data-playlist-id="PLLdxW--S_0h4zWBPwp-GO2FwzI2ArYYEr"
+             data-max="12"  
+             tabindex="0"  
+             role="region"
+             aria-roledescription="carousel"></div>
+
+        <div class="carousel-bar">
+          <a class="btn-more" href="updates.html">See all updates</a>
+          <div class="carousel-nav">
+            <button class="car-btn prev" aria-label="Previous videos" disabled>‹</button>
+            <button class="car-btn next" aria-label="Next videos">›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: latest live (or latest upload) -->
+    <div class="updates-right">
+      <h3 class="updates-subhead">Latest live stream</h3>
+      <div id="latest-live"
+           class="update-grid grid-1"
+           data-channel-handle="@indietaleslive"
+           data-fallback="upload"></div>
+    </div>
+  </div>
+
+  <script src="src/js/config.js"></script>
+  <script src="src/js/index-updates.js" defer></script>
+</section>
+
+
+  <!-- FAQ Carousel Section -->
     <section class="faq-carousel-section" id="faq">
         <div class="faq-carousel-shell">
             <div class="faq-carousel-tear faq-carousel-tear--top" aria-hidden="true"></div>

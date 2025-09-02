@@ -87,25 +87,8 @@
 }
 
 /* Footer */
-.updates-footer {
-  text-align: center;
-  margin-top: clamp(16px, 3vw, 28px);
-}
-.btn-more {
-  display: inline-block;
-  padding: 10px 18px;
-  border: 1px solid var(--gold);
-  border-radius: 6px;
-  color: var(--gold);
-  font-weight: 600;
-  font-size: .95rem;
-  text-decoration: none;
-  transition: background .2s ease, color .2s ease;
-}
-.btn-more:hover {
-  background: var(--gold);
-  color: var(--secondary-color);
-}
+
+
 
 
 .update-article {
