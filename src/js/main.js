@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const upponHillSection = document.querySelector('.uppon-hill-section');
+    // Note: Uppon Hill logo is now part of the navbar, so we don't hide/show it with scroll
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     let lastScroll = 0;
@@ -66,9 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Don't process if we're near the top
         if (currentScroll < 50) {
             navbar.classList.remove('nav-hidden');
-            if (upponHillSection) {
-                upponHillSection.classList.remove('uppon-hill-hidden');
-            }
+            // Uppon Hill logo is now part of navbar, no need to hide/show
+            // if (upponHillSection) {
+            //     upponHillSection.classList.remove('uppon-hill-hidden');
+            // }
             lastScroll = currentScroll;
             return;
         }
@@ -76,9 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentScroll > lastScroll && currentScroll > SCROLL_THRESHOLD) {
             // Scrolling down
             navbar.classList.add('nav-hidden');
-            if (upponHillSection) {
-                upponHillSection.classList.add('uppon-hill-hidden');
-            }
+            // Uppon Hill logo is now part of navbar, no need to hide/show
+            // if (upponHillSection) {
+            //     upponHillSection.classList.add('uppon-hill-hidden');
+            // }
             // Close mobile menu if open while scrolling
             if (navLinks.classList.contains('active')) {
                 mobileMenuToggle.classList.remove('active');
@@ -88,9 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentScroll < lastScroll) {
             // Scrolling up
             navbar.classList.remove('nav-hidden');
-            if (upponHillSection) {
-                upponHillSection.classList.remove('uppon-hill-hidden');
-            }
+            // Uppon Hill logo is now part of navbar, no need to hide/show
+            // if (upponHillSection) {
+            //     upponHillSection.classList.remove('uppon-hill-hidden');
+            // }
         }
 
         lastScroll = currentScroll;
@@ -631,51 +635,28 @@ function initializeLogoSparks() {
 function initializeUpponHillAnimation() {
     const fullLogo = document.querySelector('.uppon-hill-full-logo');
     const initialsLogo = document.querySelector('.uppon-hill-initials-logo');
-    const upponHillSection = document.querySelector('.uppon-hill-section');
-    const upponHillPlaceholder = document.querySelector('.uppon-hill-placeholder');
-    
-    if (!fullLogo || !initialsLogo || !upponHillSection) return;
-    
-    // Set initial states
-    fullLogo.style.opacity = '0';
-    initialsLogo.style.opacity = '0';
-    
-    // Start the animation sequence
-    setTimeout(() => {
-        // Show the red section and start the logo animation at the same time
-        upponHillSection.classList.add('show-section');
-        fullLogo.style.opacity = '1';
-        fullLogo.classList.add('show-handwriting');
-        
-        // After handwriting completes, transition to initials
-        setTimeout(() => {
-            // Fade out full logo quickly
-            fullLogo.classList.remove('show-handwriting');
-            fullLogo.style.opacity = '0';
-            fullLogo.style.transition = 'opacity 0.25s ease-out';
-            
-            // Fade in initials logo with minimal delay
-            setTimeout(() => {
-                initialsLogo.style.opacity = '1';
-                initialsLogo.classList.add('show-initials');
-                
-                // Shrink the red box to fit the initials
-                setTimeout(() => {
-                    upponHillSection.classList.add('shrink-section');
-                    // Also shrink the navbar placeholder at the same time
-                    if (upponHillPlaceholder) {
-                        upponHillPlaceholder.classList.add('shrink-placeholder');
-                    }
-                }, 150); // Start shrinking slightly after initials appear
-                
-                // Hide full logo completely after transition
-                setTimeout(() => {
-                    fullLogo.style.display = 'none';
-                }, 300);
-                
-            }, 100); // Faster transition
-            
-        }, 1300); // Faster timing to match new animation duration (1.2s + small buffer)
-        
-    }, 1000); // Start 1 second after page load
+    const upponHillLogo = document.querySelector('.uppon-hill-logo.navbar-logo');
+    // const upponHillPlaceholder = document.querySelector('.uppon-hill-placeholder'); // No longer needed
+
+    if (!initialsLogo || !upponHillLogo) return;
+
+    // Set initial states - logo is now always visible in navbar
+    initialsLogo.style.opacity = '1';
+
+    // Simple hover effect for navbar logo
+    if (upponHillLogo) {
+        upponHillLogo.addEventListener('mouseenter', () => {
+            upponHillLogo.style.transform = 'scale(1.05)';
+        });
+
+        upponHillLogo.addEventListener('mouseleave', () => {
+            upponHillLogo.style.transform = 'scale(1)';
+        });
+    }
+
+    // Remove placeholder shrinking since logo is now in navbar
+    // if (upponHillPlaceholder) {
+    //     upponHillPlaceholder.style.width = '0px';
+    //     upponHillPlaceholder.style.margin = '0px';
+    // }
 }

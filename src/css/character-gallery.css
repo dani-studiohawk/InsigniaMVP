@@ -31,7 +31,7 @@
 .characters-tear--bottom { bottom: -90px; transform: scaleY(-1); }
 
 .character-gallery-container {
-  max-width: 1280px;
+  max-width: 1152px;
   margin: 50px auto 0 auto;
   padding: 0;
   position: relative;

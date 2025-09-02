@@ -367,9 +367,18 @@
  * 5. SOCIAL MEDIA
  **********************************************/
 
+/* Social Media Container - Groups social media and Uppon Hill logo */
+.social-media-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  min-width: 0; /* Allow shrinking */
+}
+
 /* Social Media Container */
 .social-media {
-  flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -477,6 +486,22 @@
   filter: brightness(0) invert(1); /* Make SVG white */
 }
 
+/* Navbar-specific Uppon Hill Logo */
+.uppon-hill-logo.navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.uppon-hill-logo.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
 /* Initials Logo Variant */
 .uppon-hill-initials-logo {
   opacity: 1; /* Make visible since animations are removed */
@@ -558,7 +583,6 @@
     flex: 1;
     gap: 15px;
     min-width: fit-content;
-    padding-right: 1.5rem;
   }
 
   /* Uppon Hill */
@@ -629,9 +653,13 @@
     min-width: 0;
   }
   
-  /* Social Media */
-  .social-media {
+  /* Social Media Container */
+  .social-media-container {
     flex: 1;
+    gap: 8px;
+  }
+  
+  .social-media {
     gap: 4px;
     min-width: fit-content;
   }
@@ -643,16 +671,17 @@
 
   /* Uppon Hill */
   .uppon-hill-placeholder {
-    width: 55px;
-    margin-left: 15px;
+    width: 0px; /* No longer needed since logo is in navbar */
+    margin-left: 0px;
   }
 
+  .uppon-hill-logo.navbar-logo {
+    padding: 0 8px;
+  }
 
-
-  .uppon-hill-section {
-    right: 0 !important;
-    padding-right: 10px !important;
-    height: 100px !important;
+  .uppon-hill-logo.navbar-logo img {
+    width: 45px;
+    height: 45px;
   }
 }
 
@@ -796,38 +825,13 @@
   }
   
   /* Uppon Hill - Mobile Adjustments */
-  .uppon-hill-section {
-    height: 57px !important;
-    right: auto;
-    left: 0;
-    transform: translateY(0);
-    z-index: 1001;
+  .uppon-hill-logo.navbar-logo {
+    padding: 0 8px;
   }
 
-  /* No animations on mobile */
-  .uppon-hill-full-logo.show-handwriting,
-  .uppon-hill-initials-logo.show-initials {
-    animation: none !important;
-  }
-
-  /* Initial states */
-  .uppon-hill-full-logo {
-    opacity: 0 !important;
-  }
-
-  .uppon-hill-initials-logo {
-    opacity: 1 !important;
-    transform: translate(-50%, -50%) scale(1) !important;
-  }
-
-  .uppon-hill-logo img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .uppon-hill-section.shrink-section {
-    min-width: 75px !important;
-    padding: 15px !important;
+  .uppon-hill-logo.navbar-logo img {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -908,10 +912,6 @@
   }
 
   /* Logo */
-  .logo-container {
-    padding-left: 65px; /* Make space for Uppon Hill logo on the left */
-  }
-  
   .logo img {
     height: 32px;
   }
@@ -948,18 +948,12 @@
   }
   
   /* Uppon Hill - Small Mobile Adjustments */
-  .uppon-hill-section {
-    height: 50px !important;
-    width: 50px !important;
-    padding: 8px 10px !important;
-    right: auto;
-    left: 0;
-    position: absolute;
-    top: 0;
+  .uppon-hill-logo.navbar-logo {
+    padding: 0 5px;
   }
-  
-  .uppon-hill-logo img {
-    width: 40px !important;
-    height: 40px !important;
+
+  .uppon-hill-logo.navbar-logo img {
+    width: 35px !important;
+    height: 35px !important;
   }
 }
