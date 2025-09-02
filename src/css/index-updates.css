@@ -10,18 +10,24 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;   /* ← right rail width adjusted for 320px card + padding */
   gap: clamp(16px, 3vw, 32px);
-  align-items: start;
+  align-items: stretch;
 }
 
-/* Simple vertical divider on the right rail */
-.updates-right{
-  border-left: 1px solid rgba(243,154,74,.35);
-  padding-left: clamp(12px, 2vw, 20px);
+/* Simple vertical divider on the left rail */
+.updates-left{
+  border-right: 2px solid var(--gold);
+  display: flex;
+  flex-direction: column;
 }
+
+
+
 
 /* Keep the live card within the rail */
 .updates-right .update-card{ width: 100%; max-width: 320px; }
 .updates-right .card-media img{ width:100%; aspect-ratio:16/9; object-fit:cover; }
+.updates-right { display: flex; flex-direction: column; }
+.updates-right .btn-more { margin-top: auto; }
 
 /* Subheads */
 .updates-subhead{
@@ -36,9 +42,9 @@
 
 /* ---- Cards ---- */
 .update-card{
-  background: color-mix(in oklab, var(--secondary-color) 92%, black);
-  border: 1px solid rgba(243,154,74,.35);
-  border-radius: 8px;
+  background: var(--secondary-color);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
   overflow: hidden;
   display: flex; flex-direction: column;
   transition: border-color .2s ease, transform .2s ease;
@@ -65,14 +71,19 @@
 /* ---- Carousel ---- */
 .carousel { position: relative; }
 
+.carousel-track {
+  flex: none;
+}
+
 /* Top bar with arrows */
 .carousel-bar{
-  display:flex; justify-content: space-between; align-items: center;
+  display:flex; justify-content: space-between; align-items: stretch;
   margin: .5rem 0 0;
+  height: 36px;
 }
-.carousel-nav { display:flex; gap:.4rem; }
+.carousel-nav { display:flex; gap:.4rem; margin-right: 10px; height: 100%; }
 .car-btn{
-  width:34px; height:34px; border:1px solid var(--gold); border-radius:6px;
+  width:34px; height: 100%; border:1px solid var(--gold); border-radius:6px;
   background: rgba(243,154,74,.1); color: var(--gold); font-weight:800;
   cursor:pointer; line-height:1;
 }
@@ -100,17 +111,14 @@
 .carousel-track .update-card{ scroll-snap-align: start; }
 
 /* Edge fades */
-.carousel::before,
-.carousel::after{
-  content:""; position:absolute; top:0; bottom:0; width:28px; pointer-events:none;
-  background: linear-gradient(to right, var(--secondary-color), transparent);
-}
+
 .carousel::after{ right:0; transform: scaleX(-1); }
 .carousel::before{ left:0; }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px){
   .updates-split{ grid-template-columns: 1fr; }
+  .updates-left{ border-right: 0; padding-right: 0; }
   .updates-right{ border-left: 0; padding-left: 0; }
   .update-grid.grid-3{ grid-template-columns: 1fr; }
 }
@@ -135,6 +143,8 @@
   position: relative;
   overflow: hidden;
   padding: 10px 18px;
+  width: 100%;
+  max-width: 320px;
 }
 .btn-more:before {
   content: '';
