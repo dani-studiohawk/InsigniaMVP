@@ -4,6 +4,11 @@
   if (!API_KEY) return;
 
   const fmtUK = iso => new Date(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  const decodeHtml = s => {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = s;
+    return txt.value;
+  };
   const esc = s => String(s).replace(/[&<>"']/g, c => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[c]));
@@ -31,7 +36,7 @@
       const items = (data.items || []).map(it => {
         const vId = it.contentDetails?.videoId;
         const sn = it.snippet || {};
-        return vId ? { vId, title: sn.title || "Untitled video", date: sn.publishedAt || it.contentDetails.videoPublishedAt || "" } : null;
+        return vId ? { vId, title: decodeHtml(sn.title) || "Untitled video", date: sn.publishedAt || it.contentDetails.videoPublishedAt || "" } : null;
       }).filter(Boolean);
 
       if (!items.length) {
@@ -121,7 +126,7 @@
       let data = await res.json();
       if (data.items?.length) {
         const v = data.items[0];
-        vidId = v.id.videoId; title = v.snippet.title; date = v.snippet.publishedAt; isLive = true;
+        vidId = v.id.videoId; title = decodeHtml(v.snippet.title); date = v.snippet.publishedAt; isLive = true;
       }
 
       if (!vidId && fallback === "upload") {
@@ -129,7 +134,7 @@
         data = await res.json();
         if (data.items?.length) {
           const v = data.items[0];
-          vidId = v.id.videoId; title = v.snippet.title; date = v.snippet.publishedAt;
+          vidId = v.id.videoId; title = decodeHtml(v.snippet.title); date = v.snippet.publishedAt;
         }
       }
 
