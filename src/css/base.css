@@ -29,6 +29,11 @@
 
 /* Apply Montserrat as default font to body */
 body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+body {
   font-family: var(--font-family);
   background-color: var(--secondary-color);
 }

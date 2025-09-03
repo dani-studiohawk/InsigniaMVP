@@ -6,10 +6,6 @@
   overflow: hidden;
 }
 
-
-
-
-
 /* wrapper holds the torn edges, text stays in an unmasked child */
 .characters-shell {
   position: relative;
@@ -19,7 +15,6 @@
   background-repeat: repeat;
   background-size: 200px;
 }
-
 
 /* torn edges as siblings so they do not affect text AA */
 .characters-tear {
@@ -40,19 +35,224 @@
 .characters-tear--bottom { bottom: -90px; transform: scaleY(-1); }
 
 .character-gallery-container {
-  max-width: 1152px;
-  margin: 50px auto 0 auto;
+  width: 100%;
+  margin: 50px 0 0 0;
   padding: 0;
   position: relative;
   z-index: 10;
-  display: grid;
-  grid-template-columns: 200px 1fr 400px;
-  grid-template-areas: "portraits info display";
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
-  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 
+/* GIF Carousel */
+.gif-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gif-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gif-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  image-rendering: pixelated;
+
+}
+
+.gif-slide.active {
+  z-index: 2;
+  image-rendering: pixelated;
+}
+
+/* Navigation buttons */
+.gif-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 0.75rem;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  z-index: 2;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.gif-nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+  opacity: 1;
+}
+
+.gif-nav.prev {
+  left: 20px;
+}
+
+.gif-nav.next {
+  right: 20px;
+}
+
+/* Diamond navigation */
+.gif-diamond-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 3;
+}
+
+.gif-diamond-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 120px;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  backdrop-filter: blur(2px);
+}
+
+.gif-diamond-dot {
+  width: 16px;
+  height: 16px;
+  background-image: url('../assets/images/diamond-2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gif-diamond-dot.active {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+/* Gallery Info */
+.gallery-info {
+  text-align: center;
+  max-width: 600px;
+  padding: 0 2rem;
+}
+
+.gallery-info h2 {
+  font-family: var(--font-family-secondary);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.gallery-info p {
+  font-family: var(--font-family);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.gallery-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .character-gallery-section {
+    padding: clamp(60px, 12vw, 80px) 20px;
+  }
   
+  .character-gallery-container {
+    gap: 2rem;
+  }
+  
+  .gif-carousel {
+    max-width: 100%;
+    aspect-ratio: 16/10;
+  }
+  
+  .gif-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .gif-nav.prev {
+    left: 10px;
+  }
+  
+  .gif-nav.next {
+    right: 10px;
+  }
+  
+  .gif-diamond-nav {
+    bottom: 15px;
+  }
+  
+  .gif-diamond-indicator {
+    width: 100px;
+    height: 25px;
+    gap: 10px;
+  }
+  
+  .gallery-info {
+    padding: 0 1rem;
+  }
+  
+  .gallery-info h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+  }
+  
+  .gallery-info p {
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .character-gallery-section {
+    padding: clamp(40px, 10vw, 60px) 15px;
+  }
+  
+  .gif-carousel {
+    aspect-ratio: 4/3;
+  }
+  
+  .gif-nav {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .gallery-info h2 {
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+  }
 }
 
 /* Character Portrait Stack */

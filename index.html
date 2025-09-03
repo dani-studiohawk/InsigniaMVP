@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="src/css/video-elevator.css">
     <link rel="stylesheet" href="src/css/faq-carousel.css">
     <link rel="stylesheet" href="src/css/index-updates.css">
+    <link rel="stylesheet" href="src/css/character-gallery.css">
 </head>
 
 <body>
@@ -54,6 +55,8 @@
                 <li><a href="#features-section">FEATURES</a></li>
                 <li class="diamond-separator" aria-hidden="true"></li>
                 <li><a href="#story">STORY</a></li>
+                <li class="diamond-separator" aria-hidden="true"></li>
+                <li><a href="#characters">CHARACTERS</a></li>
                 <li class="diamond-separator" aria-hidden="true"></li>
                 <li><a href="#gallery">GALLERY</a></li>
                 <li class="diamond-separator" aria-hidden="true"></li>
@@ -268,7 +271,9 @@
 
 
 <section id="story" class="story-section">
-    <img src="src/assets/characters/group.png" alt="Group image" class="story-image">
+    <div class="story-image-container">
+        <div class="story-image" style="background-image: url('src/assets/characters/group2.png');"></div>
+    </div>
     <div class="story-text">
         <h2>The story so far...</h2>
         <p>Kiama is a world not unlike ours, though inhabited by many animal civilisations with their own
@@ -288,75 +293,42 @@
 
     <!-- Character Gallery Section -->
     <section class="character-gallery-section" id="characters">
-        <section class="characters-shell">
-    <div class="characters-tear characters-tear--top" aria-hidden="true"></div>
+        <div class="characters-shell">
+            <div class="characters-tear characters-tear--top" aria-hidden="true"></div>
             <div class="character-gallery-container">
-                <div class="character-portraits">
-                    <div class="character-portrait active" data-character="armin">
-                        <img src="src/assets/key-art/Insignia Poster Capsule - Armin.png" alt="Armin Portrait">
+                <!-- GIF Carousel -->
+                <div class="gif-carousel">
+                    <div class="gif-carousel-container">
+                        <img src="src/assets/gifs/Travelling_Band.gif" alt="Character animation 1" class="gif-slide active">
+                        <img src="src/assets/gifs/Travelling_Band.gif" alt="Character animation 2" class="gif-slide">
+                        <img src="src/assets/gifs/Travelling_Band.gif" alt="Character animation 3" class="gif-slide">
                     </div>
-                    <div class="character-portrait" data-character="char2">
-                        <img src="src/assets/images/ensign-blueorange.png" alt="Companion Portrait">
-                    </div>
-                    <div class="character-portrait" data-character="char3">
-                        <img src="src/assets/images/ensign-blueteal.png" alt="Companion Portrait">
-                    </div>
-                    <!-- Placeholder for future characters -->
-                    <div class="character-portrait" data-character="char4">
-                        <img src="src/assets/images/armin-walking-colour.png" alt="Mystery Character">
+                    <button class="gif-nav prev" aria-label="Previous animation">&lt;</button>
+                    <button class="gif-nav next" aria-label="Next animation">&gt;</button>
+                </div>
+                
+                <!-- Diamond navigation dots -->
+                <div class="gif-diamond-nav">
+                    <div class="gif-diamond-indicator">
+                        <div class="gif-diamond-dot active" data-index="0"></div>
+                        <div class="gif-diamond-dot" data-index="1"></div>
+                        <div class="gif-diamond-dot" data-index="2"></div>
                     </div>
                 </div>
-
-                <div class="character-info">
-                    <h2 class="character-name" id="character-name">Armin</h2>
-                    <p class="character-description" id="character-description">
-                        This is some text to signify that something will be written here which I don't currently have
-                        the text for. Eventually, I'll write something here and everyone will be able to read how
-                        informative it is.
-                    </p>
-                    <p class="character-description">
-                        This is some text to signify that something will be written here which I don't currently have
-                        the text for. Eventually, I'll write something here and everyone will be able to read how
-                        informative it is.
-                    </p>
-                </div>
-
-                <div class="character-display">
-                    <!-- Desktop artwork display -->
-                    <img src="src/assets/images/armin-walking-colour.png" alt="Character Artwork"
-                        class="character-artwork" id="character-artwork">
-
-                    <!-- Mobile gallery structure (hidden on desktop) -->
-                    <div class="character-gallery-mobile" id="character-gallery-mobile">
-                        <img src="src/assets/images/armin-walking-colour.png" alt="Armin Artwork"
-                            data-character="armin">
-                        <img src="src/assets/images/ensign-blueorange.png" alt="Unknown Character 2"
-                            data-character="char2">
-                        <img src="src/assets/images/ensign-blueteal.png" alt="Unknown Character 3"
-                            data-character="char3">
-                        <img src="src/assets/images/armin-walking-colour.png" alt="Unknown Character 4"
-                            data-character="char4">
-                    </div>
-
-                    <!-- Mobile gallery navigation -->
-                    <button class="character-gallery-nav prev" id="character-prev">‹</button>
-                    <button class="character-gallery-nav next" id="character-next">›</button>
-
-                    <!-- Mobile diamond navigation -->
-                    <div class="character-diamond-nav">
-                        <div class="character-diamond-indicator">
-                            <div class="character-diamond-dot active" data-index="0"></div>
-                            <div class="character-diamond-dot" data-index="1"></div>
-                            <div class="character-diamond-dot" data-index="2"></div>
-                            <div class="character-diamond-dot" data-index="3"></div>
-                        </div>
-                    </div>
+                
+                <!-- Title and Text Below Gallery -->
+                <div class="gallery-info">
+                    <h2>Character Animations</h2>
+                    <p>Explore the vibrant world of Insignia through these character animations. Watch as Armin and his companions come to life with fluid movements and expressive gestures that bring the story to vivid reality.</p>
+                    <p>Each animation showcases the unique personalities and abilities of the characters you'll meet on your adventure.</p>
                 </div>
             </div>
-              <div class="swoosh swoosh-1" aria-hidden="true"></div>
-    <div class="swoosh swoosh-2" aria-hidden="true"></div>
-                    <div class="characters-tear characters-tear--bottom" aria-hidden="true"></div>
-        </section>
+            <div class="characters-tear characters-tear--bottom" aria-hidden="true"></div>
+        </div>
+        
+        <div class="swoosh swoosh-1" aria-hidden="true"></div>
+        <div class="swoosh swoosh-2" aria-hidden="true"></div>
+    </section>
 
 </section>
 
