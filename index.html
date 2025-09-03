@@ -268,72 +268,95 @@
 
 
 <section id="story" class="story-section">
-    <div class="story-image-container">
-    <img src="src/assets/characters/group2.png" alt="Group image" class="story-image">
-    </div>
+    <img src="src/assets/characters/group.png" alt="Group image" class="story-image">
     <div class="story-text">
         <h2>The story so far...</h2>
-        <div class="story-part">
         <p>Kiama is a world not unlike ours, though inhabited by many animal civilisations with their own
             culture and customs. The peoples of the world were first brought together in the light of the
             Insignia, a prismatic force that shapes the world in its words they called Ensigns.</p>
-        </div>
-        <div class="story-part">
+
         <p>Centuries ago, cataclysmic wars between the Humen and Hunden were fought for the control of the
             Insignia. After a desperate final measure, the victorious kingdom of men vowed to abandon their use
             of the power, leaving a scarred capitol city to build new townships across the country.</p>
-        </div>
-        <div class="story-part">
         <p>Now, with the wartime arts all but forgotten, a shadow returns to the kingdom. Armin’s story begins
             with the disappearance of his father, a renowned blacksmith. With nothing but a cryptic journal to
             lead the way, Armin must follow Magnus’ path to revive an ancient power and prevent a new war from
             destroying everything he holds dear.</p>
-        </div>
     </div>
 </section>
 
 
     <!-- Character Gallery Section -->
     <section class="character-gallery-section" id="characters">
+        <section class="characters-shell">
     <div class="characters-tear characters-tear--top" aria-hidden="true"></div>
-        <div class="character-carousel">
-    <button class="character-carousel-nav prev" aria-label="Previous">&#10094;</button>
+            <div class="character-gallery-container">
+                <div class="character-portraits">
+                    <div class="character-portrait active" data-character="armin">
+                        <img src="src/assets/key-art/Insignia Poster Capsule - Armin.png" alt="Armin Portrait">
+                    </div>
+                    <div class="character-portrait" data-character="char2">
+                        <img src="src/assets/images/ensign-blueorange.png" alt="Companion Portrait">
+                    </div>
+                    <div class="character-portrait" data-character="char3">
+                        <img src="src/assets/images/ensign-blueteal.png" alt="Companion Portrait">
+                    </div>
+                    <!-- Placeholder for future characters -->
+                    <div class="character-portrait" data-character="char4">
+                        <img src="src/assets/images/armin-walking-colour.png" alt="Mystery Character">
+                    </div>
+                </div>
 
-    <div class="character-carousel-track">
-      <div class="character-carousel-item">
-        <div class="character-gif-frame">
-          <img src="src/assets/gifs/example1.gif" alt="Character 1">
-        </div>
-        <div class="character-caption">
-          <p>This is the caption for Character 1.</p>
-        </div>
-      </div>
+                <div class="character-info">
+                    <h2 class="character-name" id="character-name">Armin</h2>
+                    <p class="character-description" id="character-description">
+                        This is some text to signify that something will be written here which I don't currently have
+                        the text for. Eventually, I'll write something here and everyone will be able to read how
+                        informative it is.
+                    </p>
+                    <p class="character-description">
+                        This is some text to signify that something will be written here which I don't currently have
+                        the text for. Eventually, I'll write something here and everyone will be able to read how
+                        informative it is.
+                    </p>
+                </div>
 
-      <div class="character-carousel-item">
-        <div class="character-gif-frame">
-          <img src="src/assets/gifs/example2.gif" alt="Character 2">
-        </div>
-        <div class="character-caption">
-          <p>This is the caption for Character 2.</p>
-        </div>
-      </div>
+                <div class="character-display">
+                    <!-- Desktop artwork display -->
+                    <img src="src/assets/images/armin-walking-colour.png" alt="Character Artwork"
+                        class="character-artwork" id="character-artwork">
 
-      <div class="character-carousel-item">
-        <div class="character-gif-frame">
-          <img src="src/assets/gifs/example3.gif" alt="Character 3">
-        </div>
-        <div class="character-caption">
-          <p>This is the caption for Character 3.</p>
-        </div>
-      </div>
-    </div>
+                    <!-- Mobile gallery structure (hidden on desktop) -->
+                    <div class="character-gallery-mobile" id="character-gallery-mobile">
+                        <img src="src/assets/images/armin-walking-colour.png" alt="Armin Artwork"
+                            data-character="armin">
+                        <img src="src/assets/images/ensign-blueorange.png" alt="Unknown Character 2"
+                            data-character="char2">
+                        <img src="src/assets/images/ensign-blueteal.png" alt="Unknown Character 3"
+                            data-character="char3">
+                        <img src="src/assets/images/armin-walking-colour.png" alt="Unknown Character 4"
+                            data-character="char4">
+                    </div>
 
-    <button class="character-carousel-nav next" aria-label="Next">&#10095;</button>
-  </div>
-       
+                    <!-- Mobile gallery navigation -->
+                    <button class="character-gallery-nav prev" id="character-prev">‹</button>
+                    <button class="character-gallery-nav next" id="character-next">›</button>
+
+                    <!-- Mobile diamond navigation -->
+                    <div class="character-diamond-nav">
+                        <div class="character-diamond-indicator">
+                            <div class="character-diamond-dot active" data-index="0"></div>
+                            <div class="character-diamond-dot" data-index="1"></div>
+                            <div class="character-diamond-dot" data-index="2"></div>
+                            <div class="character-diamond-dot" data-index="3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
               <div class="swoosh swoosh-1" aria-hidden="true"></div>
     <div class="swoosh swoosh-2" aria-hidden="true"></div>
                     <div class="characters-tear characters-tear--bottom" aria-hidden="true"></div>
+        </section>
 
 </section>
 
