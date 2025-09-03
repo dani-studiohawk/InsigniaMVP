@@ -10,9 +10,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const SCROLL_THRESHOLD = 100;
     let isScrolling = false;
 
+    // Function to initialize logo sparks effect
+    function initializeLogoSparks() {
+        const logoContainer = document.querySelector('.logo-container');
+
+        if (!logoContainer) return;
+
+        // Create sparks container
+        const sparksContainer = document.createElement('div');
+        sparksContainer.className = 'sparks-container';
+
+        // Create 8 spark elements
+        for (let i = 0; i < 8; i++) {
+            const spark = document.createElement('div');
+            spark.className = 'spark';
+            sparksContainer.appendChild(spark);
+        }
+
+        // Add sparks container to logo container
+        logoContainer.appendChild(sparksContainer);
+
+        // Optional: Add event listeners for additional control
+        logoContainer.addEventListener('mouseenter', () => {
+            sparksContainer.style.opacity = '1';
+        });
+
+        logoContainer.addEventListener('mouseleave', () => {
+            sparksContainer.style.opacity = '0';
+        });
+    }
+
+    // Function to initialize Uppon Hill logo animation
+    function initializeUpponHillAnimation() {
+        const fullLogo = document.querySelector('.uppon-hill-full-logo');
+        const initialsLogo = document.querySelector('.uppon-hill-initials-logo');
+        const upponHillLogo = document.querySelector('.uppon-hill-logo.navbar-logo');
+
+        if (!initialsLogo || !upponHillLogo) return;
+
+        // Set initial states - logo is now always visible in navbar
+        initialsLogo.style.opacity = '1';
+
+        // Simple hover effect for navbar logo
+        if (upponHillLogo) {
+            upponHillLogo.addEventListener('mouseenter', () => {
+                upponHillLogo.style.transform = 'scale(1.05)';
+            });
+
+            upponHillLogo.addEventListener('mouseleave', () => {
+                upponHillLogo.style.transform = 'scale(1)';
+            });
+        }
+    }
+
     // Initialize sparks effect for logo
     initializeLogoSparks();
-    
+
     // Initialize Uppon Hill logo animation
     initializeUpponHillAnimation();
 
@@ -21,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuToggle.addEventListener('click', () => {
             mobileMenuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
-            
+
             // Prevent body scrolling when menu is open
             if (navLinks.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
@@ -58,19 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Scroll behavior
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         isScrolling = true;
-        
+
         clearTimeout(scrollTimeout);
 
         // Don't process if we're near the top
         if (currentScroll < 50) {
             navbar.classList.remove('nav-hidden');
-            // Uppon Hill logo is now part of navbar, no need to hide/show
-            // if (upponHillSection) {
-            //     upponHillSection.classList.remove('uppon-hill-hidden');
-            // }
             lastScroll = currentScroll;
             return;
         }
@@ -78,10 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentScroll > lastScroll && currentScroll > SCROLL_THRESHOLD) {
             // Scrolling down
             navbar.classList.add('nav-hidden');
-            // Uppon Hill logo is now part of navbar, no need to hide/show
-            // if (upponHillSection) {
-            //     upponHillSection.classList.add('uppon-hill-hidden');
-            // }
             // Close mobile menu if open while scrolling
             if (navLinks.classList.contains('active')) {
                 mobileMenuToggle.classList.remove('active');
@@ -91,10 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentScroll < lastScroll) {
             // Scrolling up
             navbar.classList.remove('nav-hidden');
-            // Uppon Hill logo is now part of navbar, no need to hide/show
-            // if (upponHillSection) {
-            //     upponHillSection.classList.remove('uppon-hill-hidden');
-            // }
         }
 
         lastScroll = currentScroll;
@@ -111,14 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const slides = gallery.querySelectorAll('img');
         let currentSlide = 0;
         const totalSlides = slides.length;
-        
+
         const existingNav = gallery.querySelector('.diamond-nav');
         let dots;
-        
+
         if (existingNav) {
             // Use existing navigation
             dots = existingNav.querySelectorAll('.diamond-dot');
-            
+
             // Add click events to existing dots
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
@@ -130,33 +172,33 @@ document.addEventListener('DOMContentLoaded', () => {
             // Create diamond navigation dots if they don't exist
             const diamondNav = document.createElement('div');
             diamondNav.className = 'diamond-nav';
-            
+
             const diamondIndicator = document.createElement('div');
             diamondIndicator.className = 'diamond-indicator';
-            
+
             // Create diamond dots based on number of slides
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('div');
                 dot.className = i === 1 ? 'diamond-dot center' : 'diamond-dot';
                 if (i === 0) dot.classList.add('active');
                 dot.setAttribute('data-index', i);
-                
+
                 // Add click event to each dot
                 dot.addEventListener('click', () => {
                     currentSlide = i;
                     updateSlide();
                 });
-                
+
                 diamondIndicator.appendChild(dot);
             }
-            
+
             diamondNav.appendChild(diamondIndicator);
             gallery.appendChild(diamondNav);
-            
+
             // Get all diamond dots from newly created navigation
             dots = diamondNav.querySelectorAll('.diamond-dot');
         }
-        
+
         // Set initial active dot
         updateActiveDot();
 
@@ -164,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.style.transform = `translateX(-${currentSlide * 100}%)`;
             updateActiveDot();
         }
-        
+
         function updateActiveDot() {
             dots.forEach((dot, index) => {
                 if (index === currentSlide) {
@@ -178,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if navigation buttons exist before adding event listeners
         const nextBtn = gallery.querySelector('.next');
         const prevBtn = gallery.querySelector('.prev');
-        
+
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
                 currentSlide = (currentSlide + 1) % totalSlides;
@@ -208,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if navigation buttons exist before adding event listeners
         const nextBtn = gallery.querySelector('.next');
         const prevBtn = gallery.querySelector('.prev');
-        
+
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
                 currentSlide = (currentSlide + 1) % totalSlides;
@@ -239,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalClose = modal.querySelector('.modal-close');
     const modalPrev = modal.querySelector('.modal-prev');
     const modalNext = modal.querySelector('.modal-next');
-    
+
     let currentModalGallery = null;
     let currentModalIndex = 0;
 
@@ -249,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImg.alt = imageAlt || 'Full-screen image';
         currentModalGallery = galleryImages;
         currentModalIndex = imageIndex;
-        
+
         // Show/hide navigation arrows based on gallery size
         if (galleryImages && galleryImages.length > 1) {
             modalPrev.style.display = 'flex';
@@ -258,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalPrev.style.display = 'none';
             modalNext.style.display = 'none';
         }
-        
+
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
@@ -292,8 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentModalIndex = 0;
     }
 
-    // Add click event to all gallery images (grid, mobile gallery, and feature galleries)
-    
     // Handle gallery grid images
     const galleryGridImages = document.querySelectorAll('.gallery-grid > img');
     galleryGridImages.forEach((img, index) => {
@@ -303,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             openModal(img.src, img.alt, Array.from(galleryGridImages), index);
         });
     });
-    
+
     // Handle mobile gallery images
     const mobileGalleryImages = document.querySelectorAll('.mobile-gallery img');
     mobileGalleryImages.forEach((img, index) => {
@@ -313,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             openModal(img.src, img.alt, Array.from(mobileGalleryImages), index);
         });
     });
-    
+
     // Handle feature gallery images (each feature gallery is separate)
     document.querySelectorAll('.feature-gallery').forEach(gallery => {
         const featureImages = gallery.querySelectorAll('img');
@@ -326,32 +366,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close modal when clicking close button
+    // Modal event listeners
     modalClose.addEventListener('click', (e) => {
         e.stopPropagation();
         closeModal();
     });
 
-    // Navigate to previous image
     modalPrev.addEventListener('click', (e) => {
         e.stopPropagation();
         showPrevImage();
     });
 
-    // Navigate to next image
     modalNext.addEventListener('click', (e) => {
         e.stopPropagation();
         showNextImage();
     });
 
-    // Close modal when clicking outside the image
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
         if (modal.classList.contains('active')) {
             if (e.key === 'Escape') {
@@ -364,31 +400,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Prevent modal image from closing when clicked
     modalImg.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    // Prevent modal navigation buttons from closing modal when clicked
-    modalPrev.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    modalNext.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
     // FAQ Section Horizontal Scroll with Mouse Wheel
     const faqScrollWrapper = document.querySelector('.faq-carousel-scroll-wrapper');
-    
+
     if (faqScrollWrapper) {
         faqScrollWrapper.addEventListener('wheel', (event) => {
             // Prevent default vertical scrolling
             event.preventDefault();
-            
+
             // Convert vertical scroll to horizontal scroll
             const scrollAmount = event.deltaY * 3;
-            
+
             // Use smooth scrolling method for better performance
             faqScrollWrapper.scrollBy({
                 left: scrollAmount,
@@ -397,266 +423,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     }
 
-    // Character Gallery functionality
-    const characterPortraits = document.querySelectorAll('.character-portrait');
-    const characterName = document.getElementById('character-name');
-    const characterInfoContainer = document.querySelector('.character-info');
+    // Character Carousel (namespaced, safe)
+    (function initCharacterCarousel() {
+        const section = document.querySelector('#characters');
+        if (!section) return;
 
-    // Character data
-    const characterData = {
-        armin: {
-            name: 'Armin',
-            description: [
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
-            ],
-            artwork: 'src/assets/images/armin-walking-colour.png'
-        },
-        char2: {
-            name: 'Unknown',
-            description: [
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
-            ],
-            artwork: 'src/assets/images/ensign-blueorange.png'
-        },
-        char3: {
-            name: 'Unknown',
-            description: [
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
-            ],
-            artwork: 'src/assets/images/ensign-blueteal.png'
-        },
-        char4: {
-            name: 'Unknown',
-            description: [
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.',
-                'This is some text to signify that something will be written here which I don\'t currently have the text for. Eventually, I\'ll write something here and everyone will be able to read how informative it is.'
-            ],
-            artwork: 'src/assets/images/armin-walking-colour.png'
+        const track = section.querySelector('.character-carousel-track');
+        const prevBtn = section.querySelector('.character-carousel-nav.prev');
+        const nextBtn = section.querySelector('.character-carousel-nav.next');
+        if (!track || !prevBtn || !nextBtn) return;
+
+        const slides = Array.from(track.children);
+        let index = 0;
+
+        function render() {
+            track.style.transform = `translateX(-${index * 100}%)`;
         }
-    };
 
-    // Function to update character display
-    function updateCharacterDisplay(characterKey) {
-        const character = characterData[characterKey];
-        if (!character) return;
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + slides.length) % slides.length;
+            render();
+        });
 
-        // Get fresh reference to character artwork element
-        const artworkElement = document.getElementById('character-artwork');
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % slides.length;
+            render();
+        });
+
+        // Keyboard support limited to the section, and not while modal is open
+        section.setAttribute('tabindex', '-1'); // so it can receive key events
+        section.addEventListener('keydown', (e) => {
+            const modalOpen = document.querySelector('.image-modal')?.classList.contains('active');
+            if (modalOpen) return;
+            if (e.key === 'ArrowLeft') { 
+                e.preventDefault(); 
+                prevBtn.click(); 
+            }
+            if (e.key === 'ArrowRight') { 
+                e.preventDefault(); 
+                nextBtn.click(); 
+            }
+        });
+
+        // Basic touch swipe
+        let startX = 0;
+        track.addEventListener('touchstart', (e) => { 
+            startX = e.touches[0].clientX; 
+        }, { passive: true });
         
-        // Add fade out effect
-        if (artworkElement) {
-            artworkElement.classList.add('fade-out');
-        }
-
-        setTimeout(() => {
-            // Update character name
-            if (characterName) {
-                characterName.textContent = character.name;
+        track.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) {
+                dx < 0 ? nextBtn.click() : prevBtn.click();
             }
+        }, { passive: true });
 
-            // Update character descriptions
-            if (characterInfoContainer) {
-                // Clear existing descriptions
-                characterInfoContainer.querySelectorAll('.character-description').forEach(p => p.remove());
-                
-                // Add new descriptions
-                character.description.forEach(text => {
-                    const p = document.createElement('p');
-                    p.className = 'character-description';
-                    p.textContent = text;
-                    characterInfoContainer.appendChild(p);
-                });
-            }
+        render();
+    })();
 
-            // Update character artwork
-            if (artworkElement) {
-                artworkElement.src = character.artwork;
-                artworkElement.alt = `${character.name} Artwork`;
-                artworkElement.classList.remove('fade-out');
-                artworkElement.classList.add('fade-in');
-            }
-
-            // Remove fade-in class after animation
-            setTimeout(() => {
-                if (artworkElement) {
-                    artworkElement.classList.remove('fade-in');
-                }
-            }, 400);
-        }, 200);
-    }
-
-    // Add click event listeners to character portraits
-    characterPortraits.forEach(portrait => {
-        portrait.addEventListener('click', () => {
-            // Remove active class from all portraits
-            characterPortraits.forEach(p => p.classList.remove('active'));
-            
-            // Add active class to clicked portrait
-            portrait.classList.add('active');
-            
-            // Get character key and update display
-            const characterKey = portrait.getAttribute('data-character');
-            updateCharacterDisplay(characterKey);
-        });
-
-        // Add keyboard support
-        portrait.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                portrait.click();
-            }
-        });
-
-        // Make portraits focusable for accessibility
-        portrait.setAttribute('tabindex', '0');
-        portrait.setAttribute('role', 'button');
-        portrait.setAttribute('aria-label', `Select character`);
-    });
-
-    // Mobile Character Gallery functionality
-    const mobileCharacterGallery = document.getElementById('character-gallery-mobile');
-    const characterNextBtn = document.getElementById('character-next');
-    const characterPrevBtn = document.getElementById('character-prev');
-    const characterDiamondDots = document.querySelectorAll('.character-diamond-dot');
-    
-    if (mobileCharacterGallery) {
-        const slides = mobileCharacterGallery.querySelectorAll('img');
-        let currentCharacterSlide = 0;
-        const totalCharacterSlides = slides.length;
-
-        function updateCharacterSlide() {
-            mobileCharacterGallery.style.transform = `translateX(-${currentCharacterSlide * 100}%)`;
-            updateCharacterActiveDot();
-            
-            // Update character info based on current slide
-            const currentSlide = slides[currentCharacterSlide];
-            const characterKey = currentSlide.getAttribute('data-character');
-            updateCharacterInfoOnly(characterKey);
-        }
-        
-        function updateCharacterActiveDot() {
-            characterDiamondDots.forEach((dot, index) => {
-                if (index === currentCharacterSlide) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        // Function to update only character info (for mobile gallery)
-        function updateCharacterInfoOnly(characterKey) {
-            const character = characterData[characterKey];
-            if (!character) return;
-
-            // Update character name
-            if (characterName) {
-                characterName.textContent = character.name;
-            }
-
-            // Update character descriptions
-            if (characterInfoContainer) {
-                // Clear existing descriptions
-                characterInfoContainer.querySelectorAll('.character-description').forEach(p => p.remove());
-                
-                // Add new descriptions
-                character.description.forEach(text => {
-                    const p = document.createElement('p');
-                    p.className = 'character-description';
-                    p.textContent = text;
-                    characterInfoContainer.appendChild(p);
-                });
-            }
-        }
-
-        // Next button
-        if (characterNextBtn) {
-            characterNextBtn.addEventListener('click', () => {
-                currentCharacterSlide = (currentCharacterSlide + 1) % totalCharacterSlides;
-                updateCharacterSlide();
-            });
-        }
-
-        // Previous button
-        if (characterPrevBtn) {
-            characterPrevBtn.addEventListener('click', () => {
-                currentCharacterSlide = (currentCharacterSlide - 1 + totalCharacterSlides) % totalCharacterSlides;
-                updateCharacterSlide();
-            });
-        }
-
-        // Diamond dot navigation
-        characterDiamondDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentCharacterSlide = index;
-                updateCharacterSlide();
-            });
-        });
-
-        // Initialize mobile gallery
-        updateCharacterSlide();
-    }
 });
-
-// Function to initialize logo sparks effect
-function initializeLogoSparks() {
-    const logoContainer = document.querySelector('.logo-container');
-    
-    if (!logoContainer) return;
-    
-    // Create sparks container
-    const sparksContainer = document.createElement('div');
-    sparksContainer.className = 'sparks-container';
-    
-    // Create 8 spark elements
-    for (let i = 0; i < 8; i++) {
-        const spark = document.createElement('div');
-        spark.className = 'spark';
-        sparksContainer.appendChild(spark);
-    }
-    
-    // Add sparks container to logo container
-    logoContainer.appendChild(sparksContainer);
-    
-    // Optional: Add event listeners for additional control
-    logoContainer.addEventListener('mouseenter', () => {
-        sparksContainer.style.opacity = '1';
-    });
-    
-    logoContainer.addEventListener('mouseleave', () => {
-        sparksContainer.style.opacity = '0';
-    });
-}
-
-// Function to initialize Uppon Hill logo animation
-function initializeUpponHillAnimation() {
-    const fullLogo = document.querySelector('.uppon-hill-full-logo');
-    const initialsLogo = document.querySelector('.uppon-hill-initials-logo');
-    const upponHillLogo = document.querySelector('.uppon-hill-logo.navbar-logo');
-    // const upponHillPlaceholder = document.querySelector('.uppon-hill-placeholder'); // No longer needed
-
-    if (!initialsLogo || !upponHillLogo) return;
-
-    // Set initial states - logo is now always visible in navbar
-    initialsLogo.style.opacity = '1';
-
-    // Simple hover effect for navbar logo
-    if (upponHillLogo) {
-        upponHillLogo.addEventListener('mouseenter', () => {
-            upponHillLogo.style.transform = 'scale(1.05)';
-        });
-
-        upponHillLogo.addEventListener('mouseleave', () => {
-            upponHillLogo.style.transform = 'scale(1)';
-        });
-    }
-
-    // Remove placeholder shrinking since logo is now in navbar
-    // if (upponHillPlaceholder) {
-    //     upponHillPlaceholder.style.width = '0px';
-    //     upponHillPlaceholder.style.margin = '0px';
-    // }
-}
