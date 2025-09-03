@@ -1,5 +1,6 @@
 /* FAQ Section */
 .faq-carousel-section {
+  background-color: var(--secondary-color);
   position: relative;
   padding: clamp(80px, 15vw, 120px) 0 clamp(100px, 20vw, 140px) 0;
   width: 100%;

@@ -1,4 +1,4 @@
-// faq.js - Handles FAQ carousel horizontal scrolling
+// faq.js - Handles FAQ carousel horizontal scrolling and accordion
 document.addEventListener('DOMContentLoaded', () => {
     // FAQ Section Horizontal Scroll with Mouse Wheel
     const faqScrollWrapper = document.querySelector('.faq-carousel-scroll-wrapper');
@@ -18,4 +18,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { passive: false });
     }
+
+    // FAQ Accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isOpen = answer.classList.contains('show');
+            
+            // Close all other answers
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.classList.remove('show');
+            });
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+            });
+            
+            // Toggle current answer
+            if (!isOpen) {
+                answer.classList.add('show');
+                question.classList.add('active');
+            }
+        });
+    });
 });

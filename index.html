@@ -16,10 +16,6 @@
     <meta property="og:url" content="https://dani-studiohawk.github.io/InsigniaMVP/">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="src/css/styles.css">
-    <link rel="stylesheet" href="src/css/video-elevator.css">
-    <link rel="stylesheet" href="src/css/faq-carousel.css">
-    <link rel="stylesheet" href="src/css/index-updates.css">
-    <link rel="stylesheet" href="src/css/character-gallery.css">
 </head>
 
 <body>
@@ -115,11 +111,7 @@
     </header>
     <main role="main" id="main-content">
   <section class="video-section" id="trailer">
-    <div class="elevator-pitch">
-    <p>Accompany Armin on the adventure of a lifetime to discover the fate of his lost father, uncover the
-      magical arts of blacksmithing, and rise to meet a destructive force threatening the kingdom he calls
-      home.</p>
-  </div>
+    
     <div class="trailer-header">
       <span class="premiere-tag">WATCH THE TRAILER</span>
     </div>
@@ -130,7 +122,38 @@
         allow="autoplay" frameborder="0" allowfullscreen>
       </iframe>
     </div>
+
+    <div class="elevator-pitch">
+    <p>Accompany Armin on the adventure of a lifetime to discover the fate of his lost father, uncover the
+      magical arts of blacksmithing, and rise to meet a destructive force threatening the kingdom he calls
+      home.</p>
+  </div>
   </section>
+
+
+  <section id="story" class="story-section">
+        <div class="story-image-container">
+            <div class="story-image" style="background-image: url('src/assets/characters/group2.png');"></div>
+            <div class="story-corner top-left" style="background-image: url('src/assets/images/corner-fil.png');"></div>
+            <div class="story-corner top-right" style="background-image: url('src/assets/images/corner-fil.png');"></div>
+            <div class="story-corner bottom-left" style="background-image: url('src/assets/images/corner-fil.png');"></div>
+            <div class="story-corner bottom-right" style="background-image: url('src/assets/images/corner-fil.png');"></div>
+        </div>
+        <div class="story-text">
+            <h2>The story so far...</h2>
+            <p>Kiama is a world not unlike ours, though inhabited by many animal civilisations with their own
+                culture and customs. The peoples of the world were first brought together in the light of the
+                Insignia, a prismatic force that shapes the world in its words they called Ensigns.</p>
+
+            <p>Centuries ago, cataclysmic wars between the Humen and Hunden were fought for the control of the
+                Insignia. After a desperate final measure, the victorious kingdom of men vowed to abandon their use
+                of the power, leaving a scarred capitol city to build new townships across the country.</p>
+            <p>Now, with the wartime arts all but forgotten, a shadow returns to the kingdom. Armin’s story begins
+                with the disappearance of his father, a renowned blacksmith. With nothing but a cryptic journal to
+                lead the way, Armin must follow Magnus’ path to revive an ancient power and prevent a new war from
+                destroying everything he holds dear.</p>
+    </div>
+</section>
 
 
 
@@ -270,25 +293,6 @@
 </section>
 
 
-<section id="story" class="story-section">
-    <div class="story-image-container">
-        <div class="story-image" style="background-image: url('src/assets/characters/group2.png');"></div>
-    </div>
-    <div class="story-text">
-        <h2>The story so far...</h2>
-        <p>Kiama is a world not unlike ours, though inhabited by many animal civilisations with their own
-            culture and customs. The peoples of the world were first brought together in the light of the
-            Insignia, a prismatic force that shapes the world in its words they called Ensigns.</p>
-
-        <p>Centuries ago, cataclysmic wars between the Humen and Hunden were fought for the control of the
-            Insignia. After a desperate final measure, the victorious kingdom of men vowed to abandon their use
-            of the power, leaving a scarred capitol city to build new townships across the country.</p>
-        <p>Now, with the wartime arts all but forgotten, a shadow returns to the kingdom. Armin’s story begins
-            with the disappearance of his father, a renowned blacksmith. With nothing but a cryptic journal to
-            lead the way, Armin must follow Magnus’ path to revive an ancient power and prevent a new war from
-            destroying everything he holds dear.</p>
-    </div>
-</section>
 
 
     <!-- Character Gallery Section -->
@@ -585,49 +589,7 @@
     }
     </script>
 
-    <script>
-        // Anchor-aware UX
-        document.addEventListener('DOMContentLoaded', () => {
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        // Update hash
-                        history.pushState(null, null, this.getAttribute('href'));
-                        // Focus on heading
-                        const heading = target.querySelector('h1, h2, h3');
-                        if (heading) heading.focus();
-                    }
-                });
-            });
-
-            // Back to top visibility
-            const backToTop = document.querySelector('.back-to-top');
-            window.addEventListener('scroll', () => {
-                backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-            });
-
-            // Section view analytics (placeholder)
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Track section view
-                        console.log('Section viewed:', entry.target.id);
-                        // Replace with analytics code, e.g., gtag('event', 'section_view', { section: entry.target.id });
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
-        });
-    </script>
-
+    <script src="src/js/common.js"></script>
     <script src="src/js/navigation.js"></script>
     <script src="src/js/gallery.js"></script>
     <script src="src/js/faq.js"></script>

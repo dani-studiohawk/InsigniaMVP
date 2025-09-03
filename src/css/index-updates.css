@@ -1,12 +1,20 @@
 /* Clamp whole section */
 .updates-section{
+  background-color: var(--secondary-color);
+}
+
+/* Header */
+.updates-header {
   width: min(1162px, 90vw);
   margin: 0 auto;
-  padding: clamp(24px, 4vw, 48px) 0;
+  padding: 0 clamp(24px, 4vw, 48px);
 }
 
 /* Two columns: left grows, right fixed */
 .updates-split{
+  width: min(1162px, 90vw);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;   /* ← right rail width adjusted for 320px card + padding */
   gap: clamp(16px, 3vw, 32px);
@@ -48,6 +56,7 @@
   overflow: hidden;
   display: flex; flex-direction: column;
   transition: border-color .2s ease, transform .2s ease;
+  max-height: 280px;
 }
 .update-card:hover{ border-color: rgba(243,154,74,.6); transform: translateY(-2px); }
 
@@ -55,7 +64,19 @@
 .card-media img{ width:100%; display:block; aspect-ratio:16/9; object-fit:cover; }
 .card-body{ padding:12px; display:flex; flex-direction:column; gap:.35rem; }
 .card-meta{ margin:0; font-size:.85rem; color: rgba(234,234,234,.7); text-transform: uppercase; letter-spacing:.03em; }
-.card-title{ margin:0; font-size:1.05rem; font-weight:600; color: var(--off-white); }
+.card-title{
+  margin:0;
+  font-size:1.05rem;
+  font-weight:600;
+  color: var(--off-white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  box-orient: vertical;
+}
 .card-title a{ color: inherit; text-decoration: none; }
 .card-title a:hover{ color: var(--gold); }
 
@@ -69,7 +90,7 @@
 }
 
 /* ---- Carousel ---- */
-.carousel { position: relative; }
+.carousel { position: relative; overflow: hidden; }
 
 .carousel-track {
   flex: none;

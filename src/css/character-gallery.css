@@ -1,17 +1,18 @@
 /* Character Gallery Section */
 .character-gallery-section {
   position: relative;
-  padding: clamp(80px, 15vw, 120px) 20px;
   width: 100%;
   overflow: hidden;
+  padding-top: 40px;
+  padding-bottom: 100px;
 }
 
 /* wrapper holds the torn edges, text stays in an unmasked child */
 .characters-shell {
   position: relative;
   background-color: var(--off-white);
-    z-index: 5;                 /* higher than whatever the next section uses */
-     background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
+  z-index: 5;                 /* higher than whatever the next section uses */
+  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
   background-repeat: repeat;
   background-size: 200px;
 }
