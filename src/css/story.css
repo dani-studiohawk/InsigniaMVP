@@ -76,7 +76,8 @@
   position: relative;
   max-width: 1152px;
   margin: 0 auto;
-  padding-bottom: 60px;
+  margin-bottom: 60px;
+  padding: 60px;
   color: var(--white);
   z-index: 2;
 }

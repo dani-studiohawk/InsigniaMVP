@@ -16,9 +16,8 @@ main {
 /* Stack header + video */
 .video-section{
   background-image: url('../assets/backgrounds/wallbg_perfect.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-size:auto;
+  background-repeat: repeat;
   image-rendering: pixelated;
   width: 100%;
   display: flex;
@@ -27,7 +26,6 @@ main {
   gap: 20px;
   padding-top: 0;
   padding: 0 0 20px;
-  margin-bottom: 150px;
   z-index: 2;
   position: relative;
   overflow: visible;

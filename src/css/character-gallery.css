@@ -46,8 +46,23 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  image-rendering: pixelated;
 }
 
+.character-gallery-container::before {
+  content: "";
+  position: absolute;
+  top: -15px;   /* equal to border size */
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border-style: solid;
+  border-image: url('../assets/backgrounds/adamborder.png') 15;
+  border-width: 60px;
+  image-rendering: pixelated;
+  z-index: -1; /* puts it behind the content */
+}
 /* GIF Carousel */
 .gif-carousel {
   position: relative;
@@ -158,8 +173,8 @@
 /* Gallery Info */
 .gallery-info {
   text-align: center;
-  max-width: 600px;
-  padding: 0 2rem;
+  max-width: 1152px;
+  padding: 60px;
 }
 
 .gallery-info h2 {
