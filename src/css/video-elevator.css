@@ -15,16 +15,25 @@ main {
 }
 /* Stack header + video */
 .video-section{
+  background-image: url('../assets/backgrounds/wallbg_perfect.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: pixelated;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   padding-top: 0;
-  padding: 0rem 3rem 20px;
-  margin-bottom: 200px;
+  padding: 0 0 20px;
+  margin-bottom: 150px;
   z-index: 2;
+  position: relative;
+  overflow: visible;
 }
+
+
 
 /* Header */
 .trailer-header{
