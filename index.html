@@ -16,10 +16,12 @@
     <meta property="og:url" content="https://dani-studiohawk.github.io/InsigniaMVP/">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/features.css">
     <link rel="stylesheet" href="src/css/video-elevator.css">
     <link rel="stylesheet" href="src/css/faq-carousel.css">
     <link rel="stylesheet" href="src/css/index-updates.css">
     <link rel="stylesheet" href="src/css/character-gallery.css">
+    <link rel="stylesheet" href="src/css/gallery.css">
 </head>
 
 <body>
@@ -120,9 +122,9 @@
       magical arts of blacksmithing, and rise to meet a destructive force threatening the kingdom he calls
       home.</p>
   </div>
-    <div class="trailer-header">
+    <!-- <div class="trailer-header">
       <span class="premiere-tag">WATCH THE TRAILER</span>
-    </div>
+    </div> -->
 
     <div class="video-container">
       <img src="src/assets/images/left-cap.svg" alt="Left Cap" class="left-cap-image">
@@ -148,11 +150,6 @@
   <!-- keep your original section and id -->
   <section class="features-section" id="features-section">
     <div class="features-header-container">
-      <div class="features-header"></div>
-      <div class="features-header-lines">
-        <div class="features-line-left"></div>
-        <div class="features-line-right"></div>
-      </div>
       <div class="features-header-ornaments">
         <div class="features-ornament-top"></div>
         <div class="features-ornament-bottom"></div>
@@ -168,21 +165,23 @@
           <div class="card-inner">
             <div class="feature-gallery">
               <div class="feature-gallery-container">
-                <img src="src/assets/screenshots/foothills.png" alt="Scenic foothills landscape in Insignia game" loading="lazy">
                 <img src="src/assets/screenshots/boss.png" alt="Intense boss battle scene in Insignia" loading="lazy">
                 <img src="src/assets/screenshots/athenaeum.png" alt="Mysterious athenaeum library in Insignia" loading="lazy">
+                <img src="src/assets/screenshots/foothills.png" alt="Scenic foothills landscape in Insignia game" loading="lazy">
               </div>
               <div class="diamond-nav">
-                <div class="diamond-indicator">
-                  <div class="diamond-dot center" data-index="1"></div>
-                  <div class="diamond-dot active" data-index="0"></div>
+                <div class="diamond-indicator top-row">
+                  <div class="diamond-dot center active" data-index="0"></div>
+                </div>
+                <div class="diamond-indicator bottom-row">
+                  <div class="diamond-dot" data-index="1"></div>
                   <div class="diamond-dot" data-index="2"></div>
                 </div>
               </div>
-              <button class="feature-gallery-nav prev">&lt;</button>
-              <button class="feature-gallery-nav next">&gt;</button>
+              <button class="feature-gallery-nav prev"><div class="arrow-left"></div></button>
+              <button class="feature-gallery-nav next"><div class="arrow-right"></div></button>
             </div>
-            <h2>Action Gameplay</h2>
+            <h3>Action Gameplay</h3>
             <p>Leap through vividly hand-crafted mountains, forests, deserts and shores in this pixel
               art action platformer. Face against tricky foes in a unique combat system that rewards
               quick thinking with colourfully acrobatic action abilities. Leap, roll, slash and parry
@@ -197,21 +196,23 @@
           <div class="card-inner">
             <div class="feature-gallery">
               <div class="feature-gallery-container">
-                <img src="src/assets/screenshots/crucible.png" alt="Ancient crucible for crafting in Insignia" loading="lazy">
                 <img src="src/assets/screenshots/lakeside.png" alt="Peaceful lakeside village in Insignia" loading="lazy">
                 <img src="src/assets/screenshots/house.png" alt="Cozy house interior in Insignia" loading="lazy">
+                <img src="src/assets/screenshots/crucible.png" alt="Ancient crucible for crafting in Insignia" loading="lazy">
               </div>
               <div class="diamond-nav">
-                <div class="diamond-indicator">
-                  <div class="diamond-dot active" data-index="0"></div>
-                  <div class="diamond-dot center" data-index="1"></div>
+                <div class="diamond-indicator top-row">
+                  <div class="diamond-dot center active" data-index="0"></div>
+                </div>
+                <div class="diamond-indicator bottom-row">
+                  <div class="diamond-dot" data-index="1"></div>
                   <div class="diamond-dot" data-index="2"></div>
                 </div>
               </div>
-              <button class="feature-gallery-nav prev">&lt;</button>
-              <button class="feature-gallery-nav next">&gt;</button>
+              <button class="feature-gallery-nav prev"><div class="arrow-left"></div></button>
+              <button class="feature-gallery-nav next"><div class="arrow-right"></div></button>
             </div>
-            <h2>Sweeping Story</h2>
+            <h3>Sweeping Story</h3>
             <p>Encounter a cast of charming characters in a world with rich lore and intrigue as your
               path crosses with theirs. The tale of Insignia takes place in a fantasy world where
               humans are just one of many races of animals with language, history and culture. When
@@ -232,16 +233,18 @@
                 <img src="src/assets/screenshots/boss.png" alt="Epic boss fight in Insignia" loading="lazy">
               </div>
               <div class="diamond-nav">
-                <div class="diamond-indicator">
-                  <div class="diamond-dot active" data-index="0"></div>
-                  <div class="diamond-dot center" data-index="1"></div>
+                <div class="diamond-indicator top-row">
+                  <div class="diamond-dot center active" data-index="1"></div>
+                </div>
+                <div class="diamond-indicator bottom-row">
+                  <div class="diamond-dot" data-index="0"></div>
                   <div class="diamond-dot" data-index="2"></div>
                 </div>
               </div>
-              <button class="feature-gallery-nav prev">&lt;</button>
-              <button class="feature-gallery-nav next">&gt;</button>
+              <button class="feature-gallery-nav prev"><div class="arrow-left"></div></button>
+              <button class="feature-gallery-nav next"><div class="arrow-right"></div></button>
             </div>
-            <h2>Curious Crafting</h2>
+            <h3>Curious Crafting</h3>
             <p>Master your crafting skills to forge new items and abilities, unlocking secrets and
               opening new paths through the world. Discover forgotten Crucibles in the far corners of
               the kingdom to upgrade your sword's capabilities. It is said that in the beginning the
@@ -262,16 +265,18 @@
                 <img src="src/assets/screenshots/boss.png" alt="Challenging boss encounter in Insignia" loading="lazy">
               </div>
               <div class="diamond-nav">
-                <div class="diamond-indicator">
-                  <div class="diamond-dot active" data-index="0"></div>
-                  <div class="diamond-dot center" data-index="1"></div>
+                <div class="diamond-indicator top-row">
+                  <div class="diamond-dot center active" data-index="1"></div>
+                </div>
+                <div class="diamond-indicator bottom-row">
+                  <div class="diamond-dot" data-index="0"></div>
                   <div class="diamond-dot" data-index="2"></div>
                 </div>
               </div>
-              <button class="feature-gallery-nav prev">&lt;</button>
-              <button class="feature-gallery-nav next">&gt;</button>
+              <button class="feature-gallery-nav prev"><div class="arrow-left"></div></button>
+              <button class="feature-gallery-nav next"><div class="arrow-right"></div></button>
             </div>
-            <h2>Dark Dungeons</h2>
+            <h3>Dark Dungeons</h3>
             <p>Delve into vast and challenging dungeons with tricky puzzles, treacherous foes and
               spectacular boss fights. Put everything you have learned to the test and claim the pieces
               of Insignia before they fall into the hands of the enemy!</p>
@@ -341,9 +346,21 @@
                 
                 <!-- Title and Text Below Gallery -->
                 <div class="gallery-info">
-                    <h2>Character Animations</h2>
-                    <p>Explore the vibrant world of Insignia through these character animations. Watch as Armin and his companions come to life with fluid movements and expressive gestures that bring the story to vivid reality.</p>
-                    <p>Each animation showcases the unique personalities and abilities of the characters you'll meet on your adventure.</p>
+                    <div class="gallery-text active" data-index="0">
+                        <h2>The Travelling Band</h2>
+                        <p>Join Armin and his companions as they journey across the kingdom. This group of unlikely heroes has banded together with a common goal: to uncover the mysteries of the Insignia and prevent a looming catastrophe.</p>
+                        <p>Watch as they travel together, each bringing their unique skills and personalities to the adventure.</p>
+                    </div>
+                    <div class="gallery-text" data-index="1">
+                        <h2>Ilia's Horseback Journey</h2>
+                        <p>The skilled ranger Ilia rides through the countryside on her trusted steed. Known for her exceptional archery and tracking abilities, she becomes an invaluable ally on Armin's quest.</p>
+                        <p>Her knowledge of the kingdom's wilderness helps the group navigate through dangerous territories.</p>
+                    </div>
+                    <div class="gallery-text" data-index="2">
+                        <h2>Harriette's Challenge</h2>
+                        <p>Face the formidable Harriette, a master of ancient combat techniques. What begins as confrontation may evolve into an unexpected alliance as her true motives are revealed.</p>
+                        <p>Her powerful abilities and mysterious background make her one of the most intriguing characters you'll encounter.</p>
+                    </div>
                 </div>
             </div>
             <div class="characters-tear characters-tear--bottom" aria-hidden="true"></div>
@@ -360,7 +377,7 @@
 
         <section class="gallery-section" id="gallery">
           <div class="gallery-header">
-            <h2>Gallery</h2>
+            <h2 class="gallery-header">Gallery</h2>
           </div>
             <div class="gallery-grid">
                 <img src="src/assets/screenshots/athenaeum.png" alt="Screenshot 1">
@@ -445,6 +462,8 @@
     <section class="faq-carousel-section" id="faq">
         <div class="faq-carousel-shell">
             <div class="faq-carousel-tear faq-carousel-tear--top" aria-hidden="true"></div>
+            
+            <h2>FAQ</h2>
             <div class="faq-carousel-container">
                 <div class="faq-carousel-scroll-wrapper">
                     <div class="faq-carousel-card">
@@ -571,7 +590,6 @@
             <div class="faq-carousel-accent-line"></div>
         </div>
         <div class="faq-carousel-tear faq-carousel-tear--bottom" aria-hidden="true"></div>
-    </div>
     </section>
 
     <footer class="footer">
@@ -656,6 +674,7 @@
 
     <script src="src/js/navigation.js"></script>
     <script src="src/js/gallery.js"></script>
+    <script src="src/js/features.js"></script>
     <script src="src/js/faq.js"></script>
     <script src="src/js/character-gallery.js"></script>
     <script src="src/js/logo-effects.js"></script>

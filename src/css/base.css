@@ -2,13 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Sofia+Sans+Semi+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
 :root {
   /* Colors */
-  --white: #eaeaea;
+  --white: rgb(255, 241, 217);
   --secondary-color: #001325;
-  --off-white: #fffcf6;
-  --tertiary-color: #ffffff;
+  --off-white: rgb(255, 241, 217);
+  --tertiary-color: rgb(255, 241, 217);
   --accent-blue: #3c99dc;
-  --gold: #f39a4a;
-  --light-gold: rgb(255, 247, 233);
+  --gold: #f3ad4a;
+  --light-gold: rgb(255, 241, 217);
+  --light-navy: #061d31;
+  
 
   /* Typography */
   --font-family: 'Sofia Sans Semi Condensed', sans-serif;

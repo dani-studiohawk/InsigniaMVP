@@ -28,6 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 dot.classList.remove('active');
             }
         });
+        
+        // Update text descriptions
+        const textSections = document.querySelectorAll('.gallery-text');
+        if (textSections.length > 0) {
+            textSections.forEach((text, index) => {
+                if (index === currentGifSlide) {
+                    text.classList.add('active');
+                } else {
+                    text.classList.remove('active');
+                }
+            });
+        }
     }
     
     function nextGifSlide() {

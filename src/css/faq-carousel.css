@@ -4,6 +4,7 @@
   padding: clamp(80px, 15vw, 120px) 0 clamp(100px, 20vw, 140px) 0;
   width: 100%;
   overflow: hidden;
+  
 }
 
 /* wrapper holds the torn edges, text stays in an unmasked child */
@@ -14,6 +15,7 @@
   background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
   background-repeat: repeat;
   background-size: 200px;
+  text-align: center; /* Center the h2 */
 }
 
 /* torn edges as siblings so they do not affect text AA */
@@ -40,6 +42,7 @@
   max-width: 1152px;
   margin: 0 auto;
   z-index: 2; /* Higher z-index to appear above tears */
+  padding: 0 15px;
 }
 
 .faq-carousel-section h2 {
@@ -47,9 +50,31 @@
   font-family: var(--font-family-secondary);
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--white);
-  margin-bottom: 4rem;
+  color: var(--secondary-color);
   letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  display: inline-block; /* Shrink to text width for proper pseudo-element positioning */
+  padding: 20px;
+}
+
+.faq-carousel-section h2::before,
+.faq-carousel-section h2::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+  transform: translateY(-50%);
+}
+
+.faq-carousel-section h2::before {
+  left: -200px;
+}
+
+.faq-carousel-section h2::after {
+  right: -200px;
 }
 
 .faq-carousel-scroll-wrapper {
@@ -57,7 +82,7 @@
   gap: 1rem;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 20px 0 5px;
+  padding: 20px 0 10px;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   z-index: 3; /* Higher than the container */
@@ -71,12 +96,10 @@
 
 .faq-carousel-scroll-wrapper::-webkit-scrollbar-track {
   background: var(--light-gold);
-  border-radius: 4px;
 }
 
 .faq-carousel-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 4px;
+  background: var(--secondary-color);
   opacity: 0.7;
 }
 
@@ -111,7 +134,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  color: var(--tertiary-color); /* <-- this changes the SVG border colour */
+  color: var(--secondary-color); /* <-- this changes the SVG border colour */
 
 }
 
@@ -129,7 +152,7 @@
   position: relative;
   width: 100%;
   height: 2px;
-  background-color: var(--gold);
+  background-color: var(--secondary-color);
   margin: 10px 0 25px 0;
   display: flex;
   align-items: center;
@@ -172,7 +195,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: var(--gold);
+  background-color: var(--secondary-color);
   pointer-events: none;
   box-shadow: -4px 0px 8px rgba(250, 212, 159, 0.766);
 }
@@ -185,7 +208,7 @@
   
   .faq-carousel-section h2 {
     font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem; /* Reduced margin for better carousel spacing */
   }
   
   .faq-carousel-card {
@@ -208,6 +231,19 @@
   .faq-carousel-accent-line {
     display: none;
   }
+  
+  .faq-carousel-section h2::before,
+  .faq-carousel-section h2::after {
+    width: 120px; /* Medium size lines for tablet */
+  }
+  
+  .faq-carousel-section h2::before {
+    left: -140px;
+  }
+  
+  .faq-carousel-section h2::after {
+    right: -140px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -226,5 +262,18 @@
   
   .faq-carousel-scroll-wrapper {
     gap: 1rem;
+  }
+  
+  .faq-carousel-section h2::before,
+  .faq-carousel-section h2::after {
+    width: 80px; /* Smaller lines on mobile */
+  }
+  
+  .faq-carousel-section h2::before {
+    left: -100px;
+  }
+  
+  .faq-carousel-section h2::after {
+    right: -100px;
   }
 }

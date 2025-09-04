@@ -38,6 +38,27 @@
   text-align: center;
   letter-spacing: 2px;
   color: var(--off-white);
+  position: relative;
+  z-index: 1;
+}
+
+.story-text h2::before,
+.story-text h2::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: translateY(-50%);
+}
+
+.story-text h2::before {
+  left: -200px;
+}
+
+.story-text h2::after {
+  right: -200px;
 }
 
 .story-icon {
