@@ -15,18 +15,207 @@
   background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
   background-repeat: repeat;
   background-size: 200px;
+
 }
 
-.features-section::before {
-  content: '';
+.features-header-text {
   position: absolute;
+  width: 300px;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* Semi-transparent white tint - adjust opacity as needed */
-  z-index: 1;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.features-header-container {
+  position: relative;
+  width: 300px;
+  height: 80px;
+  margin: 0 auto 50px auto;
+}
+
+/* Features box built from pixel sprites, with exact scaling */
+.features-header{
+  /* base asset sizes, in source pixels */
+  --corner-base: 12px;
+  --edge-base: 3px;
+  --orn-top-base: 11px;
+  --orn-btm-w-base: 13px;
+  --orn-btm-h-base: 3px;
+
+  /* scale factor */
+  --scale: 4;
+
+  /* derived sizes */
+  --corner: calc(var(--corner-base) * var(--scale));
+  --edge: calc(var(--edge-base) * var(--scale));
+  --orn-top: calc(var(--orn-top-base) * var(--scale));
+  --orn-btm-w: calc(var(--orn-btm-w-base) * var(--scale));
+  --orn-btm-h: calc(var(--orn-btm-h-base) * var(--scale));
+
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 300px; 
+  height: 80px;                /* demo width; remove if fluid */
+  image-rendering: pixelated;
+
+  /* padding equals edge thickness, so content sits inside the frame */
+  padding: calc(16px + var(--edge)) 20px calc(14px + var(--edge));
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Apply filter to frame corners */
+
+  /* multiple backgrounds: 4 corners + 4 edges */
+  background-image:
+    url("../assets/backgrounds/framecorner-tl.svg"),
+    url("../assets/backgrounds/framecorner-tr.svg"),
+    url("../assets/backgrounds/framecorner-bl.svg"),
+    url("../assets/backgrounds/framecorner-br.svg");
+
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat,
+                     no-repeat, no-repeat, no-repeat, no-repeat;
+
+  /* corners */
+  background-position:
+    left top,
+    right top,
+    left bottom,
+    right bottom,
+
+    /* edges start after the corners */
+    left var(--corner) top,                 /* top    */
+    left var(--corner) bottom,              /* bottom */
+    left top var(--corner),                 /* left   */
+    right top var(--corner);                /* right  */
+
+  background-size:
+    var(--corner) var(--corner),
+    var(--corner) var(--corner),
+    var(--corner) var(--corner),
+    var(--corner) var(--corner),
+
+    /* horizontal edges: full width minus both corners, thickness = var(--edge) */
+    calc(100% - (var(--corner) * 2)) var(--edge),
+    calc(100% - (var(--corner) * 2)) var(--edge),
+
+    /* vertical edges: full height minus both corners */
+    var(--edge) calc(100% - (var(--corner) * 2)),
+    var(--edge) calc(100% - (var(--corner) * 2));
+
+}
+
+/* heading text stays above ornaments */
+.features-header-text h2{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-family: var(--font-family-secondary);
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #26284c;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Left and right lines as separate elements to avoid filter effect */
+.features-header-lines {
+  position: absolute;
+  width: 300px;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.features-line-left {
+  position: absolute;
+  left: -426px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 426px;
+  height: 4px;
+  background-color: var(--gold);
+}
+
+.features-line-right {
+  position: absolute;
+  right: -426px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 426px;
+  height: 4px;
+  background-color: var(--gold);
+}
+
+/* Ornaments as separate elements to apply filter independently */
+.features-header-ornaments {
+  position: absolute;
+  width: 300px;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  
+  /* Include CSS variables for ornament sizing */
+  --corner-base: 12px;
+  --edge-base: 3px;
+  --orn-top-base: 11px;
+  --orn-btm-w-base: 13px;
+  --orn-btm-h-base: 3px;
+  --scale: 4;
+  --corner: calc(var(--corner-base) * var(--scale));
+  --edge: calc(var(--edge-base) * var(--scale));
+  --orn-top: calc(var(--orn-top-base) * var(--scale));
+  --orn-btm-w: calc(var(--orn-btm-w-base) * var(--scale));
+  --orn-btm-h: calc(var(--orn-btm-h-base) * var(--scale));
+}
+
+.features-ornament-top {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -36px;
+  width: var(--orn-top);
+  height: var(--orn-top);
+  background: url("../assets/backgrounds/framemiddle.svg") center/contain no-repeat;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.features-ornament-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(-1 * var(--orn-btm-h) / 2);
+  width: var(--orn-btm-w);
+  height: var(--orn-btm-h);
+  background: url("../assets/backgrounds/framemiddle-bottom.svg") center/contain no-repeat;
+  image-rendering: pixelated;
+}
+
+
+
+
 
 
 /* torn edges as siblings so they do not affect text AA */
@@ -46,6 +235,8 @@
 }
 .features-tear--top { top: -40px; }
 .features-tear--bottom { bottom: -40px; transform: scaleY(-1); }
+
+
 
 .card-grid {
   position: relative;
@@ -94,7 +285,7 @@ html {
   display: flex;
   flex-direction: column;
   flex: 1;
-  color: var(--tertiary-color); /* <-- this changes the SVG border colour */
+  color: var(--gold); /* <-- this changes the SVG border colour */
   padding-bottom: 20px;
 }
 
@@ -298,13 +489,13 @@ html {
   height: 800px;
 }
 
-.swoosh-1 {
+.features-swoosh-1 {
   top: 5%;
   left: 60%;
   transform: translateX(-25%);
 }
 
-.swoosh-2 {
+.features-swoosh-2 {
   top: 35%;
   left: 40%;
   transform: translateX(-55%) scaleY(-1);

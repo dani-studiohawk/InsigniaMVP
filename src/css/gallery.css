@@ -6,12 +6,12 @@
   background-color: var(--secondary-color);
 }
 
-.gallery-section h2 {
+.gallery-header h2 {
   text-align: center;
-  font-family: var(--font-family);
+  font-family: var(--font-family-secondary);
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: var(--primary-color);
+  color: var(--white);
 }
 
 .gallery-grid {

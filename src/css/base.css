@@ -1,7 +1,5 @@
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Crimson+Pro:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@400;600&display=swap');
-/* CSS Variables */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Sofia+Sans+Semi+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
 :root {
   /* Colors */
   --white: #eaeaea;
@@ -14,8 +12,7 @@
 
   /* Typography */
   --font-family: 'Sofia Sans Semi Condensed', sans-serif;
-  --font-family-secondary: 'Crimson Pro', serif;
-  --font-size: 14px;
+  --font-family-secondary: 'Cinzel', serif;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
 }

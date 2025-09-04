@@ -324,12 +324,12 @@
 /* Nav Link Items */
 .nav-links li a {
   font-family: var(--font-family);
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--tertiary-color);
   text-decoration: none;
-  font-size: clamp(0.7rem, 1.5vw, 0.85rem); /* Responsive font size */
+  font-size: 1rem; /* Responsive font size */
   text-align: center;
   transition: all 0.3s ease;
   white-space: nowrap; /* Prevent text wrapping */

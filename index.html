@@ -124,11 +124,15 @@
       <span class="premiere-tag">WATCH THE TRAILER</span>
     </div>
 
-    <div class="video-embed">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/2tYQzPXfff8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1"
-        allow="autoplay" frameborder="0" allowfullscreen>
-      </iframe>
+    <div class="video-container">
+      <img src="src/assets/images/left-cap.svg" alt="Left Cap" class="left-cap-image">
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/2tYQzPXfff8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1"
+          allow="autoplay" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <img src="src/assets/images/right-cap.svg" alt="Right Cap" class="right-cap-image">
     </div>
   </section>
 
@@ -143,6 +147,20 @@
 
   <!-- keep your original section and id -->
   <section class="features-section" id="features-section">
+    <div class="features-header-container">
+      <div class="features-header"></div>
+      <div class="features-header-lines">
+        <div class="features-line-left"></div>
+        <div class="features-line-right"></div>
+      </div>
+      <div class="features-header-ornaments">
+        <div class="features-ornament-top"></div>
+        <div class="features-ornament-bottom"></div>
+      </div>
+      <div class="features-header-text">
+        <h2>Features</h2>
+      </div>
+    </div>
     <div class="card-grid">
       <!-- CARD 1 -->
       <div class="card">
@@ -262,8 +280,8 @@
       </div>
     </div>
     <!-- Swoosh textures -->
-    <div class="swoosh swoosh-1" aria-hidden="true"></div>
-    <div class="swoosh swoosh-2" aria-hidden="true"></div>
+    <div class="swoosh features-swoosh-1" aria-hidden="true"></div>
+    <div class="swoosh features-swoosh-2" aria-hidden="true"></div>
   </section>
 
   <div class="features-tear features-tear--bottom" aria-hidden="true"></div>
@@ -271,10 +289,15 @@
 
 
 <section id="story" class="story-section">
-    <div class="story-image-container">
-        <div class="story-image" style="background-image: url('src/assets/characters/group2.png');"></div>
-    </div>
     <div class="story-text">
+        <div class="story-image-container">
+            <div class="story-image" style="background-image: url('src/assets/characters/group2.png');"></div>
+            <img src="src/assets/images/ensign-corner.svg" alt="" class="corner top-left">
+            <img src="src/assets/images/ensign-corner.svg" alt="" class="corner top-right">
+            <img src="src/assets/images/ensign-corner.svg" alt="" class="corner bottom-left">
+            <img src="src/assets/images/ensign-corner.svg" alt="" class="corner bottom-right">
+        </div>
+        <img src="src/assets/images/g.svg" alt="icon" class="story-icon">
         <h2>The story so far...</h2>
         <p>Kiama is a world not unlike ours, though inhabited by many animal civilisations with their own
             culture and customs. The peoples of the world were first brought together in the light of the
@@ -300,8 +323,8 @@
                 <div class="gif-carousel">
                     <div class="gif-carousel-container">
                         <img src="src/assets/gifs/Travelling_Band.gif" alt="Character animation 1" class="gif-slide active">
-                        <img src="src/assets/gifs/Travelling_Band.gif" alt="Character animation 2" class="gif-slide">
-                        <img src="src/assets/gifs/Travelling_Band.gif" alt="Character animation 3" class="gif-slide">
+                        <img src="src/assets/gifs/Ilia Horseback.gif" alt="Character animation 2" class="gif-slide">
+                        <img src="src/assets/gifs/Harriette Boss.gif" alt="Character animation 3" class="gif-slide">
                     </div>
                     <button class="gif-nav prev" aria-label="Previous animation">&lt;</button>
                     <button class="gif-nav next" aria-label="Next animation">&gt;</button>
@@ -326,8 +349,8 @@
             <div class="characters-tear characters-tear--bottom" aria-hidden="true"></div>
         </div>
         
-        <div class="swoosh swoosh-1" aria-hidden="true"></div>
-        <div class="swoosh swoosh-2" aria-hidden="true"></div>
+        <div class="char swoosh characters-swoosh-1" aria-hidden="true"></div>
+        <div class="char swoosh characters-swoosh-2" aria-hidden="true"></div>
     </section>
 
 </section>
@@ -336,6 +359,9 @@
 
 
         <section class="gallery-section" id="gallery">
+          <div class="gallery-header">
+            <h2>Gallery</h2>
+          </div>
             <div class="gallery-grid">
                 <img src="src/assets/screenshots/athenaeum.png" alt="Screenshot 1">
                 <img src="src/assets/screenshots/bedroom.png" alt="Screenshot 2">

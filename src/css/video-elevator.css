@@ -1,3 +1,7 @@
+/* ===========================================
+   VIDEO ELEVATOR - BASE STYLES
+   =========================================== */
+
 /* Main Content */
 main {
   display: flex;
@@ -8,13 +12,14 @@ main {
   min-height: 100vh;
 }
 
-/* Hero Sections Wrapper with Background */
+/* Hero Sections Wrapper */
 .hero-sections-wrapper {
   width: 100%;
   background-color: var(--secondary-color);
 }
-/* Stack header + video */
-.video-section{
+
+/* Video Section */
+.video-section {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -23,10 +28,12 @@ main {
   padding-top: 0;
   padding: 0rem 3rem 20px;
   margin-bottom: 70px;
+  background-image: url('../assets/backgrounds/wallbg.png');
+  background-size: contain;
 }
 
-/* Header */
-.trailer-header{
+/* Trailer Header */
+.trailer-header {
   text-align: center;
   padding: 0 1rem;
 }
@@ -39,18 +46,17 @@ main {
 }
 
 .elevator-pitch p {
-  font-family: var(--font-family-secondary);
-  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-family: var(--font-family-primary);
+  font-size: 1.2rem;
   line-height: 1.6;
-  color: var(--white);
+  color: antiquewhite;
   font-weight: 400;
   position: relative;
   padding: 0 clamp(1rem, 6vw, 3rem);
 }
 
-
-
-.premiere-tag{
+/* Premiere Tag */
+.premiere-tag {
   display: inline-block;
   font-variant-caps: all-small-caps;
   letter-spacing: 0.12em;
@@ -60,67 +66,106 @@ main {
   color: var(--gold);
   background: rgba(243, 154, 74, 0.12);
   border-radius: 4px;
-  line-height: 1;          /* normalise cap height */
-  padding: 0.6em 1.2em;    /* padding is now predictable */
-  display: inline-flex;    /* centers text neatly */
-  align-items: center;     /* centers vertically */
-  justify-content: center; /* centers horizontally */
+  line-height: 1;
+  padding: 0.6em 1.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Video Container */
+.video-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  width: 100%;
+}
 
-
-
-/* Make the player large */
+/* Video Embed */
 .video-embed {
   position: relative;
   width: min(87%, 1162px);
   aspect-ratio: 200 / 113;
-  margin: 0 auto;
 }
 
-.video-embed iframe{
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   border: 2px solid var(--gold);
-  border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  border-radius: 2px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
 }
 
 .video-embed:hover iframe {
   cursor: pointer;
 }
 
-/* Mobile Video Adjustments */
-@media (max-width: 720px) {
-  .video-embed {
-    width: 85%;
-  }
+/* Right Cap Image */
+.right-cap-image {
+  max-width: 40px;
+  height: auto;
+  flex-shrink: 0;
 }
 
+/* Left Cap Image */
+.left-cap-image {
+  max-width: 40px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* ===========================================
+   MOBILE RESPONSIVE STYLES
+   =========================================== */
+
+/* Small phones */
 @media (max-width: 480px) {
+  .video-container {
+    flex-direction: column;
+  }
+
   .video-embed {
     width: 95%;
   }
-}
 
-
-
-/* Mobile Elevator Pitch */
-@media (max-width: 720px) {
-  .elevator-pitch {
-    padding: clamp(3rem, 10vw, 6rem) 1.5rem;
+  .left-cap-image,
+  .right-cap-image {
+    max-width: 120px;
   }
-  
-  .elevator-pitch p {
-    padding: 0 2rem;
-  }
-}
 
-@media (max-width: 480px) {
   .elevator-pitch {
     padding: clamp(2rem, 8vw, 4rem) 1rem;
   }
-  
+
   .elevator-pitch p {
     padding: 0 1.5rem;
+  }
+}
+
+/* Tablets and small desktops */
+@media (max-width: 720px) {
+  .video-container {
+    flex-direction: column;
+  }
+
+  .video-embed {
+    width: 85%;
+  }
+
+  .left-cap-image,
+  .right-cap-image {
+    max-width: 140px;
+  }
+
+  .elevator-pitch {
+    padding: clamp(3rem, 10vw, 6rem) 1.5rem;
+  }
+
+  .elevator-pitch p {
+    padding: 0 2rem;
   }
 }
