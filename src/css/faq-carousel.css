@@ -222,7 +222,7 @@
   font-family: var(--font-family-secondary);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--secondary-color);
+  color: var(--light-navy);
   margin-bottom: 15px;
   line-height: 1.3;
   text-align: center;
@@ -232,7 +232,7 @@
   position: relative;
   width: 100%;
   height: 2px;
-  background-color: var(--secondary-color);
+  background-color: var(--light-navy);
   margin: 10px 0 25px 0;
   display: flex;
   align-items: center;
@@ -255,10 +255,10 @@
 }
 
 .faq-carousel-card p {
-  font-family: var(--font-familyy);
+  font-family: var(--font-family);
   font-size: 0.95rem;
   line-height: 1.5;
-  color: var(--secondary-color);
+  color: var(--light-navy);
   margin-bottom: 0.8rem;
   flex-grow: 1;
   text-align: center;
@@ -271,13 +271,14 @@
 /* Decorative Accent Line */
 .faq-carousel-accent-line {
   position: absolute;
-  right: 17px;
+  right: 15px;
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: var(--secondary-color);
+  background-color: var(--light-navy);
   pointer-events: none;
   box-shadow: -4px 0px 8px rgba(250, 212, 159, 0.766);
+  z-index: 5;
 }
 
 /* Responsive Design */

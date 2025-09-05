@@ -93,8 +93,8 @@
   content: '';
   position: absolute;
   top: 50%;
-  width: 280px;
-  height: 3px;
+  width: 450px;
+  height: 2px;
   background: var(--light-navy);
   transform: translateY(-50%);
 
@@ -103,11 +103,11 @@
 }
 
 .features-header-text h2::before {
-  left: -300px;
+  left: -480px;
 }
 
 .features-header-text h2::after {
-  right: -300px;
+  right: -480px;
 }
 
 /* Ornaments as separate elements */
@@ -212,9 +212,9 @@
 /* draws the border and insets it away from the edges */
 .card-inner {
   margin: 10px;
-  border: clamp(10px, 2vw, 16px) solid transparent;
+  border: clamp(8px, 2vw, 12px) solid transparent;
   border-image: url('../assets/images/filagree-border-dynamic.svg')
-                14 / clamp(10px, 2vw, 16px);
+                14 / clamp(8px, 2vw, 12px);
   border-image-repeat: stretch;
   display: flex;
   flex-direction: column;
