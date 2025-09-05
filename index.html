@@ -378,7 +378,9 @@
 
         <section class="gallery-section" id="gallery">
           <div class="gallery-header">
+            <div class="gallery-line-left"></div>
             <h2 class="gallery-header">Gallery</h2>
+            <div class="gallery-line-right"></div>
           </div>
             <div class="gallery-grid">
                 <img src="src/assets/screenshots/athenaeum.png" alt="Screenshot 1">
@@ -415,64 +417,15 @@
 
     </main>
 
-
-<section id="updates" class="updates-section">
-  <div class="updates-header">
-    <h2>Updates</h2>
-  </div>
-
-  <div class="updates-split">
-    <div class="updates-left">
-      <h3 class="updates-subhead">Playlist</h3>
-      <div class="carousel" aria-label="Video updates">
-        <div id="playlist-track"
-             class="carousel-track"
-             data-playlist-id="PLLdxW--S_0h4zWBPwp-GO2FwzI2ArYYEr"
-             data-max="12"  
-             tabindex="0"  
-             role="region"
-             aria-roledescription="carousel"></div>
-
-        <div class="carousel-bar">
-          <a class="btn-more" href="updates.html">See all updates</a>
-          <div class="carousel-nav">
-            <button class="car-btn prev" aria-label="Previous videos" disabled>‹</button>
-            <button class="car-btn next" aria-label="Next videos">›</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: latest live (or latest upload) -->
-    <div class="updates-right">
-      <h3 class="updates-subhead">Latest live stream</h3>
-      <div id="latest-live"
-           class="update-grid grid-1"
-           data-channel-handle="@indietaleslive"
-           data-fallback="upload"></div>
-      <a class="btn-more" href="https://www.youtube.com/@indietaleslive" target="_blank">Follow Development</a>
-    </div>
-  </div>
-
-  <script src="src/js/config.js"></script>
-  <script src="src/js/index-updates.js" defer></script>
-</section>
-
-
   <!-- FAQ Carousel Section -->
     <section class="faq-carousel-section" id="faq">
         <div class="faq-carousel-shell">
-            <div class="faq-carousel-tear faq-carousel-tear--top" aria-hidden="true"></div>
             
             <!-- Ornate header structure (sits above carousel, not part of it) -->
-            <div class="faq-carousel-header-container">
-                <div class="faq-carousel-header-text">
-                    <h2>FAQ</h2>
-                </div>
-                <div class="faq-carousel-header-ornaments">
-                    <div class="faq-carousel-ornament-top"></div>
-                    <div class="faq-carousel-ornament-bottom"></div>
-                </div>
+            <div class="faq-carousel-header">
+                <div class="faq-carousel-line-left"></div>
+                <h2 class="faq-carousel-header">FAQ</h2>
+                <div class="faq-carousel-line-right"></div>
             </div>
             
             <div class="faq-carousel-container">
@@ -600,8 +553,71 @@
             </div>
             <div class="faq-carousel-accent-line"></div>
         </div>
-        <div class="faq-carousel-tear faq-carousel-tear--bottom" aria-hidden="true"></div>
+        <div class="faq-carousel-tear faq-carousel-tear--top" aria-hidden="true"></div>
     </section>
+
+    <!-- Updates wrapper with tears kept as siblings -->
+<section class="updates-shell">
+  <div class="updates-tear updates-tear--bottom" aria-hidden="true"></div>
+
+  <!-- keep your original section and id -->
+  <section id="updates" class="updates-section">
+    <div class="updates-content">
+  <div class="updates-header">
+    <div class="updates-line-left"></div>
+    <h2 class="updates-header">Updates</h2>
+    <div class="updates-line-right"></div>
+  </div>
+
+  <div class="updates-split">
+    <div class="updates-left">
+      <h3 class="updates-subhead">Playlist</h3>
+      <div class="carousel" aria-label="Video updates">
+        <div id="playlist-track"
+             class="carousel-track"
+             data-playlist-id="PLLdxW--S_0h4zWBPwp-GO2FwzI2ArYYEr"
+             data-max="12"  
+             tabindex="0"  
+             role="region"
+             aria-roledescription="carousel"></div>
+
+        <div class="carousel-bar">
+          <a class="btn-more" href="updates.html">See all updates</a>
+          <div class="carousel-nav">
+            <button class="car-btn prev" aria-label="Previous videos" disabled></button>
+            <button class="car-btn next" aria-label="Next videos"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: latest live (or latest upload) -->
+    <div class="updates-right">
+      <h3 class="updates-subhead">Live stream updates</h3>
+      <div class="carousel" aria-label="Live stream updates">
+        <div id="latest-live"
+             class="carousel-track"
+             data-channel-handle="@indietaleslive"
+             data-fallback="upload"
+             data-max="12"></div>
+
+        <div class="carousel-bar">
+          <a class="btn-more" href="https://www.youtube.com/@indietaleslive" target="_blank">Follow Development</a>
+          <div class="carousel-nav">
+            <button class="car-btn prev" aria-label="Previous live streams" disabled></button>
+            <button class="car-btn next" aria-label="Next live streams"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script src="src/js/config.js"></script>
+  <script src="src/js/index-updates.js" defer></script>
+</section>
+
+</section>
 
     <footer class="footer">
         <div class="footer-content">

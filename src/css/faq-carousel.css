@@ -1,10 +1,9 @@
 /* FAQ Section */
 .faq-carousel-section {
   position: relative;
-  padding: clamp(40px, 8vw, 60px) 0 clamp(100px, 20vw, 140px) 0;
   width: 100%;
-  overflow: hidden;
-  
+  overflow: visible;
+
 }
 
 /* wrapper holds the torn edges, text stays in an unmasked child */
@@ -16,7 +15,8 @@
   background-repeat: repeat;
   background-size: 200px;
   text-align: center; /* Center the h2 */
-  padding-top: 48px;
+
+  padding-bottom: 60px;
 }
 
 /* torn edges as siblings so they do not affect text AA */
@@ -35,118 +35,43 @@
   background-repeat: repeat;
   background-size: 200px;
 }
-.faq-carousel-tear--top { top: -40px; }
-.faq-carousel-tear--bottom { bottom: -70px; transform: scaleY(-1); }
 
-/* FAQ Header (based on features header) */
-.faq-carousel-header-container {
-  position: relative;
-  width: 700px;
-  height: 80px;
-  margin: 0 auto 50px auto;
-}
+.faq-carousel-tear--top { top: -30px; }
 
-.faq-carousel-header-text {
-  position: absolute;
-  width: 700px;
-  height: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  z-index: 3;
+/* FAQ Header */
+.faq-carousel-header {
+  max-width: 1152px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  z-index: 1;
 }
 
-.faq-carousel-header-text h2 {
-  position: relative;
-  z-index: 1;
+h2.faq-carousel-header {
+  flex: 1;
   text-align: center;
   font-family: var(--font-family-secondary);
   font-size: 2rem;
-  text-transform: uppercase;
   color: var(--light-navy);
-  font-weight: 800;
-  letter-spacing: 1px;
-  display: inline-block;
   width: auto;
-  margin: 0;
-  padding: 0;
+  text-transform: uppercase;
+  align-self: center;
 }
 
-.faq-carousel-header-text h2::before,
-.faq-carousel-header-text h2::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 280px;
-  height: 3px;
+.faq-carousel-line-left {
+  flex: 2;
+  height: 2px;
   background: var(--light-navy);
-  transform: translateY(-50%);
+
 }
 
-.faq-carousel-header-text h2::before {
-  left: -300px;
-}
+.faq-carousel-line-right {
+  flex: 2;
+  height: 2px;
+  background: var(--light-navy);
+  align-self: center;
 
-.faq-carousel-header-text h2::after {
-  right: -300px;
-}
-
-/* Ornaments as separate elements */
-.faq-carousel-header-ornaments {
-  position: absolute;
-  width: 700px;
-  height: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  z-index: 1;
-  pointer-events: none;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  image-rendering: -moz-crisp-edges;
-  opacity: 0.9;
-  
-  /* Include CSS variables for ornament sizing */
-  --corner-base: 12px;
-  --edge-base: 3px;
-  --orn-top-base: 11px;
-  --orn-btm-w-base: 13px;
-  --orn-btm-h-base: 3px;
-  --scale: 4;
-  --corner: calc(var(--corner-base) * var(--scale));
-  --edge: calc(var(--edge-base) * var(--scale));
-  --orn-top: calc(var(--orn-top-base) * var(--scale));
-  --orn-btm-w: calc(var(--orn-btm-w-base) * var(--scale));
-  --orn-btm-h: calc(var(--orn-btm-h-base) * var(--scale));
-}
-
-.faq-carousel-ornament-top {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: -36px;
-  width: var(--orn-top);
-  height: var(--orn-top);
-  background: url("../assets/backgrounds/framemiddle.svg") center/contain no-repeat;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  image-rendering: -moz-crisp-edges;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
-.faq-carousel-ornament-bottom {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(-1 * var(--orn-btm-h) / 2);
-  width: var(--orn-btm-w);
-  height: var(--orn-btm-h);
-  background: url("../assets/backgrounds/bottom-ornament-navy.svg") center/contain no-repeat;
-  image-rendering: pixelated;
 }
 
 .faq-carousel-container {
@@ -154,7 +79,7 @@
   max-width: 1152px;
   margin: 0 auto;
   z-index: 2; /* Higher z-index to appear above tears */
-  padding: 0 15px;
+  padding: 0;
 }
 
 .faq-carousel-scroll-wrapper {
@@ -268,8 +193,8 @@
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   margin: 0;
   opacity: 1;
   position: relative;
@@ -294,7 +219,7 @@
 /* Decorative Accent Line */
 .faq-carousel-accent-line {
   position: absolute;
-  right: 15px;
+  right: -1px;
   top: 0;
   bottom: 0;
   width: 3px;

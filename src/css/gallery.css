@@ -1,45 +1,47 @@
 /* Gallery Section */
 .gallery-section {
   width: 100%;
-  margin-top: 20px;
   padding: 40px 20px 20px 20px;
   background-color: var(--secondary-color);
 }
 
 .gallery-header {
   max-width: 1152px;
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding-bottom: 20px;
 }
 
 h2.gallery-header {
+  flex: 1;
   text-align: center;
   font-family: var(--font-family-secondary);
   font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--gold);
-  position: relative;
+  color: var(--off-white);
   display: inline-block;
   width: auto;
+  text-transform: uppercase;
+  align-self: center;
 }
 
-h2.gallery-header::before,
-h2.gallery-header::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 180px;
+
+
+
+.gallery-line-left {
+  flex: 2;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transform: translateY(-50%);
-}
+  background: var(--off-white);
+  margin-bottom: 20px;
 
-h2.gallery-header::before {
-  left: -200px;
 }
-
-h2.gallery-header::after {
-  right: -200px;
+.gallery-line-right {
+  flex: 2;
+  height: 2px;
+  background: var(--off-white);
+  align-self: center;
+  margin-bottom: 20px;
 }
 
 
@@ -52,7 +54,7 @@ h2.gallery-header::after {
   max-width: 1152px;
   margin: 0 auto;
   padding: 0 0px;
-  border: 2px solid var(--gold);
+
 }
 
 /* Mobile Gallery - Hidden by default */

@@ -110,9 +110,10 @@
   }
 
   // ---------- LATEST LIVE remains as you have ----------
-  async function loadLatestLive(grid) {
-    const handle = grid.dataset.channelHandle;
-    const fallback = grid.dataset.fallback;
+  async function loadLatestLive(track) {
+    const handle = track.dataset.channelHandle;
+    const fallback = track.dataset.fallback;
+    const MAX_RESULTS = Number(track.dataset.max || 12);
 
     try {
       const chanRes = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${encodeURIComponent(handle)}&key=${API_KEY}`);
@@ -120,44 +121,82 @@
       const channelId = chanData.items?.[0]?.id?.channelId;
       if (!channelId) throw new Error("Channel not found");
 
-      let vidId = null, title = "", date = "", isLive = false;
+      let items = [];
 
-      let res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&eventType=live&maxResults=1&key=${API_KEY}`);
+      let res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&eventType=live&maxResults=${MAX_RESULTS}&key=${API_KEY}`);
       let data = await res.json();
       if (data.items?.length) {
-        const v = data.items[0];
-        vidId = v.id.videoId; title = decodeHtml(v.snippet.title); date = v.snippet.publishedAt; isLive = true;
+        items = data.items.map(v => ({
+          vId: v.id.videoId,
+          title: decodeHtml(v.snippet.title),
+          date: v.snippet.publishedAt,
+          isLive: true
+        }));
       }
 
-      if (!vidId && fallback === "upload") {
-        res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&order=date&maxResults=1&key=${API_KEY}`);
+      if (!items.length && fallback === "upload") {
+        res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&order=date&maxResults=${MAX_RESULTS}&key=${API_KEY}`);
         data = await res.json();
         if (data.items?.length) {
-          const v = data.items[0];
-          vidId = v.id.videoId; title = decodeHtml(v.snippet.title); date = v.snippet.publishedAt;
+          items = data.items.map(v => ({
+            vId: v.id.videoId,
+            title: decodeHtml(v.snippet.title),
+            date: v.snippet.publishedAt,
+            isLive: false
+          }));
         }
       }
 
-      if (!vidId) {
-        grid.innerHTML = `<p style="color:var(--white);opacity:.8">No livestreams or uploads found.</p>`;
+      if (!items.length) {
+        track.innerHTML = `<p style="color:var(--white);opacity:.8">No livestreams or uploads found.</p>`;
         return;
       }
 
-      grid.innerHTML = `
+      track.innerHTML = items.map(({ vId, title, date, isLive }) => `
         <article class="update-card ${isLive ? "is-live" : ""}">
-          <a class="card-media" href="https://www.youtube.com/watch?v=${vidId}" target="_blank" rel="noopener">
-            <img src="${thumbUrl(vidId)}" alt="${esc(title)}">
+          <a class="card-media" href="https://www.youtube.com/watch?v=${vId}" target="_blank" rel="noopener">
+            <img src="${thumbUrl(vId)}" alt="${esc(title)}">
           </a>
           <div class="card-body">
             <p class="card-meta">${isLive ? "Live now · YouTube" : fmtUK(date) + " · YouTube"}</p>
             <h3 class="card-title">${esc(title)}</h3>
           </div>
-        </article>`;
+        </article>`).join("");
+
+      // Hook arrows
+      const host = track.closest(".carousel");
+      const prev = host.querySelector(".car-btn.prev");
+      const next = host.querySelector(".car-btn.next");
+
+      const step = () => {
+        // one card width plus gap
+        const card = track.querySelector(".update-card");
+        if (!card) return 300;
+        const styles = getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || 0);
+        return card.getBoundingClientRect().width + gap;
+      };
+
+      const sync = () => {
+        const max = track.scrollWidth - track.clientWidth - 1;
+        prev.disabled = track.scrollLeft <= 0;
+        next.disabled = track.scrollLeft >= max;
+      };
+
+      prev.addEventListener("click", () => {
+        track.scrollBy({ left: -step(), behavior: "smooth" });
+      });
+      next.addEventListener("click", () => {
+        track.scrollBy({ left: step(), behavior: "smooth" });
+      });
+      track.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync);
+      sync();
     } catch (err) {
       console.error("Live card failed:", err);
       // Show helpful fallback message
       if (err.message.includes('403') || err.message.includes('forbidden')) {
-        grid.innerHTML = `
+        track.innerHTML = `
           <article class="update-card">
             <a class="card-media" href="https://www.youtube.com/@indietaleslive" target="_blank" rel="noopener">
               <img src="https://img.youtube.com/vi/placeholder.jpg" alt="YouTube Channel">
@@ -171,7 +210,7 @@
           <p style="color:var(--white);opacity:.6;font-size:0.9em;margin-top:1rem;">Note: API access blocked locally. Check Google Cloud Console referrer settings for production.</p>
         `;
       } else {
-        grid.innerHTML = `<p style="color:var(--white);opacity:.8">Could not load livestream.</p>`;
+        track.innerHTML = `<p style="color:var(--white);opacity:.8">Could not load livestream.</p>`;
       }
     }
   }
