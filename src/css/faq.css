@@ -1,4 +1,120 @@
 /* FAQ Page Styles */
+
+/* --------------------
+ * FAQ Header Section (based on features header)
+ * -------------------- */
+.faq-header-container {
+  position: relative;
+  width: 700px;
+  height: 80px;
+  margin: 0 auto 50px auto;
+}
+
+.faq-header-text {
+  position: absolute;
+  width: 700px;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-header-text h1 {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-family: var(--font-family-secondary);
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--light-navy);
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: auto;
+  margin: 0;
+}
+
+.faq-header-text h1::before,
+.faq-header-text h1::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 280px;
+  height: 3px;
+  background: var(--light-navy);
+  transform: translateY(-50%);
+}
+
+.faq-header-text h1::before {
+  left: -300px;
+}
+
+.faq-header-text h1::after {
+  right: -300px;
+}
+
+/* Ornaments as separate elements */
+.faq-header-ornaments {
+  position: absolute;
+  width: 700px;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  opacity: 0.9;
+  
+  /* Include CSS variables for ornament sizing */
+  --corner-base: 12px;
+  --edge-base: 3px;
+  --orn-top-base: 11px;
+  --orn-btm-w-base: 13px;
+  --orn-btm-h-base: 3px;
+  --scale: 4;
+  --corner: calc(var(--corner-base) * var(--scale));
+  --edge: calc(var(--edge-base) * var(--scale));
+  --orn-top: calc(var(--orn-top-base) * var(--scale));
+  --orn-btm-w: calc(var(--orn-btm-w-base) * var(--scale));
+  --orn-btm-h: calc(var(--orn-btm-h-base) * var(--scale));
+}
+
+.faq-ornament-top {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -36px;
+  width: var(--orn-top);
+  height: var(--orn-top);
+  background: url("../assets/backgrounds/framemiddle.svg") center/contain no-repeat;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.faq-ornament-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(-1 * var(--orn-btm-h) / 2);
+  width: var(--orn-btm-w);
+  height: var(--orn-btm-h);
+  background: url("../assets/backgrounds/bottom-ornament-navy.svg") center/contain no-repeat;
+  image-rendering: pixelated;
+}
+
+/* --------------------
+ * FAQ Container
+ * -------------------- */
 .faq-container {
     max-width: 900px;
     margin: 0 auto;
@@ -6,26 +122,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.faq-container h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-}
-
-.faq-container h1::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, #3498db, #2980b9);
-    margin: 15px auto 0;
-    border-radius: 2px;
-}
+/* Remove old h1 styles since we're using the new header structure */
 
 .faq-item {
     margin-bottom: 15px;
