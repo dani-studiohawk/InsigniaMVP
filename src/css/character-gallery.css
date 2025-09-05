@@ -39,10 +39,11 @@
 .characters-tear--bottom { bottom: -90px; transform: scaleY(-1); }
 
 .character-gallery-container {
-  border: clamp(8px, 2vw, 12px) solid transparent;
+ /*  border: clamp(8px, 2vw, 12px) solid transparent;
   border-image: url('../assets/images/filagree-border-dynamic.svg')
                 14 / clamp(8px, 2vw, 12px);
   border-image-repeat: stretch;
+  background-color: var(--off-white); */
   width: 1152px;
   margin: 50px auto 0 auto;
   padding: 0;
@@ -52,7 +53,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: var(--off-white);
+
 }
 
 /* GIF Carousel */
