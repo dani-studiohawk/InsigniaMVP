@@ -1,4 +1,4 @@
-// features.js - Handles feature gallery navigation with clockwise diamond pattern
+// features.js - Handles feature gallery navigation with simple linear pattern
 
 class FeatureGallery {
     constructor(galleryElement) {
@@ -7,10 +7,8 @@ class FeatureGallery {
         this.slides = this.gallery.querySelectorAll('img');
         this.totalSlides = this.slides.length;
         
-        // Start with first image (index 0) for clockwise pattern: Top → Right → Left
-        this.currentSlide = 0;
-        this.clockwiseOrder = [0, 2, 1]; // Top(0) → Right(2) → Left(1) → Top(0)
-        this.clockwiseIndex = 0; // Start at first position (index 0)
+        // Simple linear navigation starting at middle slide (index 1)
+        this.currentSlide = 1;
         
         this.dots = this.gallery.querySelectorAll('.diamond-dot');
         this.prevBtn = this.gallery.querySelector('.feature-gallery-nav.prev');
@@ -22,8 +20,7 @@ class FeatureGallery {
     init() {
         console.log('🔧 FeatureGallery: Simple init - current slide:', this.currentSlide);
         this.setupEventListeners();
-        // Don't set any transforms - let it start naturally at slide 0
-        this.updateActiveDot();
+        this.updateSlide(); // Set initial position to middle slide
         console.log('✅ FeatureGallery: Initialization complete');
     }
     
@@ -45,24 +42,21 @@ class FeatureGallery {
     
     goToSlide(index) {
         this.currentSlide = index;
-        this.clockwiseIndex = this.clockwiseOrder.indexOf(index);
         this.updateSlide();
     }
     
     nextSlide() {
-        // Move clockwise: Top(1) → Right(2) → Left(0) → Top(1)
-        this.clockwiseIndex = (this.clockwiseIndex + 1) % this.clockwiseOrder.length;
-        this.currentSlide = this.clockwiseOrder[this.clockwiseIndex];
+        // Simple linear next: 0 → 1 → 2 → 0
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
         this.updateSlide();
-        console.log('Next slide - clockwise index:', this.clockwiseIndex, 'slide:', this.currentSlide);
+        console.log('Next slide:', this.currentSlide);
     }
     
     prevSlide() {
-        // Move counter-clockwise: Top(1) → Left(0) → Right(2) → Top(1)
-        this.clockwiseIndex = (this.clockwiseIndex - 1 + this.clockwiseOrder.length) % this.clockwiseOrder.length;
-        this.currentSlide = this.clockwiseOrder[this.clockwiseIndex];
+        // Simple linear previous: 0 → 2 → 1 → 0
+        this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
         this.updateSlide();
-        console.log('Prev slide - clockwise index:', this.clockwiseIndex, 'slide:', this.currentSlide);
+        console.log('Prev slide:', this.currentSlide);
     }
     
     updateSlide() {
