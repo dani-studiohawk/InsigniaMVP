@@ -39,8 +39,12 @@
 .characters-tear--bottom { bottom: -90px; transform: scaleY(-1); }
 
 .character-gallery-container {
-  width: 100%;
-  margin: 50px 0 0 0;
+  border: clamp(8px, 2vw, 12px) solid transparent;
+  border-image: url('../assets/images/filagree-border-dynamic.svg')
+                14 / clamp(8px, 2vw, 12px);
+  border-image-repeat: stretch;
+  width: 1152px;
+  margin: 50px auto 0 auto;
   padding: 0;
   position: relative;
   z-index: 10;
@@ -48,6 +52,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  background-color: var(--off-white);
 }
 
 /* GIF Carousel */
@@ -138,18 +143,22 @@
   height: 30px;
   width: 120px;
   gap: 12px;
-  background: var(--gold);
   border-radius: 15px;
   backdrop-filter: blur(2px);
 }
 
 .gif-diamond-dot {
-  width: 16px;
-  height: 16px;
-  background-image: url('../assets/images/diamond-2.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 12px;
+  height: 12px;
+  background-color: var(--light-navy);
+  -webkit-mask-image: url('../assets/images/diamond-2.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url('../assets/images/diamond-2.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
   opacity: 0.5;
   transition: all 0.3s ease;
   cursor: pointer;
