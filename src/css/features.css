@@ -213,7 +213,7 @@
 .card-inner {
   margin: 10px;
   border: clamp(8px, 2vw, 12px) solid transparent;
-  border-image: url('../assets/images/filagree-border-dynamic.svg')
+  border-image: url('../assets/images/filagree-border.svg')
                 14 / clamp(8px, 2vw, 12px);
   border-image-repeat: stretch;
   display: flex;
