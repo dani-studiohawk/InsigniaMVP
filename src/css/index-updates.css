@@ -1,31 +1,19 @@
-/* Clamp whole section */
-.updates-shell {
+/* outer wrapper is just the tear-section container */
+.updates-shell.tear-section { position: relative; z-index: 5; }
+
+/* inner content owns the parchment; no top padding; bottom padding comes from global */
+.updates-shell .section-shell{
   position: relative;
-  background-color: var(--off-white);
-  z-index: 5;                 /* higher than whatever the next section uses */
-  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
-  background-repeat: repeat;
+  background: var(--off-white) url('../assets/backgrounds/xJ2UjemaUO2.jpg') repeat;
   background-size: 200px;
+  padding: 0; /* let globals add bottom padding for the bottom tear */
+  z-index: 200;
 }
 
 /* Updates Header */
 .updates-header {
   max-width: 1152px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 30px auto;
-}
-
-h2.updates-header {
-  flex: 1;
-  text-align: center;
-  font-family: var(--font-family-secondary);
-  font-size: 2rem;
-  color: var(--light-navy);
-  width: auto;
-  text-transform: uppercase;
-  align-self: center;
 }
 
 .updates-line-left {
@@ -44,7 +32,6 @@ h2.updates-header {
 .updates-section{
   position: relative;
   width: 100%;
-  padding: clamp(24px, 4vw, 48px) 20px;
   background-color: transparent;
   z-index: 2;
   display: flex;
@@ -54,7 +41,7 @@ h2.updates-header {
 
 /* Content wrapper to center the updates content */
 .updates-content {
-  width: min(1162px, 90vw);
+  width: min(1152px, 90vw);
   margin: 0 auto;
 }
 

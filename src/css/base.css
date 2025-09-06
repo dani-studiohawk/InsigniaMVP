@@ -1,7 +1,29 @@
-/* Import fonts */
+/* =========================================================
+   Base styles + Global tear system (auto-scaling, with fudge)
+   ========================================================= */
+
+/.top-h2 {
+  position: relative;
+  z-index: 101;
+  text-align: center;
+  font-family: var(--font-family-secondary);
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--light-navy);
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: auto;
+  padding: 0 15px;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Sofia+Sans+Semi+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
-:root {
-  /* Colors */
+
+/* ------------------------------
+   Variables
+   ------------------------------ */
+:root{
+  /* Colours */
   --white: rgb(255, 241, 217);
   --secondary-color: #001325;
   --off-white: rgb(255, 241, 217);
@@ -16,59 +38,210 @@
   --font-family-secondary: 'Cinzel', serif;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
+
+  /* Seam spacing (visual gap on each side of the torn edge) */
+  --seam-gap: 24px;
+
+  /* Tear graphics */
+  --tear-h: 125px;          /* change this, everything scales */
+  --jaggy-scale: 1;         /* 1.0 original; increase to 1.1–1.25 for taller rip */
+  --mask-slack: 1px;        /* small shrink to avoid tip shaving */
+  --tear-fudge: 10px;       /* extra overlap past the seam – you like 10px */
+
+  /* Ratios measured from tear.svg at 100 px */
+  --up-ratio: 0.0717;       /* tallest spike above seam / 100 */
+  --down-ratio: 0.0331;     /* deepest spike below seam / 100 */
+
+  /* Derived offsets in px (auto-scale with height and jaggy) */
+  --up-offset:   calc(var(--up-ratio)   * var(--tear-h) * var(--jaggy-scale));
+  --down-offset: calc(var(--down-ratio) * var(--tear-h) * var(--jaggy-scale));
+
+  /* Safety clearances added inside the light section */
+  --safe-up:   calc(var(--up-offset)   + 2px);
+  --safe-down: calc(var(--down-offset) + 2px);
+
+  /* Default vertical rhythm for dark sections when no tear is adjacent */
+  --section-pad-y: clamp(24px, 4vw, 64px);
 }
 
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ------------------------------
+   Tear element
+   ------------------------------ */
+.tear{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--tear-h);
+  z-index: 100;
+  pointer-events: none;
+
+  background-color: var(--off-white);
+  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
+  background-repeat: repeat;
+  background-size: 200px;
+
+  /* mask (with slack), incl. Safari */
+  mask-image: url('../assets/images/tear.svg');
+  mask-repeat: repeat-x;
+  mask-size: auto calc(100% * var(--jaggy-scale) - var(--mask-slack));
+  mask-position: left center;
+
+  -webkit-mask-image: url('../assets/images/tear.svg');
+  -webkit-mask-repeat: repeat-x;
+  -webkit-mask-size: auto calc(100% * var(--jaggy-scale) - var(--mask-slack));
+  -webkit-mask-position: left center;
 }
 
-/* Apply Montserrat as default font to body */
-body {
+/* Top seam: offset by UP + fudge, anchor mask to bottom edge */
+.tear--top{
+  top: calc(-1 * (var(--up-offset) + var(--tear-fudge)));
+  mask-position: left bottom;
+  -webkit-mask-position: left bottom;
+  background-position: left top;
+}
+
+/* Bottom seam: flip, use the SAME UP offset + fudge, anchor mask to top edge */
+.tear--bottom{
+  bottom: calc(-1 * (var(--up-offset) + var(--tear-fudge)));
+  transform: scaleY(-1);
+  mask-position: left top;
+  -webkit-mask-position: left top;
+  background-position: left bottom;
+}
+
+/* ------------------------------
+   Seam spacing – equal visual gaps, safety inside
+   (add fudge to BOTH sides so the overlap you like doesn’t compress the gap)
+   ------------------------------ */
+.tear-section{ position: relative; overflow: visible; }
+.section-shell{ position: relative; z-index: 1; }
+
+/* With a TOP tear */
+.tear-section:has(.tear--top){
+  margin-top: calc(var(--seam-gap) + var(--tear-fudge));              /* outside gap + fudge */
+}
+.tear-section:has(.tear--top) .section-shell{
+  padding-top: calc(var(--seam-gap) + var(--tear-fudge) + var(--safe-down)); /* inside safety + fudge */
+}
+
+/* With a BOTTOM tear */
+.tear-section:has(.tear--bottom){
+  margin-bottom: calc(var(--seam-gap) + var(--tear-fudge));           /* outside gap + fudge */
+}
+.tear-section:has(.tear--bottom) .section-shell{
+  padding-bottom: calc(var(--seam-gap) + var(--tear-fudge) + var(--safe-up)); /* inside safety + fudge */
+}
+
+/* ------------------------------
+   Dark sections: default rhythm, trimmed near tears
+   ------------------------------ */
+.dark-section{
+  padding-block: var(--section-pad-y);
+  overflow: visible;
+}
+.dark-section .section-shell{ padding-block: var(--section-pad-y); }
+
+/* Remove bottom padding when a TOP tear follows */
+.dark-section:has(+ .tear-section:has(.tear--top)){ padding-bottom: 0; }
+.dark-section:has(+ .tear-section:has(.tear--top)) .section-shell{ padding-bottom: 0; }
+
+/* Remove top padding when a BOTTOM tear precedes */
+.tear-section:has(.tear--bottom) + .dark-section{ padding-top: 0; }
+.tear-section:has(.tear--bottom) + .dark-section .section-shell{ padding-top: 0; }
+
+/* Full-bleed tear sections */
+.tear-section {
+  width: 100vw;                               /* span the viewport */
+  margin-left: calc(50% - 50vw);              /* escape centred parents */
+  margin-right: calc(50% - 50vw);
+}
+
+/* Ensure the parchment fills the whole section */
+.tear-section .section-shell {
+  width: 100%;
+  max-width: none;                             /* do not clamp the shell */
+}
+
+/* Keep only inner content clamped, not the shell background */
+.section-shell {
+  max-width: 1152px;
+  margin-inline: auto;
+}
+
+.section-shell > .container,
+.section-shell > .features-section,
+.section-shell > .updates-section,
+.section-shell > .character-gallery-container,
+.section-shell > .faq-carousel-container {
+  max-width: 1152px;
+  margin-inline: auto;
+  padding-inline: 20px;                        /* adjust to taste */
+}
+
+/* ------------------------------
+   Base document bits
+   ------------------------------ */
+body{
   overflow-x: hidden;
   width: 100%;
   position: relative;
-}
-body {
   font-family: var(--font-family);
   background-color: var(--secondary-color);
 }
 
-
-
-/* Skip link accessibility */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  z-index: 9999;
+/* Skip link */
+.skip-link{ position: absolute; left: -9999px; z-index: 9999; }
+.skip-link:focus{
+  position: static; background: var(--secondary-color); color: var(--white);
+  padding: 10px; text-decoration: none;
 }
 
-.skip-link:focus {
-  position: static;
-  background: var(--secondary-color);
-  color: var(--white);
-  padding: 10px;
-  text-decoration: none;
+/* Back to top */
+.back-to-top{
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--secondary-color); color: var(--white);
+  border: none; padding: 10px 15px; border-radius: 50%;
+  cursor: pointer; display: none; z-index: 1000;
+}
+.back-to-top:hover{ background: var(--tertiary-color); color: var(--secondary-color); }
+
+/* Top H2 styling for page headers */
+.top-h2 {
+  position: relative;
+  z-index: 300;
+  text-align: center;
+  font-family: var(--font-family-secondary);
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--light-navy);
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: auto;
+  padding: 0 15px;
 }
 
-/* Back to top button */
-.back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--secondary-color);
-  color: var(--white);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: none;
+.top-h2-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-height: 80px;
+  position: relative;
   z-index: 1000;
 }
 
-.back-to-top:hover {
-  background: var(--tertiary-color);
-  color: var(--secondary-color);
+.top-h2-line {
+  flex: 1;
+  height: 2px;
+  background: var(--light-navy);
+}
+
+/* Override color for dark sections */
+.dark-section .top-h2 {
+  color: var(--white);
+}
+
+.dark-section .top-h2-line {
+  background: var(--white);
 }

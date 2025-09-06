@@ -19,17 +19,17 @@ main {
 }
 
 /* Video Section */
-.video-section {
+/* Dark section wrapper; seam spacing is global */
+.video-section.dark-section {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding-top: 0;
-  padding: 0rem 3rem 20px;
-  margin-bottom: 70px;
   background-image: url('../assets/backgrounds/wallbg.png');
   background-size: contain;
+  overflow: visible; /* safe for adjacent tear overlap */
+  /* no padding-top or padding-bottom here */
 }
 
 /* Trailer Header */

@@ -1,29 +1,16 @@
 /* Gallery Section */
-.gallery-section {
+/* Dark section wrapper; seam spacing is global */
+.gallery-section.dark-section {
   width: 100%;
-  padding: 40px 20px 20px 20px;
   background-color: var(--secondary-color);
+  overflow: visible; /* safe for adjacent tear overlap */
+  /* no padding-top or padding-bottom here */
 }
 
 .gallery-header {
   max-width: 1152px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: auto;
-  padding-bottom: 20px;
-}
-
-h2.gallery-header {
-  flex: 1;
-  text-align: center;
-  font-family: var(--font-family-secondary);
-  font-size: 2rem;
-  color: var(--off-white);
-  display: inline-block;
-  width: auto;
-  text-transform: uppercase;
-  align-self: center;
+  margin-bottom: 50px;
 }
 
 

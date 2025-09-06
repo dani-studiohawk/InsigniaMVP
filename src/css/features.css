@@ -12,22 +12,17 @@
 /* --------------------
  * 1. Section Container & Layout
  * -------------------- */
-/* wrapper holds the torn edges, text stays in an unmasked child */
-.features-shell {
-  position: relative;
-  background-color: var(--off-white);
-  z-index: 5;                 /* higher than whatever the next section uses */
-}
+/* container stays */
+.features-shell { position: relative; z-index: 5; }
 
-.features-section {
+/* make this the shell, keep background, drop TOP padding */
+.features-section.section-shell {
   position: relative;
-  padding: 3rem 20px;
   width: 100%;
-  background-color: var(--off-white);
-  z-index: 2;
-  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
-  background-repeat: repeat;
+  background: var(--off-white) url('../assets/backgrounds/xJ2UjemaUO2.jpg') repeat;
   background-size: 200px;
+  padding: 0 20px 3rem;   /* no top padding; global adds it */
+  z-index: 200;
 }
 
 /* Card grid layout */

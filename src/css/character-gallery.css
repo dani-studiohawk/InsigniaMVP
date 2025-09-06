@@ -1,43 +1,22 @@
-/* ===========================================
-   CHARACTER GALLERY - BASE STYLES
-   =========================================== */
-
-/* Character Gallery Section */
-.character-gallery-section {
+/* Character Gallery Section wrapper */
+.character-gallery-section.tear-section {
   position: relative;
-  padding: clamp(80px, 15vw, 120px) 0;
   width: 100%;
-  overflow: hidden;
-  z-index: 1;
+  overflow: visible;   /* was hidden; let the tear overlap */
+  z-index: 200;
+  padding: 0;          /* no vertical padding here; globals handle seam gaps */
 }
 
-/* wrapper holds the torn edges, text stays in an unmasked child */
-.characters-shell {
+/* Inner shell owns parchment + your own interior spacing */
+.characters-shell.section-shell {
   position: relative;
-  background-color: var(--off-white);
-  z-index: 1;                 /* background texture layer */
-  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
-  background-repeat: repeat;
+  background: var(--off-white) url('../assets/backgrounds/xJ2UjemaUO2.jpg') repeat;
   background-size: 200px;
+
+  /* side padding as before; bottom padding for section depth if you want it */
+  padding: 0 clamp(16px, 3vw, 24px) clamp(80px, 15vw, 120px);
 }
 
-/* torn edges as siblings so they do not affect text AA */
-.characters-tear {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background-image: url('../assets/backgrounds/xJ2UjemaUO2.jpg');
-  background-repeat: repeat;
-  background-size: 200px;
-  mask-image: url('../assets/images/tear.svg');
-  mask-repeat: repeat-x;
-  mask-size: auto 100%;
-  mask-position: centre;
-  z-index: 0;
-}
-.characters-tear--top { top: -90px; }
-.characters-tear--bottom { bottom: -90px; transform: scaleY(-1); }
 
 .character-gallery-container {
   background-color: var(--off-white);

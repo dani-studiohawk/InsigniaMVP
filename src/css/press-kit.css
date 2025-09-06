@@ -127,6 +127,7 @@ html, body {
   min-height: 100vh;
   position: relative;
   border-left: 1px solid rgba(241, 248, 245, 0.15);
+  overflow: hidden;
 }
 
 .press-kit-content::before {
@@ -223,26 +224,6 @@ html, body {
   margin-bottom: 1rem;
   color: var(--white);
   position: relative;
-}
-
-.press-kit-section h2::before {
-  content: '';
-  position: absolute;
-  left: -39px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background-image: url('../assets/images/diamond.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.8;
-}
-
-
-.press-kit-section h2::after {
-  display: none;
 }
 
 .press-kit-section h3 {

@@ -1,13 +1,12 @@
 /* Story Section - Combined Styles */
-.story-section {
+/* Dark section wrapper; seam spacing is global */
+.story-section.dark-section {
   position: relative;
-  overflow: hidden;
-  padding: clamp(0px, 15vw, 0px) 0;
+  overflow: visible; /* safe for adjacent tear overlap */
   width: 100%;
   background-color: var(--secondary-color);
   z-index: 1;
   min-height: clamp(450px, 80vh, 450px);
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +16,7 @@
   background-size: 384px auto, 384px auto;
   background-position: left top, right top;
   background-repeat: repeat-y, repeat-y;
+  /* no padding-top or padding-bottom here */
 }
 
 .story-text {
@@ -40,25 +40,6 @@
   color: var(--off-white);
   position: relative;
   z-index: 1;
-}
-
-.story-text h2::before,
-.story-text h2::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 180px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transform: translateY(-50%);
-}
-
-.story-text h2::before {
-  left: -200px;
-}
-
-.story-text h2::after {
-  right: -200px;
 }
 
 .story-icon {
