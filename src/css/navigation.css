@@ -325,11 +325,11 @@
 .nav-links li a {
   font-family: var(--font-family);
   font-weight: 600;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--tertiary-color);
+  letter-spacing: 2px;
+  color: var(--off-white);
   text-decoration: none;
-  font-size: 1rem; /* Responsive font size */
   text-align: center;
   transition: all 0.3s ease;
   white-space: nowrap; /* Prevent text wrapping */

@@ -20,7 +20,7 @@ main {
 
 .elevator-pitch-wrapper {
   width: 100%;
-  max-width: 1162px;
+  max-width: 1152px;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -55,9 +55,9 @@ main {
 
 .elevator-pitch p {
   font-family: var(--font-family-primary);
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.6;
-  color: antiquewhite;
+  color: white;
   font-weight: 400;
   position: relative;
   padding: 0 clamp(1rem, 6vw, 3rem);

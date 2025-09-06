@@ -4,8 +4,7 @@
 /* inner content owns the parchment; no top padding; bottom padding comes from global */
 .updates-shell .section-shell{
   position: relative;
-  background: var(--off-white) url('../assets/backgrounds/xJ2UjemaUO2.jpg') repeat;
-  background-size: 200px;
+
   padding: 0; /* let globals add bottom padding for the bottom tear */
   z-index: 200;
 }

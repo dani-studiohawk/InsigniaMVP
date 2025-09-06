@@ -28,6 +28,8 @@
 </head>
 
 <body>
+  <!-- DEBUG: Temporary overlay to visualize 1152px container alignment -->
+  <div class="debug-overlay"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header class="main-header" role="banner">
@@ -624,10 +626,12 @@
       <div class="faq-carousel-accent-line"></div>
     </div>
   </div>
+  
+  <div class="tear tear--bottom" aria-hidden="true"></div>
 </section>
 
   <!-- Updates wrapper with tears kept as siblings -->
-<section class="updates-shell tear-section">
+<section class="updates-shell tear-section dark-section">
   <div class="section-shell">
     <section id="updates" class="updates-section">
       <div class="updates-content">
@@ -678,27 +682,65 @@
       <script src="src/js/index-updates.js" defer></script>
     </section>
   </div>
-
-  <div class="tear tear--bottom" aria-hidden="true"></div>
 </section>
 
   </section>
 
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-logo">
-        <img src="src/assets/logo/Insignia Logo Colour.png" alt="Insignia Logo">
+      <div class="footer-main">
+        <!-- Left side: Insignia Logo + Game by + Uppon Hill Logo -->
+        <div class="footer-logo-section">
+          <div class="footer-logo">
+            <img src="src/assets/logo/Insignia Logo Colour.png" alt="Insignia Logo">
+          </div>
+          <div class="footer-studio-text">A game by</div>
+          <a href="https://upponhill.com/" target="_blank" class="footer-studio-logo">
+            <img src="src/assets/logo/Uppon Hill Logo.svg" alt="Uppon Hill Studios">
+          </a>
+        </div>
+
+        <!-- Center: Armin Forging Gif -->
+        <div class="footer-center">
+          <div class="footer-gif">
+            <img src="src/assets/gifs/Armin Forging Hammer Web.gif" alt="Armin Forging">
+          </div>
+        </div>
+
+        <!-- Right side: Social Media Grid -->
+        <div class="footer-social-section">
+          <h3 class="footer-social-heading">Join the Guild</h3>
+          <div class="footer-social-media">
+            <a href="https://x.com/adamcyounis" target="_blank" title="Follow on X">
+              <img src="src/assets/socialMedia/x.svg" alt="X">
+            </a>
+            <a href="https://discord.com/invite/9WkRG7s" target="_blank" title="Join Discord">
+              <img src="src/assets/socialMedia/discord.svg" alt="Discord">
+            </a>
+            <a href="https://www.youtube.com/adamcyounis" target="_blank" title="Subscribe on YouTube">
+              <img src="src/assets/socialMedia/youtube.svg" alt="YouTube">
+            </a>
+            <a href="https://www.twitch.tv/adamcyounis" target="_blank" title="Follow on Twitch">
+              <img src="src/assets/socialMedia/twitch.svg" alt="Twitch">
+            </a>
+            <a href="https://store.steampowered.com/app/1127370/Insignia/" target="_blank" title="Wishlist on Steam">
+              <img src="src/assets/socialMedia/steam.svg" alt="Steam">
+            </a>
+            <a href="mailto:adam@upponhill.com" target="_blank" title="Contact via Email">
+              <img src="src/assets/socialMedia/email.svg" alt="Email">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-separator">♦</div>
-      <p>&copy; 2025 Insignia. All rights reserved.</p>
-      <p>Developed by Uppon Hill Studios</p>
-      <p><a href="privacy.html">Privacy Policy</a></p>
-      <p><a href="terms.html">Terms of Service</a></p>
-      <p><a href="press-kit.html">Press</a></p>
-      <div class="mailing-list"></div>
+      <div class="footer-links">
+        <p><a href="press-kit.html">Press Kit</a></p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
+        <p><a href="terms.html">Terms of Service</a></p>
+      </div>
+      <p class="footer-copyright">&copy; 2025 Insignia. All rights reserved.</p>
     </div>
   </footer>
   <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>

@@ -64,6 +64,21 @@
   --section-pad-y: clamp(24px, 4vw, 64px);
 }
 
+/* DEBUG: Temporary overlay to visualize 1152px container alignment */
+.debug-overlay {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 1152px;
+  height: 100vh;
+  transform: translateX(-50%);
+  border: 2px solid red;
+  background: transparent;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+}
+
 /* ------------------------------
    Tear element
    ------------------------------ */
@@ -169,7 +184,6 @@
 }
 
 .section-shell > .container,
-.section-shell > .features-section,
 .section-shell > .updates-section
  {
 
@@ -234,15 +248,15 @@ body{
 
 .top-h2-line {
   flex: 1;
-  height: 2px;
+  height: 1px;
   background: var(--light-navy);
 }
 
 /* Override color for dark sections */
 .dark-section .top-h2 {
-  color: var(--white);
+  color: white;
 }
 
 .dark-section .top-h2-line {
-  background: var(--white);
+  background: white;
 }

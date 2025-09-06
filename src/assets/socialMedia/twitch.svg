@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.64 62.18">
   <defs>
     <style>
       .cls-1 {
         fill: #fff;
       }
-
-      .cls-2 {
-        fill: #001325;
-      }
     </style>
   </defs>
   <g id="Twitch">
-    <rect class="cls-2" width="128" height="128" rx="12" ry="12"/>
     <g>
-      <path class="cls-1" d="M39.45,32.84l-4.27,10.41v43.3h14.27v8.47h8.14l6.41-8.74h12.46l16.35-16.34v-37.1h-53.37ZM86.4,67.96l-10.26,10.26h-12.35l-7.76,7.76v-7.65h-12.36v-38.78h42.73v28.41Z"/>
-      <rect class="cls-1" x="57.59" y="49.78" width="6.42" height="16.35"/>
-      <rect class="cls-1" x="69.8" y="49.78" width="6.33" height="16.35"/>
+      <path class="cls-1" d="M4.27,0L0,10.41v43.3h14.27v8.47h8.14l6.41-8.74h12.46l16.35-16.34V0H4.27ZM51.22,35.12l-10.26,10.26h-12.35l-7.76,7.76v-7.65h-12.36V6.71h42.73v28.41Z"/>
+      <rect class="cls-1" x="22.41" y="16.95" width="6.42" height="16.35"/>
+      <rect class="cls-1" x="34.62" y="16.95" width="6.33" height="16.35"/>
     </g>
   </g>
 </svg>
