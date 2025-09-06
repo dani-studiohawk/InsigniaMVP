@@ -18,6 +18,14 @@ main {
   background-color: var(--secondary-color);
 }
 
+.elevator-pitch-wrapper {
+  width: 100%;
+  max-width: 1162px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* Video Section */
 /* Dark section wrapper; seam spacing is global */
 .video-section.dark-section {

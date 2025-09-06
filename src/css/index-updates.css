@@ -16,18 +16,6 @@
   margin: 30px auto;
 }
 
-.updates-line-left {
-  flex: 2;
-  height: 2px;
-  background: var(--light-navy);
-}
-
-.updates-line-right {
-  flex: 2;
-  height: 2px;
-  background: var(--light-navy);
-  align-self: center;
-}
 
 .updates-section{
   position: relative;

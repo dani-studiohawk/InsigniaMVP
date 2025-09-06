@@ -4,7 +4,7 @@
   background: var(--off-white) url('../assets/backgrounds/xJ2UjemaUO2.jpg') repeat;
   background-size: 200px;
   text-align: center;
-  padding: 0 0 60px 0;  /* no top padding; global adds it */
+  padding: 0 0 60px 0;
   z-index: 200;
 }
 
@@ -15,59 +15,31 @@
   z-index: 1;
 }
 
-.faq-carousel-line-left {
-  flex: 2;
-  height: 2px;
-  background: var(--light-navy);
-
-}
-
-.faq-carousel-line-right {
-  flex: 2;
-  height: 2px;
-  background: var(--light-navy);
-  align-self: center;
-
-}
-
 .faq-carousel-container {
   position: relative;
   max-width: 1152px;
   margin: 0 auto;
-  z-index: 2; /* Higher z-index to appear above tears */
+  z-index: 2;
   padding: 0;
 }
 
 .faq-carousel-scroll-wrapper {
   display: flex;
-  gap: 1rem;
+  gap: 16px; /* integer gap */
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0px 0 10px;
+  padding: 0 0 10px;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  z-index: 3; /* Higher than the container */
-  position: relative; /* Added to ensure z-index works */
+  z-index: 3;
+  position: relative;
 }
 
 /* Custom Scrollbar */
-.faq-carousel-scroll-wrapper::-webkit-scrollbar {
-  height: 8px;
-}
-
-.faq-carousel-scroll-wrapper::-webkit-scrollbar-track {
-  background: var(--light-gold);
-}
-
-.faq-carousel-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: var(--secondary-color);
-  opacity: 0.7;
-}
-
-.faq-carousel-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-  background: var(--light-gold);
-  opacity: 1;
-}
+.faq-carousel-scroll-wrapper::-webkit-scrollbar { height: 8px; }
+.faq-carousel-scroll-wrapper::-webkit-scrollbar-track { background: var(--light-gold); }
+.faq-carousel-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--secondary-color); opacity: 0.7; }
+.faq-carousel-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--light-gold); opacity: 1; }
 
 .faq-carousel-card {
   flex: 0 0 320px;
@@ -78,107 +50,90 @@
   flex-direction: column;
   overflow: hidden;
   border: none;
-  z-index: 4; /* Higher z-index to appear above tears */
+  z-index: 4;
 }
 
+/* Pixel-snapped frame and padding */
 .faq-carousel-card-content {
-  padding: 40px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  margin: 8px;                     /* controls the inset */
-  border: clamp(8px, 1.5vw, 14px) solid transparent;  /* style is required */
-  border-image: url('../assets/images/filagree-border.svg')
-                14 / clamp(8px, 1.5vw, 14px);
-  border-image-repeat: stretch;                        /* or round if needed */
-  padding: clamp(16px, 2vw, 20px);                     /* space inside frame */
+  margin: 8px;
+  --frame-w: 12px; /* whole px */
+  border: var(--frame-w) solid transparent;
+  border-image: url('../assets/images/filagree-border.svg') 14 / var(--frame-w) stretch;
+  padding: 20px; /* whole px */
   display: flex;
   flex-direction: column;
   flex: 1;
-  color: var(--secondary-color); /* <-- this changes the SVG border colour */
-
+  color: var(--secondary-color);
 }
 
+/* Quantised heading to avoid fractional flow height */
 .faq-carousel-card h3 {
   font-family: var(--font-family-secondary);
-  font-size: 1.1rem;
+  font-size: 18px;        /* whole px */
+  line-height: 24px;      /* whole px */
   font-weight: 700;
   color: var(--light-navy);
-  margin-bottom: 15px;
-  line-height: 1.3;
+  margin-bottom: 16px;    /* even px */
   text-align: center;
 }
 
+/* Divider line: consistent thickness; centre gap overlay in whole px */
 .faq-carousel-divider-line {
   position: relative;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background-color: var(--light-navy);
-  margin: 10px 0 25px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 10px 0 24px 0;  /* even px values */
+  display: block;
+  min-height: 1px;
 }
-
-.faq-carousel-divider-line::before,
-.faq-carousel-divider-line::after {
+.faq-carousel-divider-line::before {
   content: '';
   position: absolute;
-  top: 0;
-  height: 2px;
-  background-color: var(--off-white);
-  width: 30px;
+  top: 0;                 /* integer origin */
+  left: 50%;
+  width: 40px;            /* centre gap total (tighter) */
+  height: 1px;          /* same as line height */
+  margin-left: -20px;     /* integer offset */
+  background-color: var(--light-gold); /* match card background so the gap blends */
   z-index: 1;
 }
 
-.faq-carousel-divider-line::before {
-  left: calc(50% - 30px);
-}
-
-.faq-carousel-divider-line::after {
-  right: calc(50% - 30px);
-}
-
+/* Diamond centred with integer margins (no transform) */
 .faq-carousel-separator {
   background-color: var(--light-navy);
-  -webkit-mask-image: url('../assets/images/diamond-2.svg');
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  mask-image: url('../assets/images/diamond-2.svg');
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-  width: 16px;
-  height: 16px;
-  margin: 0;
-  opacity: 1;
-  position: relative;
+  -webkit-mask: url('../assets/images/diamond-2.svg') no-repeat center / contain;
+          mask: url('../assets/images/diamond-2.svg') no-repeat center / contain;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -6px;      /* half of 12 */
+  margin-left: -6px;     /* half of 16 */
   z-index: 2;
-  font-size: 0; /* Hide the diamond character */
+  font-size: 0;
+  pointer-events: none;
 }
 
 .faq-carousel-card p {
   font-family: var(--font-family);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 15px;        /* whole px */
+  line-height: 24px;      /* whole px, matches baseline grid */
   color: var(--light-navy);
-  margin-bottom: 0.8rem;
+  margin-bottom: 12px;
   flex-grow: 1;
   text-align: center;
 }
+.faq-carousel-card p:last-child { margin-bottom: 0; }
 
-.faq-carousel-card p:last-child {
-  margin-bottom: 0;
-}
- 
-/* Decorative Accent Line */
+/* Decorative Accent Line, snapped */
 .faq-carousel-accent-line {
   position: absolute;
-  right: -1px;
+  right: 0;              /* no negative offset */
   top: 0;
   bottom: 0;
-  width: 3px;
+  width: 2px;            /* even width for crisp edge */
   background-color: var(--light-navy);
   pointer-events: none;
   box-shadow: -4px 0px 8px rgba(250, 212, 159, 0.766);
@@ -187,78 +142,33 @@
 
 /* Responsive Design */
 @media (max-width: 720px) {
-  .faq-carousel-section {
-    padding: 60px 0 80px 0;
-  }
-  
-  .faq-carousel-section h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem; /* Reduced margin for better carousel spacing */
-  }
-  
-  .faq-carousel-card {
-    flex: 0 0 280px;
-    min-height: 260px;
-  }
-  
-  .faq-carousel-card-content {
-    padding: 30px;
-  }
-  
-  .faq-carousel-card h3 {
-    font-size: 1rem;
-  }
-  
-  .faq-carousel-card p {
-    font-size: 0.9rem;
-  }
-  
-  .faq-carousel-accent-line {
-    display: none;
-  }
-  
+  .faq-carousel-section { padding: 60px 0 80px 0; }
+  .faq-carousel-section h2 { font-size: 2rem; margin-bottom: 32px; }
+
+  .faq-carousel-card { flex: 0 0 280px; min-height: 260px; }
+  .faq-carousel-card-content { --frame-w: 10px; padding: 18px; }
+
+  .faq-carousel-card h3 { font-size: 17px; line-height: 24px; margin-bottom: 16px; }
+  .faq-carousel-card p  { font-size: 14px; line-height: 22px; }
+
+  .faq-carousel-accent-line { display: none; }
+
   .faq-carousel-section h2::before,
-  .faq-carousel-section h2::after {
-    width: 120px; /* Medium size lines for tablet */
-  }
-  
-  .faq-carousel-section h2::before {
-    left: -140px;
-  }
-  
-  .faq-carousel-section h2::after {
-    right: -140px;
-  }
+  .faq-carousel-section h2::after { width: 120px; }
+  .faq-carousel-section h2::before { left: -140px; }
+  .faq-carousel-section h2::after  { right: -140px; }
 }
 
 @media (max-width: 480px) {
-  .faq-carousel-container {
-    padding: 0 15px;
-  }
-  
-  .faq-carousel-card {
-    flex: 0 0 260px;
-    min-height: 240px;
-  }
-  
-  .faq-carousel-card-content {
-    padding: 25px;
-  }
-  
-  .faq-carousel-scroll-wrapper {
-    gap: 1rem;
-  }
-  
+  .faq-carousel-container { padding: 0 15px; }
+
+  .faq-carousel-card { flex: 0 0 260px; min-height: 240px; }
+  .faq-carousel-card-content { --frame-w: 8px; padding: 16px; }
+
+  .faq-carousel-scroll-wrapper { gap: 16px; }
+
   .faq-carousel-section h2::before,
-  .faq-carousel-section h2::after {
-    width: 80px; /* Smaller lines on mobile */
-  }
-  
-  .faq-carousel-section h2::before {
-    left: -100px;
-  }
-  
-  .faq-carousel-section h2::after {
-    right: -100px;
-  }
+  .faq-carousel-section h2::after { width: 80px; }
+  .faq-carousel-section h2::before { left: -100px; }
+  .faq-carousel-section h2::after  { right: -100px; }
 }

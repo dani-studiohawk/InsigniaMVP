@@ -2,7 +2,7 @@
    Base styles + Global tear system (auto-scaling, with fudge)
    ========================================================= */
 
-/.top-h2 {
+.top-h2 {
   position: relative;
   z-index: 101;
   text-align: center;
@@ -72,7 +72,7 @@
   left: 0;
   width: 100%;
   height: var(--tear-h);
-  z-index: 100;
+  z-index: 5;
   pointer-events: none;
 
   background-color: var(--off-white);
@@ -170,9 +170,9 @@
 
 .section-shell > .container,
 .section-shell > .features-section,
-.section-shell > .updates-section,
-.section-shell > .character-gallery-container,
-.section-shell > .faq-carousel-container {
+.section-shell > .updates-section
+ {
+
   max-width: 1152px;
   margin-inline: auto;
   padding-inline: 20px;                        /* adjust to taste */
@@ -182,6 +182,7 @@
    Base document bits
    ------------------------------ */
 body{
+  margin: 0; /* reset user-agent margins to avoid side gaps/offsets */
   overflow-x: hidden;
   width: 100%;
   position: relative;

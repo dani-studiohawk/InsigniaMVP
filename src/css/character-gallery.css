@@ -2,64 +2,273 @@
 .character-gallery-section.tear-section {
   position: relative;
   width: 100%;
+  /* Cancel the global full-bleed negative margins for this section to avoid 100vw scrollbar skew */
+  margin-left: 0;
+  margin-right: 0;
   overflow: visible;   /* was hidden; let the tear overlap */
   z-index: 200;
   padding: 0;          /* no vertical padding here; globals handle seam gaps */
 }
 
-/* Inner shell owns parchment + your own interior spacing */
+/* If safe viewport units are supported, re-enable full-bleed without shift */
+@supports (width: 100svw) {
+  .character-gallery-section.tear-section {
+    width: 100svw; /* excludes scrollbar, prevents subtle right shift */
+    margin-left: calc(50% - 50svw);
+    margin-right: calc(50% - 50svw);
+  }
+}
+
+/* Custom z-index for character gallery tear to prevent clip path interference */
+.character-gallery-section.tear-section .tear--top {
+  z-index: 2; /* Lower than container but higher than most other elements */
+}
+
 .characters-shell.section-shell {
   position: relative;
   background: var(--off-white) url('../assets/backgrounds/xJ2UjemaUO2.jpg') repeat;
   background-size: 200px;
+  overflow: visible;
+  z-index: 10;  /* Added to ensure it stacks above the tear (z-index: 2) */
 
   /* side padding as before; bottom padding for section depth if you want it */
-  padding: 0 clamp(16px, 3vw, 24px) clamp(80px, 15vw, 120px);
+  /* Remove side padding to prevent asymmetric gaps; keep vertical spacing only */
 }
 
 
 .character-gallery-container {
   background-color: var(--off-white);
-  max-width: 1152px;
-  margin: 50px auto 0 auto;
-  padding: 0;
+  margin: auto;
+  margin-bottom: 60px;
+  top: 30px;
+  padding: 8px;
   position: relative;
   box-sizing: border-box;
-  z-index: 3;
+  z-index: 25;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  max-width: 1152px;
   clip-path: polygon(
-    /* Top edge */
-    0% 0.3%, 1% 0%, 3% 0.7%, 5% 0.1%, 7% 0.5%, 9% 0%, 11% 0.4%, 14% 0.2%, 
-    16% 0.8%, 18% 0%, 21% 0.6%, 23% 0.1%, 26% 0.3%, 28% 0%, 31% 0.7%, 33% 0.2%, 
-    36% 0.5%, 38% 0%, 41% 0.4%, 44% 0.1%, 46% 0.6%, 49% 0%, 51% 0.8%, 54% 0.2%, 
-    56% 0.3%, 59% 0%, 61% 0.5%, 64% 0.1%, 67% 0.7%, 69% 0%, 72% 0.4%, 74% 0.2%, 
-    77% 0.6%, 79% 0%, 82% 0.3%, 85% 0.1%, 87% 0.8%, 90% 0%, 92% 0.5%, 95% 0.2%, 
-    97% 0.4%, 99% 0%, 100% 0.6%, 
-    /* Right edge */
-    99.7% 1%, 100% 3%, 99.4% 5%, 99.9% 7%, 99.6% 9%, 100% 11%, 99.2% 14%, 99.8% 16%, 
-    99.5% 18%, 100% 21%, 99.7% 23%, 99.3% 26%, 100% 28%, 99.6% 31%, 99.8% 33%, 99.4% 36%, 
-    100% 38%, 99.5% 41%, 99.9% 44%, 99.2% 46%, 99.8% 49%, 99.6% 51%, 100% 54%, 99.3% 56%, 
-    99.7% 59%, 99.9% 61%, 99.4% 64%, 100% 67%, 99.6% 69%, 99.8% 72%, 99.5% 74%, 99.2% 77%, 
-    100% 79%, 99.7% 82%, 99.9% 85%, 99.3% 87%, 99.6% 90%, 100% 92%, 99.4% 95%, 99.8% 97%, 
-    99.5% 99%, 100% 100%,
-    /* Bottom edge */
-    100% 99.4%, 99% 100%, 97% 99.6%, 95% 99.8%, 92% 99.5%, 90% 100%, 87% 99.2%, 
-    85% 99.9%, 82% 99.7%, 79% 100%, 77% 99.4%, 74% 99.8%, 72% 99.6%, 69% 100%, 
-    67% 99.3%, 64% 99.9%, 61% 99.5%, 59% 100%, 56% 99.7%, 54% 99.8%, 51% 99.2%, 
-    49% 100%, 46% 99.4%, 44% 99.9%, 41% 99.6%, 38% 100%, 36% 99.5%, 33% 99.8%, 
-    31% 99.3%, 28% 100%, 26% 99.7%, 23% 99.9%, 21% 99.4%, 18% 100%, 16% 99.2%, 
-    14% 99.8%, 11% 99.6%, 9% 100%, 7% 99.5%, 5% 99.9%, 3% 99.3%, 1% 100%, 0% 99.7%,
-    /* Left edge */
-    0.3% 99%, 0% 97%, 0.6% 95%, 0.1% 92%, 0.4% 90%, 0% 87%, 0.8% 85%, 0.2% 82%, 
-    0.5% 79%, 0% 77%, 0.3% 74%, 0.7% 72%, 0% 69%, 0.4% 67%, 0.2% 64%, 0.6% 61%, 
-    0% 59%, 0.5% 56%, 0.1% 54%, 0.8% 51%, 0.2% 49%, 0.4% 46%, 0% 44%, 0.7% 41%, 
-    0.3% 38%, 0.1% 36%, 0.6% 33%, 0% 31%, 0.4% 28%, 0.2% 26%, 0.5% 23%, 0.8% 21%, 
-    0% 18%, 0.3% 16%, 0.1% 14%, 0.7% 11%, 0.4% 9%, 0% 7%, 0.6% 5%, 0.2% 3%, 0.5% 1%
-  );
+  /* Top edge */
+  0% 0%,
+  2% 0%,
+  6% 0.3%,
+  7% 0.5%,
+  7.5% 0.8%,
+  8% 0.5%,
+  10% 0.3%,
+  12.5% 0.6%,
+  15% 0.4%,
+  17.5% 0.7%,
+  20% 0.4%,
+  22% 0.4%,
+  22.5% 0.8%,
+  23% 0.3%,
+  25% 0.2%,
+  27.5% 0.6%,
+  30% 0.3%,
+  32.5% 0.6%,
+  35% 0.4%,
+  37.5% 0.6%,
+  40% 0.4%,
+  42% 0.4%,
+  42.5% 0.8%,
+  43.5% 0.4%,
+  45% 0.4%,
+  47.5% 0.6%,
+  50% 0.3%,
+  52.5% 0.6%,
+  55% 0.4%,
+  57.5% 0.5%,
+  60% 0.2%,
+  62.5% 0.6%,
+  65% 0.4%,
+  67% 0.4%,
+  67.5% 0.8%,
+  68% 0.3%,
+  70% 0.3%,
+  72.5% 0.5%,
+  75% 0.3%,
+  77.5% 0.6%,
+  80% 0.4%,
+  82% 0.4%,
+  82.5% 0.5%,
+  83.5% 0.4%,
+  85% 0.4%,
+  87% 0.3%,
+  87.5% 0.8%,
+  88% 0.4%,
+  90% 0.3%,
+  92.5% 0.6%,
+  95% 0.3%,
+  98% 0%,
+  100% 0%,
 
+  /* Right edge */
+  100% 0%,
+  100% 2%,
+  99.7% 3.5%,
+  99.5% 5%,
+  99.7% 7%,
+  99.5% 7.5%,
+  99.2% 8%,
+  99.5% 10%,
+  99.6% 12.5%,
+  99.4% 15%,
+  99.6% 17.5%,
+  99.3% 20%,
+  99.5% 22%,
+  99.5% 22.5%,
+  99.2% 23%,
+  99.7% 25%,
+  99.7% 27.5%,
+  99.3% 30%,
+  99.6% 32.5%,
+  99.4% 35%,
+  99.6% 37.5%,
+  99.3% 40%,
+  99.5% 42%,
+  99.5% 42.5%,
+  99.2% 43.5%,
+  99.5% 45%,
+  99.5% 47.5%,
+  99.4% 50%,
+  99.6% 52.5%,
+  99.3% 55%,
+  99.5% 57.5%,
+  99.4% 60%,
+  99.7% 62.5%,
+  99.4% 65%,
+  99.6% 67%,
+  99.5% 67.5%,
+  99.2% 68%,
+  99.7% 70%,
+  99.7% 72.5%,
+  99.5% 75%,
+  99.6% 77.5%,
+  99.4% 80%,
+  99.6% 82%,
+  99.6% 82.5%,
+  99.4% 83.5%,
+  99.5% 85%,
+  99.5% 87%,
+  99.2% 87.5%,
+  99.7% 88%,
+  99.5% 90%,
+  99.6% 92.5%,
+  99.4% 95%,
+  100% 98%,
+  100% 100%,
+  /* Bottom edge (mirrored top) */
+  98% 100%,
+  95% 99.7%,
+  92.5% 99.4%,
+  90% 99.6%,
+  88% 99.5%,
+  87.5% 99.2%,
+  87% 99.7%,
+  85% 99.5%,
+  83.5% 99.5%,
+  82.5% 99.4%,
+  82% 99.6%,
+  80% 99.6%,
+  77.5% 99.4%,
+  75% 99.6%,
+  72.5% 99.5%,
+  70% 99.7%,
+  68% 99.7%,
+  67.5% 99.2%,
+  67% 99.5%,
+  65% 99.6%,
+  62.5% 99.4%,
+  60% 99.7%,
+  57.5% 99.4%,
+  55% 99.5%,
+  52.5% 99.3%,
+  50% 99.6%,
+  47.5% 99.4%,
+  45% 99.5%,
+  43.5% 99.5%,
+  42.5% 99.2%,
+  42% 99.5%,
+  40% 99.5%,
+  37.5% 99.3%,
+  35% 99.6%,
+  32.5% 99.4%,
+  30% 99.6%,
+  27.5% 99.3%,
+  25% 99.7%,
+  23% 99.7%,
+  22.5% 99.2%,
+  22% 99.5%,
+  20% 99.5%,
+  17.5% 99.3%,
+  15% 99.6%,
+  12.5% 99.4%,
+  10% 99.6%,
+  8% 99.5%,
+  7.5% 99.2%,
+  7% 99.5%,
+  6% 99.7%,
+  2% 100%,
+  0% 100%,
+
+  /* Left edge */
+0% 98%,
+0.3% 95%,
+0.6% 92.5%,
+0.3% 90%,
+0.4% 88%,
+0.8% 87.5%,
+0.3% 87%,
+0.4% 85%,
+0.4% 83.5%,
+0.5% 82.5%,
+0.4% 82%,
+0.4% 80%,
+0.6% 77.5%,
+0.3% 75%,
+0.5% 72.5%,
+0.3% 70%,
+0.3% 68%,
+0.8% 67.5%,
+0.4% 67%,
+0.4% 65%,
+0.6% 62.5%,
+0.2% 60%,
+0.5% 57.5%,
+0.4% 55%,
+0.6% 52.5%,
+0.3% 50%,
+0.6% 47.5%,
+0.4% 45%,
+0.4% 43.5%,
+0.8% 42.5%,
+0.4% 42%,
+0.4% 40%,
+0.6% 37.5%,
+0.4% 35%,
+0.6% 32.5%,
+0.3% 30%,
+0.4% 27.5%,
+0.2% 25%,
+0.3% 23%,
+0.8% 22.5%,
+0.4% 22%,
+0.7% 20%,
+0.4% 17.5%,
+0.2% 15%,
+0.4% 12.5%,
+0.3% 10%,
+0.3% 8%,
+0.8% 7.5%,
+0.4% 7%,
+0.2% 5%,
+0% 2%,
+0% 0%
+);
 }
 
 .character-gallery-content {
@@ -76,8 +285,9 @@
   align-items: center;
   gap: 1rem;
   position: relative;
-  z-index: 4;
-  background-color: var(--off-white);
+  z-index: 151; /* Slightly higher than parent container */
+  /* background-color: var(--off-white); */ /* Removed to show clip-path */
+  max-width: 1152px;
 }
 
 /* GIF Carousel */
@@ -225,11 +435,12 @@
 /* Gallery Info */
 .gallery-info {
   text-align: center;
-  max-width: 1052px;
+  max-width: 1152px;
   padding: 0 60px;
   position: relative;
   height: auto;
-  min-height: 200px; /* Set a minimum height to avoid layout shifts */
+  min-height: 200px;
+  margin-bottom: 30px; /* Set a minimum height to avoid layout shifts */
 }
 
 .gallery-text {
@@ -248,27 +459,17 @@
   visibility: visible;
 }
 
-.gallery-info h2, .gallery-text h2 {
-  font-family: var(--font-family-secondary);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 800;
-  color: var(--secondary-color);
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
+
 
 .gallery-info p, .gallery-text p {
   font-family: var(--font-family);
   font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.6;
   color: var(--secondary-color);
-  margin-bottom: 10px;
+  margin: 0;
+  padding-bottom: 20px;
 }
 
-.gallery-info p:last-child, .gallery-text p:last-child {
-  margin-bottom: 0;
-}
 
 /* Swoosh textures */
 .char.swoosh {

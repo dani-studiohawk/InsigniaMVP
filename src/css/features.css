@@ -51,59 +51,14 @@
  * -------------------- */
 .features-header-container {
   position: relative;
-  width: 700px;
+  max-width: 1152px;
   height: 80px;
   margin: 0 auto 50px auto;
 }
 
-.features-header-text {
-  position: absolute;
-  width: 700px;
-  height: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.features-header-text h2 {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  font-family: var(--font-family-secondary);
-  font-size: 2rem;
-  text-transform: uppercase;
-  color: var(--light-navy);
-  font-weight: 800;
-  letter-spacing: 1px;
-  display: inline-block;
-  width: auto;
-}
-
-.features-header-text h2::before,
-.features-header-text h2::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 450px;
-  height: 2px;
-  background: var(--light-navy);
-  transform: translateY(-50%);
 
 
- 
-}
 
-.features-header-text h2::before {
-  left: -480px;
-}
-
-.features-header-text h2::after {
-  right: -480px;
-}
 
 /* Ornaments as separate elements */
 .features-header-ornaments {
